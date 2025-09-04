@@ -1,540 +1,540 @@
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\colReorder.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\responsive.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-feature3.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\css\Landing.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\nb_NO.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fr_FR.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\feather\feather.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\image\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hr.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\link\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ja.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tiny-slider.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\regular.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\all.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\feather.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\autoFill.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\all.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\bower.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fa.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\type-ahead.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\nouislider.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-tour.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ko_KR.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\page-croper.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autolink\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\all.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\flatpickr.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\datatable.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\importcss\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\simplemde.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\eu.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\lazy.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\spain.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\models\dom\model.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\solid.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\module.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\anchor\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\authentication\google.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\themes\silver\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\save\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\svg.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\zh_CN.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\img-price-standard.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\all.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\anchor\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\choices.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\fontawesome.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\it.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\buttons.colVis.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\datepicker-full.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hu_HU.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\typehead\countries.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\widget\reader.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\uk.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\bootstrap-slider.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pt_PT.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\intro.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\brands.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojiimages.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ro.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\svg.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\themes\silver\theme.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\style.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\jsvectormap.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\codesample\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\brands.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\conflict-detection.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\preview\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\dashboard-default.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\mega-menu\chart.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\landing.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\keyTable.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\russia.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\dropzone.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\Jarallax.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\wow.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\svg-with-js.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v5-font-face.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\brands.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\directionality\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojiimages.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\favicon.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\fontawesome.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\imask.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\svg.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\dark.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\widget\target.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\brands.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\tabler\tabler-icons.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sv_SE.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\layout-tab.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\flatpickr.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\pdfmake.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\world.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\fontawesome.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\keyTable.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\ckeditor\classic\ckeditor.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\conflict-detection.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\bootstrap-slider.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\us-lcc-en.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\preview\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\quill.snow.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-feature1.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autolink\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\vanillatree.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\layout-compact.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\typehead\nhl.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\scroller.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\form-validation.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\table\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\license.txt
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\img-price-extended.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\w-chart.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojis.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\root.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\gmaps.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-alert.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\en.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\buttons.print.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\simple-datatables.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\lists\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.buttons.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\phosphor\duotone\style.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\all.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\profile\img-profile-bottom.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\conflict-detection.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autolink\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\svg-with-js.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\brands.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\css\site.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\id.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\CHANGELOG.md
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\us-mill-en.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.colReorder.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\index.global.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\feather.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\jsvectormap.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pt_BR.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pl.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\fixedColumns.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.keyTable.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.rowReorder.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\autoFill.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\popper.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-feature2.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\apexcharts.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\template\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\lists\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\calendar.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\solid.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\wNumb.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\table\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\code\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sl_SI.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\theme-color.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\datepicker-bs5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\media\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ca.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation\dist\additional-methods.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\authentication\twitter.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\de.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\svg-with-js.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ar.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.slim.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\notifier.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\solid.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v4-font-face.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\save\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\authentication\img-auth-bg.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\responsive.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\mini-menu.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\preview\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.slim.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation\LICENSE.md
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\croppr.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\tinymce.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\logo-dark.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\composer.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\buttons.html5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\regular.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\bootstrap-switch-button.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\solid.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\fixedHeader.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\bootstrap.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v5-font-face.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\style.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\fontawesome.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\regular.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-bg-screen.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dropzone-amd-module.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\save\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-rangeslider.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\animate.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\link\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\vi.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\us-aea-en.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\notifier.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-headertech.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\dataTables.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-datepicker.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\regular.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\conflict-detection.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\forms\Readme.txt
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\code\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\ckeditor\inline\ckeditor.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\zh_TW.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\image\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\tabler-icons.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\es.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\ckeditor\document\ckeditor.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\fontawesome.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\codesample\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\canada.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\print\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\rtl.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\jquery.dataTables.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v4-font-face.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\tr.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\all.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\solid.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\solid.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\bootstrap-switch-button.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\models\dom\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\js\site.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\advlist\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v5-font-face.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\simplebar.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\da.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ru.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\datatable.column.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\fontawesome.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\prism-coy.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.fixedHeader.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\kk.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autosave\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\tiny-slider.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fi.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\package.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\profile\img-profile-top.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\lists\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v4-shims.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\themes\silver\theme.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\codesample\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v4-shims.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v5-font-face.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\regular.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\world-merc.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ms.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\introjs.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\template\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\mega-menu\back.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\tinymce.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\uikit.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\v4-shims.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\form-masking-custom.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\us-merc-en.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\prism.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\bouncer.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\nl.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\icons\default\icons.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\ckeditor\balloon\ckeditor.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\all.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\chart-apex.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\dragula.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\regular.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\he_IL.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\croppr.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\README.md
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\nouislider.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\typehead\nba.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\regular.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\link\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\sweetalert2.all.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\vfs_fonts.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\scroller.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\style-preset.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\solid.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\favicon.ico
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\fontawesome\fa-regular-400.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\isotope.pkgd.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\logo-icon.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\brands.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\fontawesome\fa-solid-900.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\media\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\el.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\js\main-landing.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\logo-white.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\svg.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\container.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sk.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autosave\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\charmap\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-slider.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.select.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\regular.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.responsive.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\landing\img-user1.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\accordion\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\charmap\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\under-construction-2.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\codedthemes-logo.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\all.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\importcss\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\customization\default.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\fontawesome.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\directionality\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\quill.core.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\authentication\facebook.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.fixedColumns.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\icons\default\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.autoFill.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\bg_BG.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dragula.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\iraq.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\brands.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\dataTables.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-notification.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\italy.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.slim.min.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\img-megamenu.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\directionality\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\layout-horizontal.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hi.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\media\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\code\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\th_TH.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\fontawesome\fa-brands-400.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\jszip.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\template\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\buttons.bootstrap5.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\clipboard.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\map-vector.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\v4-shims.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\solid.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\phosphor\duotone\selection.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v4-shims.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\anchor\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\fontawesome.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\vanillatree.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\quill.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\v4-shims.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\rowReorder.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v4-shims.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\uppy.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\material.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\ac-treeview.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pages\dashboard-analytics.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\LICENSE.txt
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\charmap\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\component.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\models\dom\model.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\bootstrap.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\brands.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\image\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\advlist\index.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\v4-font-face.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\typehead\movies.json
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery\dist\jquery.min.map
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\autosave\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojis.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\fonts\custom-font.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\simplemde.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\table\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\json\2500.txt
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\inter\inter.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\advlist\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\css\svg-with-js.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\images\pages\img-price-standardplus.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\buttons.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\quill.bubble.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\icons\default\icons.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\select.bootstrap5.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\js\all.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\pcoded.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\accordion\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\importcss\plugin.min.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fontawesome\js\v4-shims.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\fonts\phosphor\duotone\Phosphor-Duotone.svg
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\accordion\plugin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\fontawesome\css\v4-font-face.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\cs.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.js
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\css\plugins\uppy.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.min.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.css
-D:\BackEnd.NET\Divide GP into Sections\ITI_GraduationTest\Test after service\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\colReorder.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\responsive.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-feature3.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\css\Landing.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\nb_NO.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fr_FR.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\feather\feather.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\image\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hr.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\link\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ja.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tiny-slider.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\regular.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\all.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\feather.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\autoFill.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\all.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\bower.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fa.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\type-ahead.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\nouislider.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-tour.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ko_KR.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\page-croper.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autolink\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\all.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\flatpickr.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\datatable.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\importcss\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\simplemde.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\eu.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\lazy.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\spain.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\models\dom\model.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\solid.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\module.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\anchor\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\authentication\google.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\themes\silver\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\save\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\svg.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\zh_CN.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\img-price-standard.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\all.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\anchor\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\choices.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\fontawesome.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\it.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\buttons.colVis.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\datepicker-full.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hu_HU.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\typehead\countries.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\widget\reader.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\uk.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\bootstrap-slider.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pt_PT.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\intro.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\brands.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojiimages.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ro.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\svg.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\themes\silver\theme.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\style.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\jsvectormap.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\codesample\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\brands.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\conflict-detection.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\preview\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\dashboard-default.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\mega-menu\chart.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\landing.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\keyTable.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\russia.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\dropzone.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\Jarallax.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\wow.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\svg-with-js.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v5-font-face.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\brands.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\directionality\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojiimages.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\favicon.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\fontawesome.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\imask.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\svg.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\dark.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\widget\target.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\brands.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\tabler\tabler-icons.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sv_SE.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\layout-tab.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\flatpickr.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\pdfmake.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\world.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\fontawesome.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\keyTable.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\ckeditor\classic\ckeditor.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\conflict-detection.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\bootstrap-slider.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.inline.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\us-lcc-en.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\preview\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\quill.snow.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-feature1.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autolink\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\vanillatree.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\layout-compact.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\typehead\nhl.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\scroller.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\form-validation.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\table\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\license.txt
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\img-price-extended.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\w-chart.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojis.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\root.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\gmaps.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-alert.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\en.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.shadowdom.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\buttons.print.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\simple-datatables.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\lists\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.buttons.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\phosphor\duotone\style.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\all.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\profile\img-profile-bottom.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\conflict-detection.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autolink\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\svg-with-js.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\brands.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\css\site.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\id.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\CHANGELOG.md
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\us-mill-en.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.colReorder.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\index.global.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\feather.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\jsvectormap.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pt_BR.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\pl.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\fixedColumns.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.keyTable.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.rowReorder.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\autoFill.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\popper.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-feature2.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\apexcharts.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\template\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\lists\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\calendar.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\solid.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\wNumb.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\table\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\code\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sl_SI.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\theme-color.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\skin.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\datepicker-bs5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\media\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ca.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation\dist\additional-methods.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\authentication\twitter.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\de.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\svg-with-js.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ar.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.slim.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\notifier.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\solid.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v4-font-face.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\save\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\authentication\img-auth-bg.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\responsive.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\mini-menu.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\preview\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.slim.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation\LICENSE.md
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\croppr.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\tinymce.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\logo-dark.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\composer.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\buttons.html5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\regular.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\bootstrap-switch-button.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\solid.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\fixedHeader.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\bootstrap.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v5-font-face.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\style.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\fontawesome.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\regular.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-bg-screen.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dropzone-amd-module.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\save\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-rangeslider.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\animate.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\content.inline.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\link\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\vi.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\us-aea-en.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\notifier.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-headertech.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\dataTables.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-datepicker.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\regular.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\conflict-detection.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\forms\Readme.txt
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\code\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\ckeditor\inline\ckeditor.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\zh_TW.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\image\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\tabler-icons.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\es.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\ckeditor\document\ckeditor.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\fontawesome.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\codesample\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\canada.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\print\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\rtl.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\jquery.dataTables.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v4-font-face.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\tr.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\all.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\solid.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\solid.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\bootstrap-switch-button.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\models\dom\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\js\site.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\advlist\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v5-font-face.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\simplebar.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\da.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ru.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\datatable.column.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\fontawesome.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\prism-coy.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.fixedHeader.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\kk.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autosave\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\tiny-slider.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\fi.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\package.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\profile\img-profile-top.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\lists\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v4-shims.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\themes\silver\theme.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\codesample\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v4-shims.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v5-font-face.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\regular.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autoresize\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\insertdatetime\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\world-merc.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\ms.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\introjs.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\quickbars\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\template\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\mega-menu\back.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\tinymce.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\uikit.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\v4-shims.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\form-masking-custom.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\us-merc-en.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\prism.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\bouncer.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\nl.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\icons\default\icons.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\ckeditor\balloon\ckeditor.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\all.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\chart-apex.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\dragula.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\regular.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\he_IL.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\croppr.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\README.md
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\nouislider.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\typehead\nba.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\regular.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\link\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\sweetalert2.all.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\vfs_fonts.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\scroller.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\style-preset.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\solid.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\default\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\favicon.ico
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\fontawesome\fa-regular-400.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\isotope.pkgd.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\logo-icon.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\brands.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\fontawesome\fa-solid-900.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\media\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\el.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\js\main-landing.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\logo-white.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\svg.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\container.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\sk.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autosave\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\charmap\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-slider.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.select.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\regular.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.responsive.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\landing\img-user1.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\accordion\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\charmap\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\under-construction-2.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\codedthemes-logo.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\all.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\importcss\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\customization\default.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\fontawesome.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\directionality\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\quill.core.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\authentication\facebook.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.fixedColumns.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.inline.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\icons\default\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.autoFill.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\bg_BG.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\dark\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dragula.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\iraq.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\brands.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\dataTables.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.shadowdom.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-notification.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\italy.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.slim.min.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\img-megamenu.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\directionality\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\content.inline.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\layout-horizontal.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\hi.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\media\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\code\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\th_TH.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\fontawesome\fa-brands-400.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5-dark\skin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\jszip.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\template\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\buttons.bootstrap5.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\clipboard.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\map-vector.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\v4-shims.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\solid.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\phosphor\duotone\selection.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v4-shims.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\anchor\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\fontawesome.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\searchreplace\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\vanillatree.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5-dark\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\quill.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\v4-shims.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\rowReorder.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v4-shims.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\uppy.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\material.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\ac-treeview.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pages\dashboard-analytics.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\LICENSE.txt
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\charmap\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\component.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\models\dom\model.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\bootstrap.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\brands.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\image\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\advlist\index.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\v4-font-face.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\tinymce-5\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\typehead\movies.json
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery\dist\jquery.min.map
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\autosave\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\emoticons\js\emojis.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualblocks\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\fonts\custom-font.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\simplemde.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\wordcount\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\table\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\json\2500.txt
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\inter\inter.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\fullscreen\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\advlist\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\document\content.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\css\svg-with-js.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\images\pages\img-price-standardplus.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\buttons.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\quill.bubble.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\icons\default\icons.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\select.bootstrap5.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\js\all.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\pcoded.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\visualchars\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\accordion\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\importcss\plugin.min.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\pagebreak\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fontawesome\js\v4-shims.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\fonts\phosphor\duotone\Phosphor-Duotone.svg
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\accordion\plugin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\fontawesome\css\v4-font-face.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\help\js\i18n\keynav\cs.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\tinymce-5\skin.shadowdom.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\ui\oxide-dark\skin.js
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\css\plugins\uppy.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.min.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\skins\content\writer\content.css
+D:\BackEnd.NET\ITI_GraduationProjectTeam\ITICode\wwwroot\assets\js\plugins\tinymce\plugins\nonbreaking\index.js
 wwwroot\assets\css\landing.css
 wwwroot\assets\css\plugins\animate.min.css
 wwwroot\assets\css\plugins\autoFill.bootstrap5.min.css

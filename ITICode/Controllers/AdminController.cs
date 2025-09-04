@@ -1,10 +1,7 @@
 ﻿using ITI_Hackathon.Data;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts.DTO;
-<<<<<<< HEAD
-using Medicine_Mvc.Services;
-=======
->>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
+using ITI_Hackathon.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +13,16 @@ namespace ITI_Hackathon.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IDoctorService _doctorservice;
-<<<<<<< HEAD
+
         private readonly IMedicineService _medicineservice;
+
         public AdminController(ApplicationDbContext db, IDoctorService doctorService, IMedicineService medicineService) 
         {
             _db = db;
             _doctorservice = doctorService;
             _medicineservice = medicineService;
-=======
-        public AdminController(ApplicationDbContext db, IDoctorService doctorService) 
-        {
-            _db = db;
-            _doctorservice = doctorService;
->>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
+
+
         }
 
         // GET: /Admin/PendingDoctors
@@ -67,8 +61,7 @@ namespace ITI_Hackathon.Controllers
 			return RedirectToAction("PendingDoctors");
 		}
 
-<<<<<<< HEAD
-=======
+
 		/*@foreach (var doctor in Model)
 {
     <tr>
@@ -88,7 +81,7 @@ namespace ITI_Hackathon.Controllers
     </tr>
 }*/
 
->>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
+
         public async Task<IActionResult> EditDoctorRoleAsync(DoctorEditRoleDTO doctorEditRoleDTO)
         {
             bool changedoctorrole=await _doctorservice.EditDoctorRoleAsync(doctorEditRoleDTO);
@@ -103,7 +96,7 @@ namespace ITI_Hackathon.Controllers
             return RedirectToAction("ApprovedDoctors");
         }
 
-<<<<<<< HEAD
+
         //GET: /Medicine
         public async Task<IActionResult> Index()
         {
@@ -243,9 +236,3 @@ namespace ITI_Hackathon.Controllers
 
     }
 }
-
-
-=======
-	}
-}
->>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
