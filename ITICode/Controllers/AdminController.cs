@@ -1,7 +1,10 @@
 ﻿using ITI_Hackathon.Data;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts.DTO;
+<<<<<<< HEAD
 using Medicine_Mvc.Services;
+=======
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +16,19 @@ namespace ITI_Hackathon.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IDoctorService _doctorservice;
+<<<<<<< HEAD
         private readonly IMedicineService _medicineservice;
         public AdminController(ApplicationDbContext db, IDoctorService doctorService, IMedicineService medicineService) 
         {
             _db = db;
             _doctorservice = doctorService;
             _medicineservice = medicineService;
+=======
+        public AdminController(ApplicationDbContext db, IDoctorService doctorService) 
+        {
+            _db = db;
+            _doctorservice = doctorService;
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
         }
 
         // GET: /Admin/PendingDoctors
@@ -57,6 +67,28 @@ namespace ITI_Hackathon.Controllers
 			return RedirectToAction("PendingDoctors");
 		}
 
+<<<<<<< HEAD
+=======
+		/*@foreach (var doctor in Model)
+{
+    <tr>
+        <td>@doctor.FullName</td>
+        <td>@doctor.Email</td>
+        <td>@doctor.Specialty</td>
+        <td>
+            <form asp-action="ApproveDoctor" method="post" style="display:inline;">
+                <input type="hidden" name="userId" value="@doctor.UserId" />
+                <button type="submit" class="btn btn-success">Approve</button>
+            </form>
+            <form asp-action="RejectDoctor" method="post" style="display:inline;">
+                <input type="hidden" name="userId" value="@doctor.UserId" />
+                <button type="submit" class="btn btn-danger">Reject</button>
+            </form>
+        </td>
+    </tr>
+}*/
+
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
         public async Task<IActionResult> EditDoctorRoleAsync(DoctorEditRoleDTO doctorEditRoleDTO)
         {
             bool changedoctorrole=await _doctorservice.EditDoctorRoleAsync(doctorEditRoleDTO);
@@ -71,6 +103,7 @@ namespace ITI_Hackathon.Controllers
             return RedirectToAction("ApprovedDoctors");
         }
 
+<<<<<<< HEAD
         //GET: /Medicine
         public async Task<IActionResult> Index()
         {
@@ -212,3 +245,7 @@ namespace ITI_Hackathon.Controllers
 }
 
 
+=======
+	}
+}
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8

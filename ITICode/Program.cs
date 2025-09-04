@@ -3,7 +3,10 @@ using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.Services;
+<<<<<<< HEAD
 using Medicine_Mvc.Services;
+=======
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,8 +28,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 // Add Razor Pages support (needed for Identity UI scaffolding)
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
+<<<<<<< HEAD
 builder.Services.AddScoped<IMedicineService, MedicineService>();
 
+=======
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
 
 var app = builder.Build();
 
