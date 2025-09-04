@@ -19,7 +19,7 @@ namespace ITI_Hackathon.Services
 		public async Task<IEnumerable<DoctorApprovedDTO>> GetApprovedDoctorsAsync()
 		{
             IEnumerable<DoctorApprovedDTO> DoctorsApproved = await _context.Doctors.Include(d => d.User)
-				.Where(d => d.IsApproved == true)
+				.Where(d => d.IsApproved == true&&d.User.IsDoctor==true)
 				.Select(d => new DoctorApprovedDTO
 				{
 					UserId = d.UserId,
@@ -27,7 +27,9 @@ namespace ITI_Hackathon.Services
 					Email = d.User.Email,
 					Specialty = d.Specialty,
 					Rating = d.Rating,
-					CompletedChats = d.CompletedChats
+					CompletedChats = d.CompletedChats,
+					IsApproved=d.IsApproved,
+					LicenseNumber=d.LicenseNumber
 				}).ToListAsync();
 
 			return DoctorsApproved;
@@ -88,7 +90,7 @@ namespace ITI_Hackathon.Services
 		}
 		public async Task<string> DeleteDoctorAsync(string userId)
 		{
-			var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
+			var doctor = await _context.Doctors.Include(d=>d.User).FirstOrDefaultAsync(d => d.UserId == userId);
 			if (doctor==null)
 			{
 				return "doctor not found";
@@ -105,7 +107,7 @@ namespace ITI_Hackathon.Services
 		}
 
 		//we need to convert thedoctor profile obj -->to patientprofile if changedtopatient
-		public async Task<bool> EditDoctorRoleAsync(DoctorEditRoleDTO dto)
+		public async Task<bool> EditDoctorRoleAsyncc(DoctorEditRoleDTO dto)
 		{
 			var user =await  _userManager.FindByIdAsync(dto.UserId);
 			if (user==null)
@@ -128,8 +130,6 @@ namespace ITI_Hackathon.Services
 				user.IsPatient = true;
 				user.IsDoctor = false;
 			}
-
-
 			await _userManager.UpdateAsync(user);
 			return true;
 		}

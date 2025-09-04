@@ -62,7 +62,7 @@ namespace ITI_Hackathon.Controllers
 		}
 
 
-		/*@foreach (var doctor in Model)
+        /*@foreach (var doctor in Model)
 {
     <tr>
         <td>@doctor.FullName</td>
@@ -81,10 +81,15 @@ namespace ITI_Hackathon.Controllers
     </tr>
 }*/
 
-
-        public async Task<IActionResult> EditDoctorRoleAsync(DoctorEditRoleDTO doctorEditRoleDTO)
-        {
-            bool changedoctorrole=await _doctorservice.EditDoctorRoleAsync(doctorEditRoleDTO);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditDoctorRoleAsyncc(DoctorEditRoleDTO doctorEditRoleDTO)
+		{
+			if (!ModelState.IsValid)
+			{
+				return RedirectToAction("ApprovedDoctors"); // or handle errors
+			}
+			bool changedoctorrole=await _doctorservice.EditDoctorRoleAsyncc(doctorEditRoleDTO);
 
             return RedirectToAction("ApprovedDoctors");
         }
@@ -96,9 +101,11 @@ namespace ITI_Hackathon.Controllers
             return RedirectToAction("ApprovedDoctors");
         }
 
+		#region Medicine Action Methods
 
-        //GET: /Medicine
-        public async Task<IActionResult> Index()
+
+		//GET: /Medicine
+		public async Task<IActionResult> Index()
         {
             var medicines = await _medicineservice.GetAllMedicineAsync();
             return View(medicines);
@@ -232,7 +239,7 @@ namespace ITI_Hackathon.Controllers
             return View("Index", results);
         }
 
+		#endregion
 
-
-    }
+	}
 }

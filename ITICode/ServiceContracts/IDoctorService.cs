@@ -28,7 +28,7 @@ namespace ITI_Hackathon.ServiceContracts
 		//Task<bool> AddDoctorAsync(DoctorApprovalRequestDTO? doctorrequest);
 		Task<string> ApproveDoctorAsync(string userId);
 		Task<string> RejectDoctorAsync(string userId);
-		Task<bool> EditDoctorRoleAsync(DoctorEditRoleDTO dto);
+		Task<bool> EditDoctorRoleAsyncc(DoctorEditRoleDTO dto);
 		Task<string> DeleteDoctorAsync(string userId);
 	}
 }
