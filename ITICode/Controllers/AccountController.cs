@@ -8,8 +8,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using ITI_Hackathon.Entities;
 
-
-
 namespace ITI_Hackathon.Controllers
 {
     public class AccountController : Controller
@@ -32,6 +30,7 @@ namespace ITI_Hackathon.Controllers
             _db = db;
             _logger = logger;
         }
+
         // GET: /Account/Register
         [HttpGet]
         public IActionResult Register()
