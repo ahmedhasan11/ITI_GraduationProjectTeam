@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.DoctorPendingDTO>
+@{
+    ViewData["Title"] = "Pending Doctors";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="pc-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h2 class="mb-0">Pending List</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+        @foreach (var d in Model)
+        {
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <img src="~/assets/images/user/avatar-1.jpg" alt="user-image" class="wid-40 rounded-circle">
+                            </div>
+                            <div class="flex-grow-1 mx-3">
+                                <h6 class="mb-1">@d.FullName</h6>
+                                <p class="text-muted text-sm mb-0"><i class="fa-solid fa-user-doctor"></i> @d.Specialty</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <p class="mb-4">@(string.IsNullOrEmpty(d.Bio) ? "No bio provided." : d.Bio)</p>
+                        <div class="row g-2">
+                            <div class="col-sm-6">
+                                <div class="d-inline-flex align-items-center justify-content-start w-100">
+                                    <i class="ti ti-mail"></i>
+                                    <p class="mb-0 ms-2 text-truncate">@d.Email</p>
+                                </div>
+                            </div>
+                            @* <div class="col-sm-6">
+                                <div class="d-inline-flex align-items-center justify-content-start w-100">
+                                    <i class="ti ti-phone"></i>
+                                    <p class="mb-0 ms-2 text-truncate">@d.</p>
+                                </div>
+                            </div> *@
+                        </div>
+                    </div>
+
+                    <!-- Card Footer -->
+                    <div class="card-footer">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <form asp-action="RejectDoctor" method="post">
+                                <input type="hidden" name="UserId" value="@d.UserId" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Reject</button>
+                            </form>
+                            <form asp-action="ApproveDoctor" method="post">
+                                <input type="hidden" name="UserId" value="@d.UserId" />
+                                <button type="submit" class="btn btn-sm btn-outline-success">Approve</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- [ Main Content ] end -->

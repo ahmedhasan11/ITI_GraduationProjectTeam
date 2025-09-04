@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.DoctorApprovedDTO>
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+
+
+<div class="pc-content">
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Profile</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Doctor List</li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h2 class="mb-0">Doctor List</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card table-card">
+                <div class="card-body">
+                    <div class="text-end p-4 pb-0">
+                        <a href="@Url.Action("AddDoctor", "Admin")" class="btn btn-primary d-inline-flex align-item-center">
+                            <i class="ti ti-plus f-18"></i> Add Doctor
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="pc-dt-simple">
+                            <thead>
+                                <tr>
+                                    <th>UserID</th>
+                                    <th>Doctor Name</th>
+                                    <th>Speciality</th>
+                                    <th>LicenseNumber</th>
+                                    <th>Rating</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var doctor in Model)
+                                {
+                                    <tr>
+                                        <td>@doctor.UserId</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    @* <img src="@doctor.ProfileImage" alt="user-image" class="wid-40 rounded-circle" /> *@
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="mb-0">@doctor.FullName</h5>
+                                                    <p class="text-muted f-12 mb-0">@doctor.Email</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>@doctor.Specialty</td>
+                                        <td>@doctor.LicenseNumber</td>
+                                        <td>@doctor.Rating</td>
+                                        <td>
+                                            @if (doctor.IsApproved)
+                                            {
+                                                <span class="badge bg-light-success rounded-pill f-12">Verified</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-light-danger rounded-pill f-12">Pending</span>
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            <ul class="list-inline me-auto mb-0">
+                                                <li class="list-inline-item align-bottom" title="View">
+                                                    <a href="@Url.Action("ViewDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-secondary">
+                                                        <i class="ti ti-eye f-18"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item align-bottom" title="Edit">
+                                                    <a href="@Url.Action("EditDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-primary">
+                                                        <i class="ti ti-edit-circle f-18"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item align-bottom" title="Delete">
+                                                    <a href="@Url.Action("DeleteDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-danger">
+                                                        <i class="ti ti-trash f-18"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
