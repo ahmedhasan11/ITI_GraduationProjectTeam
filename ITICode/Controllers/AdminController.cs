@@ -1,6 +1,10 @@
 ﻿using ITI_Hackathon.Data;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts.DTO;
+<<<<<<< HEAD
+using Medicine_Mvc.Services;
+=======
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +16,19 @@ namespace ITI_Hackathon.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IDoctorService _doctorservice;
+<<<<<<< HEAD
+        private readonly IMedicineService _medicineservice;
+        public AdminController(ApplicationDbContext db, IDoctorService doctorService, IMedicineService medicineService) 
+        {
+            _db = db;
+            _doctorservice = doctorService;
+            _medicineservice = medicineService;
+=======
         public AdminController(ApplicationDbContext db, IDoctorService doctorService) 
         {
             _db = db;
             _doctorservice = doctorService;
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
         }
 
         // GET: /Admin/PendingDoctors
@@ -54,6 +67,8 @@ namespace ITI_Hackathon.Controllers
 			return RedirectToAction("PendingDoctors");
 		}
 
+<<<<<<< HEAD
+=======
 		/*@foreach (var doctor in Model)
 {
     <tr>
@@ -73,6 +88,7 @@ namespace ITI_Hackathon.Controllers
     </tr>
 }*/
 
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
         public async Task<IActionResult> EditDoctorRoleAsync(DoctorEditRoleDTO doctorEditRoleDTO)
         {
             bool changedoctorrole=await _doctorservice.EditDoctorRoleAsync(doctorEditRoleDTO);
@@ -87,5 +103,149 @@ namespace ITI_Hackathon.Controllers
             return RedirectToAction("ApprovedDoctors");
         }
 
+<<<<<<< HEAD
+        //GET: /Medicine
+        public async Task<IActionResult> Index()
+        {
+            var medicines = await _medicineservice.GetAllMedicineAsync();
+            return View(medicines);
+        }
+
+
+
+
+        // GET: /Medicine/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
+            if (medicine == null) return NotFound();
+
+            return View(medicine);
+        }
+
+        // GET: /Medicine/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Medicine/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(MedicineAddRequestDto request)
+        {
+            if (!ModelState.IsValid) return View(request);
+
+            var result = await _medicineservice.AddMedicineAsync(request);
+            if (result != null)
+            {
+                TempData["Success"] = "Medicine added successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            TempData["Error"] = "Failed to add medicine.";
+            return View(request);
+        }
+
+        // GET: /Medicine/Edit/5
+        public async Task<IActionResult> Edit(int id)
+        {
+            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
+            if (medicine == null) return NotFound();
+
+            var dto = new MedicineUpdateRequestDto
+            {
+                Id = medicine.Id,
+                Name = medicine.Name,
+                Category = medicine.Category,
+                Description = medicine.Description,
+                Price = medicine.Price,
+                Stock = medicine.Stock,
+                ImageUrl = medicine.ImageUrl
+            };
+
+            return View(dto);
+        }
+
+        // POST: /Medicine/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(MedicineUpdateRequestDto request)
+        {
+            if (!ModelState.IsValid) return View(request);
+
+            var result = await _medicineservice.UpdateMedicineAsync(request);
+            if (result.Success)
+            {
+                TempData["Success"] = result.Message;
+                return RedirectToAction(nameof(Index));
+            }
+
+            TempData["Error"] = result.Message;
+            return View(request);
+        }
+
+
+        // GET: /Medicine/Delete/5
+        public async Task<IActionResult> Delete(int id)
+        {
+            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
+            if (medicine == null) return NotFound();
+
+            var dto = new MedicineDeleteRequestDto
+            {
+                Id = medicine.Id,
+                Name = medicine.Name,
+                ImageUrl = medicine.ImageUrl
+            };
+
+            return View(dto);
+        }
+
+
+        // POST: /Medicine/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(MedicineDeleteRequestDto request)
+        {
+            var result = await _medicineservice.DeleteMedicineAsync(request);
+            if (result.Success)
+            {
+                TempData["Success"] = result.Message;
+                return RedirectToAction(nameof(Index));
+            }
+
+            TempData["Error"] = result.Message;
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: /Medicine/Search
+        public async Task<IActionResult> Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                TempData["Error"] = "Please enter a search term.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var results = await _medicineservice.SearchMedicineAsync(searchTerm);
+
+            if (!results.Any())
+            {
+                TempData["Info"] = "No medicines found matching your search.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("Index", results);
+        }
+
+
+
+    }
+}
+
+
+=======
 	}
 }
+>>>>>>> 830182cce6b2f62feaed66bd10da1375357aecd8
