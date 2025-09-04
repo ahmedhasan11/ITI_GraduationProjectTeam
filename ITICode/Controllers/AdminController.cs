@@ -13,7 +13,6 @@ namespace ITI_Hackathon.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IDoctorService _doctorservice;
-
         private readonly IMedicineService _medicineservice;
 
         public AdminController(ApplicationDbContext db, IDoctorService doctorService, IMedicineService medicineService) 
@@ -99,9 +98,7 @@ namespace ITI_Hackathon.Controllers
 		#endregion
 		#endregion
 
-
 		#region Medicine Action Methods 
-
 
 		//GET: /Admin/GetAllMedicines
 		public async Task<IActionResult> GetAllMedicines() //-->Done
@@ -110,8 +107,7 @@ namespace ITI_Hackathon.Controllers
             return View(medicines);
 		} 
 
-
-		  // GET: /Admin/GetMedicineByID/id
+		// GET: /Admin/GetMedicineByID/id
 		public async Task<IActionResult> GetMedicineByID(int? id) //-->Done
         {
             if (id==null)
@@ -125,9 +121,7 @@ namespace ITI_Hackathon.Controllers
             return View(medicine);
         } 
 
-
 		#region Add Medicine -->Done  
-
 
 		// GET: /Medicine/Create
 		[HttpGet]
@@ -150,7 +144,6 @@ namespace ITI_Hackathon.Controllers
 
             MedicineAddResponseDto medicineresponse = await _medicineservice.AddMedicineAsync(medicinerequest);
 			return RedirectToAction("GetAllMedicines");
-
         }
 		#endregion //-->Done 
 

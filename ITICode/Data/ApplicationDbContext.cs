@@ -9,7 +9,6 @@ namespace ITI_Hackathon.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-
         public DbSet<DoctorProfile> Doctors => Set<DoctorProfile>();
         public DbSet<PatientProfile> Patients => Set<PatientProfile>();
         public DbSet<Medicine> Medicines => Set<Medicine>();

@@ -68,9 +68,7 @@ namespace ITI_Hackathon.Services
 
 			return $"Doctor {doctor.User.FullName} has been approved successfully.";
 
-
-// هنا ممكن تبعت إيميل Approved return true;
-
+			// هنا ممكن تبعت إيميل Approved return true;
 		}
 
 		public async Task<string> RejectDoctorAsync(string userId)
@@ -133,9 +131,5 @@ namespace ITI_Hackathon.Services
 			await _userManager.UpdateAsync(user);
 			return true;
 		}
-
-
-
-
 	}
 }

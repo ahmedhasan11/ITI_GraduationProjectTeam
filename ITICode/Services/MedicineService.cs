@@ -50,7 +50,8 @@ namespace Medicine_Mvc.Services
                     Category = m.Category,
                     Price = m.Price,
                     Stock = m.Stock,
-                    ImageUrl = m.ImageUrl
+                    ImageUrl = m.ImageUrl,
+                    Description = m.Description
                 })
                 .ToListAsync();
         } //Done
