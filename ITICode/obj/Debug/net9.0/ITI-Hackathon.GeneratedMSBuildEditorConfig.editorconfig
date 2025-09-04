@@ -44,12 +44,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/AddMedicine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkTWVkaWNpbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/ApprovedDoctors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXBwcm92ZWREb2N0b3JzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/GetAllMedicines.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2V0QWxsTWVkaWNpbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/GetMedicineByID.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2V0TWVkaWNpbmVCeUlELmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/BackEnd.NET/ITI_GraduationProjectTeam/ITICode/Views/Admin/Medicine.cshtml]

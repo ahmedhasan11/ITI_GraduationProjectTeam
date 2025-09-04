@@ -1,0 +1,126 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO;
+@model IEnumerable<MedicineListDto>
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "All Medicines";
+}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="admin-link">
+                Admin
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Medicines List</li>
+    </ol>
+</nav>
+
+<style>
+    .admin-link {
+        color: black;
+        text-decoration: none;
+    }
+
+        .admin-link:hover {
+            color: blue;
+        }
+
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+        color: gray;
+        margin: 0 0.3rem;
+        vertical-align: middle;
+    }
+
+</style>
+
+
+<!-- Page Title -->
+<h2 class="fw-bold mb-3">Medicines List</h2>
+
+<!-- Search + Add Medicine -->
+<div class="d-flex justify-content-between mb-3">
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add Medicine
+    </a>
+
+    <form asp-action="Search" method="get" class="d-flex">
+        <input type="text" name="searchTerm" value="@Context.Request.Query["searchTerm"]"
+               class="form-control me-2" style="width: 250px;" placeholder="Search by name or category" />
+        <button type="submit" class="btn btn-outline-primary">
+            <i class="bi bi-search"></i>
+        </button>
+    </form>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-info">@TempData["Info"]</div>
+}
+
+
+<!-- Medicines Table -->
+@if (Model != null && Model.Any())
+{
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Medicine ID</th>
+                        <th>Medicine</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var med in Model.Select((value, index) => new { value, index }))
+                    {
+                        <tr>
+                            <td>@(med.index + 1)</td>
+                            <td> @med.value.Name</td>
+                            <td>@med.value.Category</td>
+                            <td>$@med.value.Price</td>
+                            <td>@med.value.Stock</td>
+                            <td>
+                                <a asp-action="GetMedicineByID" asp-route-id="@med.value.Id" class="text-info me-2" title="View">
+                                    <i class="ti ti-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@med.value.Id" class="text-warning me-2" title="Edit">
+                                    <i class="ti ti-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@med.value.Id" class="text-danger" title="Delete">
+                                    <i class="ti ti-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">No medicines found.</div>
+}
+
+<!-- Custom Styles -->
+<style>
+    .table a {
+        text-decoration: none;
+    }
+</style>

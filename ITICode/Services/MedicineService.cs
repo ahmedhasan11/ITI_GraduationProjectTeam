@@ -37,7 +37,7 @@ namespace Medicine_Mvc.Services
                 Name = medicine.Name,
                 Message = "Medicine added successfully"
             };
-        }
+        }//Done
 
         // Get all the Medicines
         public async Task<IEnumerable<MedicineListDto>> GetAllMedicineAsync()
@@ -58,7 +58,7 @@ namespace Medicine_Mvc.Services
         // Fetch medicine details by ID
         public async Task<MedicineDetailsDto?> GetMedicineByIdAsync(int id)
         {
-            var medicine = await _db.Medicines.FindAsync(id);
+            Medicine medicine = await _db.Medicines.FindAsync(id);
             if (medicine == null) return null;
 
             return new MedicineDetailsDto
