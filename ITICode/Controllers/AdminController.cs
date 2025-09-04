@@ -21,9 +21,10 @@ namespace ITI_Hackathon.Controllers
             _db = db;
             _doctorservice = doctorService;
             _medicineservice = medicineService;
-
-
         }
+
+		#region Doctor Action Methods
+
 
 		#region Doctor List Action Methods
 
@@ -85,29 +86,33 @@ namespace ITI_Hackathon.Controllers
             return RedirectToAction("ApprovedDoctors");
         }
 
-        public async Task<IActionResult> DeleteDoctorAsync(string userID)
+        public async Task<IActionResult> DeleteDoctorAsync(string? userID)
         {
+            if (string.IsNullOrEmpty(userID))
+            {
+                return NotFound("userID not found");
+            }
             var result=await _doctorservice.DeleteDoctorAsync(userID);
             ViewBag.message = result;
             return RedirectToAction("ApprovedDoctors");
         }
 		#endregion
-
+		#endregion
 
 
 		#region Medicine Action Methods 
 
 
 		//GET: /Admin/GetAllMedicines
-		public async Task<IActionResult> GetAllMedicines()
+		public async Task<IActionResult> GetAllMedicines() //-->Done
         {
             var medicines = await _medicineservice.GetAllMedicineAsync();
             return View(medicines);
-		} //-->still Search Button ,ImageUrl, Delete&Edit buttons
+		} 
 
 
 		  // GET: /Admin/GetMedicineByID/id
-		public async Task<IActionResult> GetMedicineByID(int? id)
+		public async Task<IActionResult> GetMedicineByID(int? id) //-->Done
         {
             if (id==null)
             {
@@ -118,10 +123,10 @@ namespace ITI_Hackathon.Controllers
             if (medicine == null) return NotFound();
 
             return View(medicine);
-        } //done
+        } 
 
 
-		#region Add Medicine -->Done  , View Done
+		#region Add Medicine -->Done  
 
 
 		// GET: /Medicine/Create
@@ -149,17 +154,21 @@ namespace ITI_Hackathon.Controllers
         }
 		#endregion //-->Done 
 
-		#region Edit Medicine
+		#region Edit Medicine -->Done
 
 
-		// GET: /Medicine/Edit/5
+		// GET: /Admin/EditMedicine/id
 		[HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> EditMedicine(int? id)
         {
-            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
-            if (medicine == null) return NotFound();
+            if (id==null)
+            {
+                return NotFound("id is empty");
+            }
+            var medicine = await _medicineservice.GetMedicineByIdAsync(id.Value);
+            if (medicine == null) return NotFound("medicine not found");
 
-            var dto = new MedicineUpdateRequestDto
+            MedicineUpdateRequestDto dto = new MedicineUpdateRequestDto
             {
                 Id = medicine.Id,
                 Name = medicine.Name,
@@ -173,85 +182,65 @@ namespace ITI_Hackathon.Controllers
             return View(dto);
         }
 
-        // POST: /Medicine/Edit/5
+        // POST: /Admin/Edit/dto
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MedicineUpdateRequestDto request)
         {
-            if (!ModelState.IsValid) return View(request);
+            //if (!ModelState.IsValid) return View(request);
 
-            var result = await _medicineservice.UpdateMedicineAsync(request);
-            if (result.Success)
+            MedicineUpdateResponseDto medicineresponse = await _medicineservice.UpdateMedicineAsync(request);
+            if (medicineresponse.Success==false)
             {
-                TempData["Success"] = result.Message;
-                return RedirectToAction(nameof(Index));
-            }
+				TempData["Error"] = medicineresponse.Message;
+				return View("Edit",request);
+			}
 
-            TempData["Error"] = result.Message;
-            return View(request);
-        }
-		#endregion
-
-
-		#region Delete Medicine
+			TempData["Success"] = medicineresponse.Message;
+			return RedirectToAction("GetAllMedicines");
+		}
+        #endregion -->Done -->Done
 
 
-
-		// GET: /Medicine/Delete/5
-		public async Task<IActionResult> Delete(int id)
+        #region Delete Medicine -->Done       
+        public async Task<IActionResult> DeleteMedicinee(int? id)
         {
-            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
-            if (medicine == null) return NotFound();
-
-            var dto = new MedicineDeleteRequestDto
+            if (id==null)
             {
-                Id = medicine.Id,
-                Name = medicine.Name,
-                ImageUrl = medicine.ImageUrl
-            };
-
-            return View(dto);
-        }
-
-
-        // POST: /Medicine/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(MedicineDeleteRequestDto request)
-        {
-            var result = await _medicineservice.DeleteMedicineAsync(request);
-            if (result.Success)
-            {
-                TempData["Success"] = result.Message;
-                return RedirectToAction(nameof(Index));
+                return NotFound("medicinerequest is empty");
             }
+            string result = await _medicineservice.DeleteMedicineAsync(id.Value);
 
-            TempData["Error"] = result.Message;
-            return RedirectToAction(nameof(Index));
-        }
-		#endregion
-
-		#region Search Medicine
+            ViewBag.Message=result;
+		    return RedirectToAction("GetAllMedicines");
 
 
-		// GET: /Medicine/Search
-		public async Task<IActionResult> Search(string searchTerm)
+		}
+        #endregion
+
+        #region Search Medicine -->Done
+
+
+        // GET: /Admin/Search
+        [HttpGet]
+		public async Task<IActionResult> Search(string? searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 TempData["Error"] = "Please enter a search term.";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("GetAllMedicines");
             }
 
-            var results = await _medicineservice.SearchMedicineAsync(searchTerm);
+            IEnumerable<MedicineListDto> Filteredmedicines = await _medicineservice.SearchMedicineAsync(searchTerm);
 
-            if (!results.Any())
+            if (!Filteredmedicines.Any())
             {
                 TempData["Info"] = "No medicines found matching your search.";
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction("GetAllMedicines");
+                return View("GetAllMedicines", Filteredmedicines);
             }
 
-            return View("Index", results);
+            return View("GetAllMedicines",Filteredmedicines);
         }
 		#endregion
 

@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\admin\\getmedicinebyid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\admin\\getmedicinebyid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\admin\\getallmedicines.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\admin\\getallmedicines.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\admin\\addmedicine.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\admin\\addmedicine.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\shared\\_dashboardlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\shared\\_dashboardlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\services\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
               "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAB4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-04T10:43:17.921Z",
               "IsPinned": true,
@@ -52,13 +40,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "MedicineService.cs",
               "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\MedicineService.cs",
               "RelativeDocumentMoniker": "Services\\MedicineService.cs",
               "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\MedicineService.cs",
               "RelativeToolTip": "Services\\MedicineService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAD0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-04T14:33:21.013Z",
               "IsPinned": true,
@@ -78,54 +66,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_DashboardLayout.cshtml",
-              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_DashboardLayout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_DashboardLayout.cshtml",
-              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_DashboardLayout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_DashboardLayout.cshtml",
-              "ViewState": "AgIAAEYAAAAAAAAAAAApwFwAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-04T15:07:54.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddMedicine.cshtml",
-              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\AddMedicine.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\AddMedicine.cshtml",
-              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\AddMedicine.cshtml",
-              "RelativeToolTip": "Views\\Admin\\AddMedicine.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-04T15:06:51.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GetAllMedicines.cshtml",
               "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\GetAllMedicines.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\GetAllMedicines.cshtml",
               "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\GetAllMedicines.cshtml",
               "RelativeToolTip": "Views\\Admin\\GetAllMedicines.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGQAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-04T15:01:45.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetMedicineByID.cshtml",
-              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\GetMedicineByID.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\GetMedicineByID.cshtml",
-              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\GetMedicineByID.cshtml",
-              "RelativeToolTip": "Views\\Admin\\GetMedicineByID.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-04T14:44:13.56Z",
+              "WhenOpened": "2025-09-04T15:28:51.023Z",
               "EditorCaption": ""
             }
           ]

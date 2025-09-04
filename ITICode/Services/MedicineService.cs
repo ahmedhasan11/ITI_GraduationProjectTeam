@@ -3,13 +3,13 @@ using ITI_Hackathon.Entities;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts.DTO;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace Medicine_Mvc.Services
 {
     public class MedicineService : IMedicineService
     {
         private readonly ApplicationDbContext _db;
-
         public MedicineService(ApplicationDbContext db)
         {
             _db = db;
@@ -53,7 +53,7 @@ namespace Medicine_Mvc.Services
                     ImageUrl = m.ImageUrl
                 })
                 .ToListAsync();
-        }
+        } //Done
 
         // Fetch medicine details by ID
         public async Task<MedicineDetailsDto?> GetMedicineByIdAsync(int id)
@@ -71,12 +71,12 @@ namespace Medicine_Mvc.Services
                 Stock = medicine.Stock,
                 ImageUrl = medicine.ImageUrl
             };
-        }
+        }//Done
 
         //Search About Medicine
         public async Task<IEnumerable<MedicineListDto>> SearchMedicineAsync(string searchTerm)
         {
-            return await _db.Medicines
+            IEnumerable<MedicineListDto> Medicines= await _db.Medicines
                 .Where(m => m.Name.Contains(searchTerm) || m.Category.Contains(searchTerm))
                 .Select(m => new MedicineListDto
                 {
@@ -88,15 +88,14 @@ namespace Medicine_Mvc.Services
                     ImageUrl = m.ImageUrl
                 })
                 .ToListAsync();
+
+            return Medicines;
         }
-
-
-
 
         // Update Data of Medicine
         public async Task<MedicineUpdateResponseDto> UpdateMedicineAsync(MedicineUpdateRequestDto request)
         {
-            var medicine = await _db.Medicines.FindAsync(request.Id);
+            Medicine medicine = await _db.Medicines.FindAsync(request.Id);
             if (medicine == null)
             {
                 return new MedicineUpdateResponseDto
@@ -121,29 +120,21 @@ namespace Medicine_Mvc.Services
                 Success = true,
                 Message = "Medicine updated successfully"
             };
-        }
+        } //Done
 
         // Remove Medicine
-        public async Task<MedicineDeleteResponseDto> DeleteMedicineAsync(MedicineDeleteRequestDto request)
+        public async Task<string> DeleteMedicineAsync(int id)
         {
-            var medicine = await _db.Medicines.FindAsync(request.Id);
+            Medicine medicine = await _db.Medicines.FindAsync(id);
             if (medicine == null)
             {
-                return new MedicineDeleteResponseDto
-                {
-                    Success = false,
-                    Message = "Medicine not found"
-                };
+                return "Medicine not found";
             }
 
             _db.Medicines.Remove(medicine);
             await _db.SaveChangesAsync();
 
-            return new MedicineDeleteResponseDto
-            {
-                Success = true,
-                Message = "Medicine deleted successfully"
-            };
-        }
+            return $"Medicine {medicine.Name} has been completely removed from the system.";
+		}
     }
 }
