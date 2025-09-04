@@ -25,8 +25,11 @@ namespace ITI_Hackathon.Controllers
 
         }
 
-        // GET: /Admin/PendingDoctors
-        public async Task<IActionResult> PendingDoctors()
+		#region Doctor List Action Methods
+
+
+		// GET: /Admin/PendingDoctors
+		public async Task<IActionResult> PendingDoctors()
         {
 
 
@@ -35,9 +38,9 @@ namespace ITI_Hackathon.Controllers
            return View(PendingDoctors);
         }
 
-        //GET:/Admin/ApprovedDoctors
+		//GET:/Admin/ApprovedDoctors
 
-        public async Task<IActionResult> ApprovedDoctors()
+		public async Task<IActionResult> ApprovedDoctors()
         {
 
 
@@ -45,8 +48,12 @@ namespace ITI_Hackathon.Controllers
 
             return View(ApprovedDoctors);
         }
+		#endregion
 
-        [HttpPost]
+		#region Approve& Reject Doctor Action Methods
+
+
+		[HttpPost]
         public async Task<IActionResult> ApproveDoctor(string userID)
         {
              string result=await _doctorservice.ApproveDoctorAsync(userID);
@@ -60,28 +67,12 @@ namespace ITI_Hackathon.Controllers
 			ViewBag.Message = result;
 			return RedirectToAction("PendingDoctors");
 		}
+		#endregion
+
+		#region EditRole& DeleteDoctor
 
 
-        /*@foreach (var doctor in Model)
-{
-    <tr>
-        <td>@doctor.FullName</td>
-        <td>@doctor.Email</td>
-        <td>@doctor.Specialty</td>
-        <td>
-            <form asp-action="ApproveDoctor" method="post" style="display:inline;">
-                <input type="hidden" name="userId" value="@doctor.UserId" />
-                <button type="submit" class="btn btn-success">Approve</button>
-            </form>
-            <form asp-action="RejectDoctor" method="post" style="display:inline;">
-                <input type="hidden" name="userId" value="@doctor.UserId" />
-                <button type="submit" class="btn btn-danger">Reject</button>
-            </form>
-        </td>
-    </tr>
-}*/
-
-        [HttpPost]
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditDoctorRoleAsyncc(DoctorEditRoleDTO doctorEditRoleDTO)
 		{
@@ -100,54 +91,69 @@ namespace ITI_Hackathon.Controllers
             ViewBag.message = result;
             return RedirectToAction("ApprovedDoctors");
         }
+		#endregion
 
-		#region Medicine Action Methods
 
 
-		//GET: /Medicine
-		public async Task<IActionResult> Index()
+		#region Medicine Action Methods 
+
+
+		//GET: /Admin/GetAllMedicines
+		public async Task<IActionResult> GetAllMedicines()
         {
             var medicines = await _medicineservice.GetAllMedicineAsync();
             return View(medicines);
-        }
+		} //-->still Search Button ,ImageUrl, Delete&Edit buttons
 
 
-
-
-        // GET: /Medicine/Details/5
-        public async Task<IActionResult> Details(int id)
+		  // GET: /Admin/GetMedicineByID/id
+		public async Task<IActionResult> GetMedicineByID(int? id)
         {
-            var medicine = await _medicineservice.GetMedicineByIdAsync(id);
+            if (id==null)
+            {
+                return NotFound("id is empty");
+            }
+            //checkfotthat id.value
+            var medicine = await _medicineservice.GetMedicineByIdAsync(id.Value);
             if (medicine == null) return NotFound();
 
             return View(medicine);
-        }
+        } //done
 
-        // GET: /Medicine/Create
-        public IActionResult Create()
+
+		#region Add Medicine -->Done  , View Done
+
+
+		// GET: /Medicine/Create
+		[HttpGet]
+		public IActionResult Create()
         {
-            return View();
+            return View("AddMedicine");
         }
 
         // POST: /Medicine/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MedicineAddRequestDto request)
+        public async Task<IActionResult> Create(MedicineAddRequestDto medicinerequest)
         {
-            if (!ModelState.IsValid) return View(request);
-
-            var result = await _medicineservice.AddMedicineAsync(request);
-            if (result != null)
+            //check again after
+            //if (!ModelState.IsValid) return View(request);
+            if (medicinerequest==null)
             {
-                TempData["Success"] = "Medicine added successfully!";
-                return RedirectToAction(nameof(Index));
-            }
+				return NotFound("Meidicne is not added");
+			}
 
-            TempData["Error"] = "Failed to add medicine.";
-            return View(request);
+            MedicineAddResponseDto medicineresponse = await _medicineservice.AddMedicineAsync(medicinerequest);
+			return RedirectToAction("GetAllMedicines");
+
         }
+		#endregion //-->Done 
 
-        // GET: /Medicine/Edit/5
+		#region Edit Medicine
+
+
+		// GET: /Medicine/Edit/5
+		[HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var medicine = await _medicineservice.GetMedicineByIdAsync(id);
@@ -184,10 +190,15 @@ namespace ITI_Hackathon.Controllers
             TempData["Error"] = result.Message;
             return View(request);
         }
+		#endregion
 
 
-        // GET: /Medicine/Delete/5
-        public async Task<IActionResult> Delete(int id)
+		#region Delete Medicine
+
+
+
+		// GET: /Medicine/Delete/5
+		public async Task<IActionResult> Delete(int id)
         {
             var medicine = await _medicineservice.GetMedicineByIdAsync(id);
             if (medicine == null) return NotFound();
@@ -218,9 +229,13 @@ namespace ITI_Hackathon.Controllers
             TempData["Error"] = result.Message;
             return RedirectToAction(nameof(Index));
         }
+		#endregion
 
-        // GET: /Medicine/Search
-        public async Task<IActionResult> Search(string searchTerm)
+		#region Search Medicine
+
+
+		// GET: /Medicine/Search
+		public async Task<IActionResult> Search(string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
@@ -238,6 +253,8 @@ namespace ITI_Hackathon.Controllers
 
             return View("Index", results);
         }
+		#endregion
+
 
 		#endregion
 
