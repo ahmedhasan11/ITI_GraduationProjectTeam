@@ -2717,6 +2717,10 @@
       "PackagePath": "staticwebassets\\forms\\contact.php"
     },
     {
+      "Id": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\wwwroot\\images\\download.jpeg",
+      "PackagePath": "staticwebassets\\images\\download.jpeg"
+    },
+    {
       "Id": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\wwwroot\\img\\about.jpg",
       "PackagePath": "staticwebassets\\img\\about.jpg"
     },

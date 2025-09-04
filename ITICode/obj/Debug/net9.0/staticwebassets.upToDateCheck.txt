@@ -1213,6 +1213,7 @@ wwwroot\fontawesome\webfonts\fa-v4compatibility.woff2
 wwwroot\forms\appointment.php
 wwwroot\forms\contact.php
 wwwroot\forms\Readme.txt
+wwwroot\images\download.jpeg
 wwwroot\img\about.jpg
 wwwroot\img\apple-touch-icon.png
 wwwroot\img\departments-1.jpg

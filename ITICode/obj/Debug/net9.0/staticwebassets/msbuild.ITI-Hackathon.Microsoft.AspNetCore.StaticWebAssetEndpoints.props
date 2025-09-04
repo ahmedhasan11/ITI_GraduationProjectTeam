@@ -8136,6 +8136,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vl2rc0j3sl"},{"Name":"integrity","Value":"sha256-88GP2ym1i9sMGCLUz0GAO/K5inJYlCGiei1ppCAcat8="},{"Name":"label","Value":"_content/ITI-Hackathon/forms/Readme.txt"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"186"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u002288GP2ym1i9sMGCLUz0GAO/K5inJYlCGiei1ppCAcat8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 08:43:51 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ITI-Hackathon/images/download.aei9xxlfu9.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\download.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"aei9xxlfu9"},{"Name":"integrity","Value":"sha256-nkX4sJ5SiqzsWE5lZe6uxalJ0b0J5q0jJeaiz5mRxP4="},{"Name":"label","Value":"_content/ITI-Hackathon/images/download.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3714"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022nkX4sJ5SiqzsWE5lZe6uxalJ0b0J5q0jJeaiz5mRxP4=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 18:14:35 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ITI-Hackathon/images/download.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\download.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-nkX4sJ5SiqzsWE5lZe6uxalJ0b0J5q0jJeaiz5mRxP4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3714"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022nkX4sJ5SiqzsWE5lZe6uxalJ0b0J5q0jJeaiz5mRxP4=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 18:14:35 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ITI-Hackathon/img/about.84m1ri6cte.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\about.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
