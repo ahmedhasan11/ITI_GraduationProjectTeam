@@ -3,72 +3,68 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-
-
 <div class="pc-content">
+    <!-- [ breadcrumb ] start -->
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")">Home</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Profile</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Doctor List</li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")">Admin</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Doctors List</li>
                     </ul>
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
-                        <h2 class="mb-0">Doctor List</h2>
+                        <h2 class="mb-0">Doctors List</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Table -->
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
     <div class="row">
         <div class="col-sm-12">
             <div class="card table-card">
                 <div class="card-body">
-                    <div class="text-end p-4 pb-0">
-                        <a href="@Url.Action("AddDoctor", "Admin")" class="btn btn-primary d-inline-flex align-item-center">
-                            <i class="ti ti-plus f-18"></i> Add Doctor
-                        </a>
-                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover" id="pc-dt-simple">
                             <thead>
                                 <tr>
-                                    <th>UserID</th>
+                                    <th>#</th>
                                     <th>Doctor Name</th>
                                     <th>Speciality</th>
-                                    <th>LicenseNumber</th>
                                     <th>Rating</th>
+                                    <th>License Number</th>
                                     <th>Status</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var doctor in Model)
+                                @foreach (var doctor in Model.Select((value, i) => new { i, value }))
                                 {
+                                    var d = doctor.value;
                                     <tr>
-                                        <td>@doctor.UserId</td>
+                                        <td>@(doctor.i + 1)</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-auto pe-0">
-                                                    @* <img src="@doctor.ProfileImage" alt="user-image" class="wid-40 rounded-circle" /> *@
+                                                    <img src="~/assets/images/user/avatar-2.jpg" alt="user-image"
+                                                         class="wid-40 rounded-circle">
                                                 </div>
                                                 <div class="col">
-                                                    <h5 class="mb-0">@doctor.FullName</h5>
-                                                    <p class="text-muted f-12 mb-0">@doctor.Email</p>
+                                                    <h5 class="mb-0">@d.FullName</h5>
+                                                    <p class="text-muted f-12 mb-0">@d.Email</p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>@doctor.Specialty</td>
-                                        <td>@doctor.LicenseNumber</td>
-                                        <td>@doctor.Rating</td>
+                                        <td>@d.Specialty</td>
+                                        <td>@d.Rating</td>
+                                        <td>@d.LicenseNumber</td>
+
                                         <td>
-                                            @if (doctor.IsApproved)
+                                            @if (d.IsApproved)
                                             {
                                                 <span class="badge bg-light-success rounded-pill f-12">Verified</span>
                                             }
@@ -80,23 +76,128 @@
                                         <td class="text-center">
                                             <ul class="list-inline me-auto mb-0">
                                                 <li class="list-inline-item align-bottom" title="View">
-                                                    <a href="@Url.Action("ViewDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-secondary">
+                                                    <a href="#" class="avtar avtar-xs btn-link-secondary"
+                                                       data-bs-toggle="modal" data-bs-target="#viewDoctor-@d.UserId">
                                                         <i class="ti ti-eye f-18"></i>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item align-bottom" title="Edit">
-                                                    <a href="@Url.Action("EditDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-primary">
+                                                    <a href="#" class="avtar avtar-xs btn-link-primary"
+                                                       data-bs-toggle="modal" data-bs-target="#editDoctor-@d.UserId">
                                                         <i class="ti ti-edit-circle f-18"></i>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item align-bottom" title="Delete">
-                                                    <a href="@Url.Action("DeleteDoctor", "Admin", new { id = doctor.UserId })" class="avtar avtar-xs btn-link-danger">
+                                                    <a href="#" class="avtar avtar-xs btn-link-danger"
+                                                       data-bs-toggle="modal" data-bs-target="#deleteDoctor-@d.UserId">
                                                         <i class="ti ti-trash f-18"></i>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </td>
                                     </tr>
+
+                                    <!-- View Modal -->
+                                    <div class="modal fade" id="viewDoctor-@d.UserId" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-0 pb-0">
+                                                    <h5 class="mb-0">Doctor Details</h5>
+                                                    <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                                                        <i class="ti ti-x f-20"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img class="rounded-circle img-fluid wid-60 mb-3"
+                                                         src="~/assets/images/user/avatar-5.jpg" alt="User image">
+                                                    <h5 class="mb-0">@d.FullName</h5>
+                                                    <p>@d.Email</p>
+                                                    <hr class="my-3">
+                                                    <div class="row g-3">
+                                                        <div class="col-4">
+                                                            <h5>@d.Specialty</h5>
+                                                            <small class="text-muted">Speciality</small>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <h5>@d.LicenseNumber</h5>
+                                                            <small class="text-muted">License</small>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <h5>@d.Rating</h5>
+                                                            <small class="text-muted">Rating</small>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="my-3">
+                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- [ edit doctor ] start -->
+                                    <div class="modal fade" id="editDoctor-@d.UserId" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="mb-0">Edit Doctor</h5>
+                                                    <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                                                        <i class="ti ti-x f-20"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 text-center mb-3">
+                                                            <div class="user-upload wid-75">
+                                                                <img src="../assets/images/user/avatar-5.jpg" alt="img" class="img-fluid">
+                                                                <label for="uplfile-@d.UserId" class="img-avtar-upload">
+                                                                    <i class="ti ti-camera f-24 mb-1"></i>
+                                                                    <span>Upload</span>
+                                                                </label>
+                                                                <input type="file" id="uplfile-@d.UserId" class="d-none">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <form method="post" action="@Url.Action("EditDoctorRoleAsyncc", "Admin")">
+                                                                @*UserID=@UserID*@
+                                                                @Html.AntiForgeryToken() <!-- ADD THIS LINE -->
+                                                                <input type="hidden" name="UserId" value="@d.UserId" />
+                                                                <div class="mb-3">
+                                                                    <label for="role-@d.UserId">Select Role:</label>
+                                                                    <select id="role-@d.UserId" name="NewRole">
+                                                                        <option value="Patient">Patient</option>
+                                                                        <option value="Doctor" selected>Doctor</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="text-end">
+                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                    <button type="button" class="btn btn-link-primary" data-bs-dismiss="modal">Return to list</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- [ edit doctor ] end -->
+                                    <!-- [ edit doctor] end -->
+                                    <!-- Delete Modal -->
+                                    <div class="modal fade" id="deleteDoctor-@d.UserId" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-md modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-center">
+                                                    <h5>Are you sure you want to delete <b>@d.FullName</b>?</h5>
+                                                    <div class="mt-3">
+                                                        <form method="post" action="@Url.Action("DeleteDoctor","Admin")">
+                                                            <input type="hidden" name="UserId" value="@d.UserId" />
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 }
                             </tbody>
                         </table>
