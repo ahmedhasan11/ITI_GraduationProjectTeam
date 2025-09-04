@@ -1,49 +1,113 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\",
+  "WorkspaceRootPath": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\entities\\doctorprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:entities\\doctorprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\services\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:services\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\entities\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:entities\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\views\\admin\\approveddoctors.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\admin\\approveddoctors.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\imedicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\imedicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\servicecontracts\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicineupdateresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicineupdateresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicineupdaterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicineupdaterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicinelistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicinelistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\servicecontracts\\dto\\doctoreditroledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicinedetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicinedetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicinedeleteresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicinedeleteresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicinedeleterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicinedeleterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicineaddresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicineaddresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\medicineaddrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\medicineaddrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\doctorpendingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\doctorpendingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\doctoreditroledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\doctoreditroledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\divide gp into sections\\iti_graduationtest\\test after service\\entities\\patientprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\doctorapproveddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\doctorapproveddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\servicecontracts\\dto\\doctorapprovalrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:servicecontracts\\dto\\doctorapprovalrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\shared\\_dashboardlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\shared\\_dashboardlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\entities\\doctorprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:entities\\doctorprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\entities\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:entities\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\admin\\approveddoctors.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\admin\\approveddoctors.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|d:\\backend.net\\iti_graduationprojectteam\\iticode\\entities\\patientprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{671706BA-155F-CF7C-5CE1-74430014B843}|ITI-Hackathon.csproj|solutionrelative:entities\\patientprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -54,7 +118,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,11 +134,219 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "MedicineService.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\MedicineService.cs",
+              "RelativeDocumentMoniker": "Services\\MedicineService.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\MedicineService.cs",
+              "RelativeToolTip": "Services\\MedicineService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:39.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IMedicineService.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\IMedicineService.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\IMedicineService.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\IMedicineService.cs",
+              "RelativeToolTip": "ServiceContracts\\IMedicineService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:35.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MedicineUpdateResponseDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineUpdateResponseDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineUpdateResponseDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineUpdateResponseDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineUpdateResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:33.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MedicineUpdateRequestDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineUpdateRequestDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineUpdateRequestDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineUpdateRequestDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineUpdateRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:32.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MedicineListDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineListDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineListDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineListDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineListDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:31.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MedicineDetailsDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDetailsDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineDetailsDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDetailsDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineDetailsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:31.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MedicineDeleteResponseDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDeleteResponseDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineDeleteResponseDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDeleteResponseDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineDeleteResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:30.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MedicineDeleteRequestDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDeleteRequestDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineDeleteRequestDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineDeleteRequestDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineDeleteRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:29.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MedicineAddResponseDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineAddResponseDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineAddResponseDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineAddResponseDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineAddResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:29.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MedicineAddRequestDto.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineAddRequestDto.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\MedicineAddRequestDto.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\MedicineAddRequestDto.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\MedicineAddRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:28.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DoctorApprovedDTO.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorApprovedDTO.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\DoctorApprovedDTO.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorApprovedDTO.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\DoctorApprovedDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:26.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DoctorApprovalRequestDTO.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorApprovalRequestDTO.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\DoctorApprovalRequestDTO.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorApprovalRequestDTO.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\DoctorApprovalRequestDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:27:26.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_DashboardLayout.cshtml",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_DashboardLayout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_DashboardLayout.cshtml",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_DashboardLayout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_DashboardLayout.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAApwEQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-04T10:26:02.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-04T10:25:48.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DoctorPendingDTO.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorPendingDTO.cs",
+              "RelativeDocumentMoniker": "ServiceContracts\\DTO\\DoctorPendingDTO.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorPendingDTO.cs",
+              "RelativeToolTip": "ServiceContracts\\DTO\\DoctorPendingDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:25:23.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:23:26.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "Medicine.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\Medicine.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\Medicine.cs",
               "RelativeDocumentMoniker": "Entities\\Medicine.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\Medicine.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\Medicine.cs",
               "RelativeToolTip": "Entities\\Medicine.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -82,11 +354,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 24,
               "Title": "ApprovedDoctors.cshtml",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Views\\Admin\\ApprovedDoctors.cshtml",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\ApprovedDoctors.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\ApprovedDoctors.cshtml",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Views\\Admin\\ApprovedDoctors.cshtml",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Admin\\ApprovedDoctors.cshtml",
               "RelativeToolTip": "Views\\Admin\\ApprovedDoctors.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -94,23 +366,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T20:15:55.512Z"
+              "WhenOpened": "2025-09-03T20:15:55.512Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 26,
               "Title": "PatientProfile.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\PatientProfile.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\PatientProfile.cs",
               "RelativeDocumentMoniker": "Entities\\PatientProfile.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\PatientProfile.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\PatientProfile.cs",
               "RelativeToolTip": "Entities\\PatientProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -118,11 +391,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 22,
               "Title": "DoctorProfile.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\DoctorProfile.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\DoctorProfile.cs",
               "RelativeDocumentMoniker": "Entities\\DoctorProfile.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Entities\\DoctorProfile.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Entities\\DoctorProfile.cs",
               "RelativeToolTip": "Entities\\DoctorProfile.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -131,47 +404,50 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "DoctorEditRoleDTO.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
               "RelativeDocumentMoniker": "ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
               "RelativeToolTip": "ServiceContracts\\DTO\\DoctorEditRoleDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T19:49:49.957Z"
+              "WhenOpened": "2025-09-03T19:49:49.957Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "DoctorService.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Services\\DoctorService.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\DoctorService.cs",
               "RelativeDocumentMoniker": "Services\\DoctorService.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Services\\DoctorService.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Services\\DoctorService.cs",
               "RelativeToolTip": "Services\\DoctorService.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAwwGAAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T18:54:00.429Z"
+              "WhenOpened": "2025-09-03T18:54:00.429Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "IDoctorService.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\ServiceContracts\\IDoctorService.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\IDoctorService.cs",
               "RelativeDocumentMoniker": "ServiceContracts\\IDoctorService.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\ServiceContracts\\IDoctorService.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\ServiceContracts\\IDoctorService.cs",
               "RelativeToolTip": "ServiceContracts\\IDoctorService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAMwBsAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T19:32:04.594Z"
+              "WhenOpened": "2025-09-03T19:32:04.594Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 25,
               "Title": "_LoginPartial.cshtml",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Views\\Shared\\_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -179,27 +455,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Controllers\\AdminController.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAAFQAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAADwvxEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T18:45:19.015Z"
+              "WhenOpened": "2025-09-03T18:45:19.015Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 21,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Program.cs",
+              "DocumentMoniker": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\BackEnd.NET\\Divide GP into Sections\\ITI_GraduationTest\\Test after service\\Program.cs",
+              "ToolTip": "D:\\BackEnd.NET\\ITI_GraduationProjectTeam\\ITICode\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAcwD4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T09:58:16.723Z"
+              "WhenOpened": "2025-09-03T09:58:16.723Z",
+              "EditorCaption": ""
             }
           ]
         }
