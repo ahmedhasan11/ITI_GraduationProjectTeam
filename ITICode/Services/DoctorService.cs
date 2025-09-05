@@ -28,8 +28,9 @@ namespace ITI_Hackathon.Services
 					Specialty = d.Specialty,
 					Rating = d.Rating,
 					CompletedChats = d.CompletedChats,
-					IsApproved=d.IsApproved,
-					LicenseNumber=d.LicenseNumber
+					IsApproved = d.IsApproved,
+					LicenseNumber = d.LicenseNumber,
+					Bio = d.Bio
 				}).ToListAsync();
 
 			return DoctorsApproved;

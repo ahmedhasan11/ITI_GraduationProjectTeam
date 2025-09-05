@@ -8,18 +8,19 @@ namespace ITI_Hackathon.Entities
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(User))]
-        public string UserId { get; set; } = default!;
+        public string? UserId { get; set; }  // can be null for guests
+
+        public string? SessionId { get; set; }  // new column for guest carts
 
         [Required]
         [ForeignKey(nameof(Medicine))]
         public int MedicineId { get; set; }
 
-        [Range(1, 100, ErrorMessage = "Quantity must be between 1 and 100")]
+        [Range(1, 100)]
         public int Quantity { get; set; }
 
-        public ApplicationUser User { get; set; } = default!;
+        public ApplicationUser? User { get; set; }
         public Medicine Medicine { get; set; } = default!;
     }
+
 }

@@ -10,5 +10,6 @@
 			public int CompletedChats { get; set; }
 			public string LicenseNumber { get; set; }
 			public bool IsApproved { get; set; }
+			public string Bio { get; set; }
 	}
 }

@@ -26,9 +26,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 // Add Razor Pages support (needed for Identity UI scaffolding)
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<IDoctorService, DoctorService>();
 
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IMedicineService, MedicineService>();
+builder.Services.AddScoped<ICartService, CartService>();
+
 
 
 
