@@ -4524,10 +4524,10 @@ D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebas
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebassets.development.json
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\ITI-Hack.50272DC1.Up2Date
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\ITI-Hackathon.dll
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\refint\ITI-Hackathon.dll
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\ITI-Hackathon.pdb
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\ITI-Hackathon.genruntimeconfig.cache
 D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\ref\ITI-Hackathon.dll
+D:\Working\GitHub\ITI_GraduationProjectTeam\ITICode\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
