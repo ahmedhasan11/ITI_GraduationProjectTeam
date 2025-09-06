@@ -55,14 +55,12 @@
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold mx-2 underline-hover text-dark" href="/Dashboard">Dashboard</a>
+                        <a asp-action="GetMedicines" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Medicines</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold mx-2 underline-hover text-dark" href="/Medicines">Medicines</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold mx-2 underline-hover text-dark" href="/Doctors">Doctors</a>
+                        <a asp-action="GetDoctors" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Doctors</a>
                     </li>
                 </ul>
 
@@ -74,30 +72,32 @@
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="ti ti-shopping-cart fs-5"></i>
                                 <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill shadow-sm">
-                                    0
+                                    0 <!-- This will be updated by JavaScript -->
                                 </span>
                             </a>
-
-                            <ul class="dropdown-menu dropdown-menu-end shadow-lg p-3 rounded-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
-                                <li class="mb-2 text-center fw-semibold">Your Cart</li>
-                                <li>
-                                    <div id="cart-items" class="d-flex flex-column gap-2">
-                                        <!-- Cart items will be injected here via JS -->
+                            <div class="dropdown-menu dropdown-menu-end dropdown-cart shadow-lg" aria-labelledby="cartDropdown">
+                                <div class="dropdown-cart-header">
+                                    <h6 class="mb-0">Shopping Cart</h6>
+                                </div>
+                                <div class="dropdown-cart-body" id="cart-dropdown-content">
+                                    <!-- Cart items will be loaded here dynamically -->
+                                    <div class="text-center p-3">
+                                        <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <span class="ms-2">Loading cart...</span>
                                     </div>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li class="d-flex justify-content-between align-items-center px-2">
-                                    <span class="fw-bold">Total:</span>
-                                    <span id="cart-total" class="fw-bold text-primary">$0.00</span>
-                                </li>
-                                <li class="mt-2">
-                                    <a href="/Cart" class="btn btn-gradient-primary w-100 rounded-pill">Go to Cart</a>
-                                </li>
-                            </ul>
+                                </div>
+                                <div class="dropdown-cart-footer">
+                                    <a href="/Cart" class="btn btn-primary w-100">View Cart</a>
+                                </div>
+                            </div>
                         </li>
 
                     <!-- Profile -->
-                    <li class="nav-item dropdown">
+                        <a asp-action="Login" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Login</a>
+                        <a asp-action="Register" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Register</a>
+                    <li class="nav-item dropdown"> 
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                            id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="~/assets/images/user/avatar-2.jpg" alt="User" width="36" height="36"
@@ -159,6 +159,28 @@
         border-radius: 0.5rem;
         transition: all 0.2s ease;
     }
+
+        .dropdown-cart {
+            min-width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dropdown-item-cart {
+            padding: 0.75rem 1rem;
+            transition: background-color 0.2s;
+        }
+
+            .dropdown-item-cart:hover {
+                background-color: #f8f9fa;
+            }
+
+        #cart-count {
+            font-size: 0.7rem;
+            padding: 0.25em 0.5em;
+            min-width: 1.5em;
+            height: 1.5em;
+        }
 </style>
 
 
@@ -204,6 +226,52 @@
 
     <!-- Active Link Script -->
     <script>
+                // Function to update cart count
+        async function updateCartCount() {
+            try {
+                const response = await fetch('/Cart/GetCartCount');
+                const data = await response.json();
+
+                const cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = data.count;
+
+                    // Show/hide badge based on count
+                    if (data.count > 0) {
+                        cartCountElement.style.display = 'block';
+                    } else {
+                        cartCountElement.style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.error('Error updating cart count:', error);
+            }
+        }
+
+        // Function to update cart dropdown content
+        async function updateCartDropdown() {
+            try {
+                const response = await fetch('/Cart/GetCartItemsDropdown');
+                const cartDropdown = document.getElementById('cart-dropdown-content');
+
+                if (cartDropdown) {
+                    cartDropdown.innerHTML = await response.text();
+                }
+            } catch (error) {
+                console.error('Error updating cart dropdown:', error);
+            }
+        }
+
+        // Update cart when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateCartDropdown();
+        });
+
+        // Optional: Update cart when dropdown is shown
+        document.getElementById('cartDropdown')?.addEventListener('show.bs.dropdown', function() {
+            updateCartDropdown();
+        });
         document.addEventListener('DOMContentLoaded', function () {
             const currentPath = location.pathname;
             document.querySelectorAll('.nav-link').forEach(link => {

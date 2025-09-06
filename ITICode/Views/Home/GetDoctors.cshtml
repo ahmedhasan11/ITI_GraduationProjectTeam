@@ -1,80 +1,16 @@
-﻿@using ITI_Hackathon.ServiceContracts
-@model ITI_Hackathon.Models.HomeIndexViewModel
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@using ITI_Hackathon.ServiceContracts
+@model IEnumerable<DoctorApprovedDTO>
 @inject IConsultationService ConsultationService
-@using System.Security.Claims 
+@using System.Security.Claims
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="container mt-5">
-
-    <!-- Medicines Section -->
-    <div class="row mb-5">
-        <div class="col-12 text-center mb-4">
-            <h2 class="fw-bold text-primary">Top Medicines</h2>
-            <p class="text-muted">Browse some of the most popular medicines</p>
-        </div>
-
-        @foreach (var m in Model.Medicines)
-        {
-            <div class="col-sm-6 col-xl-3 mb-4">
-                <div class="card shadow-lg border-0 rounded-3 h-100 product-card position-relative"
-                     style="transition: all 0.3s ease; cursor: pointer; overflow: hidden;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.25)';"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.15)';">
-
-                    <div class="position-relative">
-                        <img src="~/images/download.jpeg" class="card-img-top img-fluid rounded-top img-hover-scale" alt="@m.Name"
-                             style="height: 180px; object-fit: cover; transition: all 0.3s ease;">
-
-                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm">
-                            <i data-feather="heart" class="text-danger"></i>
-                        </button>
-
-                        <span class="badge bg-primary position-absolute top-0 start-0 m-2 shadow-sm">@m.Category</span>
-                    </div>
-
-                    <div class="card-body text-center p-3">
-                        <h6 class="fw-bold mb-1 text-truncate">
-                            <a href="/Medicines/Details/@m.Id" class="text-dark text-decoration-none">@m.Name</a>
-                        </h6>
-
-                        @if (m.Stock > 0)
-                        {
-                            <span class="badge bg-success mb-2 shadow-sm">In Stock</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-danger mb-2 shadow-sm">Out of Stock</span>
-                        }
-
-                        <div class="fw-bold text-primary mb-3 fs-5">
-                            $@m.Price
-                            <span class="text-muted text-decoration-line-through ms-1">$15.99</span>
-                        </div>
-
-                        <button class="btn btn-gradient-primary btn-sm w-100 rounded-pill shadow-sm add-to-cart-btn"
-                                data-medicine-id="@m.Id">
-                            <i class="bi bi-cart-plus me-1"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-
-    <!-- Separator -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <hr class="border-2 border-primary opacity-25 my-5">
-            <h2 class="text-center fw-bold text-primary mb-3">Meet Our Doctors</h2>
-            <p class="text-center text-muted mb-4">Book a consultation with top-rated professionals</p>
-        </div>
-    </div>
-
     <!-- Doctors Section -->
     <div class="row mb-5">
-        @foreach (var d in Model.Doctors)
+        @foreach (var d in Model)
         {
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card shadow-lg border-0 rounded-3 h-100 text-center position-relative p-3 doctor-card"
@@ -163,7 +99,6 @@
         }
     </div>
 </div>
-
 <style>
     .btn-gradient-primary {
         background: linear-gradient(135deg, #4a90e2, #007bff);
@@ -193,7 +128,7 @@
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll('.add-to-cart-btn');
 
         buttons.forEach(button => {
@@ -201,7 +136,7 @@
                 const medicineId = this.dataset.medicineId;
 
                 try {
-                    const response = await fetch('/Cart/Add', {
+                    const response = await fetch('/Cart/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -212,11 +147,8 @@
                     const result = await response.json();
 
                     if (result.success) {
-                        // Update cart count after adding item
-                        updateCartCount();
-
-                        // Show success message
-                        alert(`Added to cart! Total items: ${result.totalItems}`);
+                        // Optional: show a toast or update cart count
+                        alert(`Added to cart! Total items in cart: ${result.totalItems}`);
                     } else {
                         alert('Failed to add to cart.');
                     }

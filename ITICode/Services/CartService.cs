@@ -78,38 +78,38 @@ namespace ITI_Hackathon.Services
             return true;
         }
 
-        public async Task<CheckoutDto> CheckoutAsync(string? userId = null, string? sessionId = null)
-        {
-            var cartItems = await _context.CartItems
-                .Include(c => c.Medicine)
-                .Where(c => (userId != null && c.UserId == userId) || (sessionId != null && c.SessionId == sessionId))
-                .ToListAsync();
+        //public async Task<CheckoutDto> CheckoutAsync(string? userId = null, string? sessionId = null)
+        //{
+        //    var cartItems = await _context.CartItems
+        //        .Include(c => c.Medicine)
+        //        .Where(c => (userId != null && c.UserId == userId) || (sessionId != null && c.SessionId == sessionId))
+        //        .ToListAsync();
 
-            if (!cartItems.Any()) throw new InvalidOperationException("Cart is empty");
+        //    if (!cartItems.Any()) throw new InvalidOperationException("Cart is empty");
 
-            var order = new Order
-            {
-                PatientId = userId ?? "Guest", // use placeholder for guest
-                CreatedAt = DateTime.UtcNow,
-                Status = "Pending",
-                Total = cartItems.Sum(c => c.Medicine.Price * c.Quantity),
-                Items = cartItems.Select(c => new OrderItem
-                {
-                    MedicineId = c.MedicineId,
-                    Quantity = c.Quantity,
-                    UnitPrice = c.Medicine.Price
-                }).ToList()
-            };
+        //    var order = new Order
+        //    {
+        //        PatientId = userId ?? "Guest", // use placeholder for guest
+        //        CreatedAt = DateTime.UtcNow,
+        //        Status = "Pending",
+        //        Total = cartItems.Sum(c => c.Medicine.Price * c.Quantity),
+        //        Items = cartItems.Select(c => new OrderItem
+        //        {
+        //            MedicineId = c.MedicineId,
+        //            Quantity = c.Quantity,
+        //            UnitPrice = c.Medicine.Price
+        //        }).ToList()
+        //    };
 
-            await _context.Orders.AddAsync(order);
-            _context.CartItems.RemoveRange(cartItems);
-            await _context.SaveChangesAsync();
+        //    await _context.Orders.AddAsync(order);
+        //    _context.CartItems.RemoveRange(cartItems);
+        //    await _context.SaveChangesAsync();
 
-            return new CheckoutDto
-            {
-                OrderId = order.Id,
-                Total = order.Total
-            };
-        }
+        //    return new CheckoutDto
+        //    {
+        //        OrderId = order.Id,
+        //        Total = order.Total
+        //    };
+        //}
     }
 }

@@ -20,6 +20,8 @@ namespace ITI_Hackathon.Data
         public DbSet<Prescription> Prescriptions => Set<Prescription>();
         public DbSet<PrescriptionItem> PrescriptionItems => Set<PrescriptionItem>();
 
+        public DbSet<Consultation> DoctorPayments => Set<Consultation>();
+
         protected override void OnModelCreating(ModelBuilder b)
         {
             base.OnModelCreating(b);
@@ -118,6 +120,19 @@ namespace ITI_Hackathon.Data
             // Index for ChatMessage queries (Thread + SentAt)
             b.Entity<ChatMessage>()
                 .HasIndex(m => new { m.ThreadId, m.SentAt });
-        }
+
+
+			b.Entity<Consultation>()
+	        .HasOne(c => c.Patient)
+	        .WithMany()
+	        .HasForeignKey(c => c.PatientId)
+	        .OnDelete(DeleteBehavior.Restrict); // Important: Don't cascade delete if user is deleted
+
+			b.Entity<Consultation>()
+				.HasOne(c => c.Doctor)
+				.WithMany()
+				.HasForeignKey(c => c.DoctorId)
+				.OnDelete(DeleteBehavior.Restrict);
+		}
     }
 }
