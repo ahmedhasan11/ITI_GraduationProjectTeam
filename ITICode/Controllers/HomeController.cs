@@ -1,7 +1,9 @@
 using System.Diagnostics;
+using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts;
+using ITI_Hackathon.ServiceContracts.DTO;
 using ITI_Hackathon.Services;
 using Medicine_Mvc.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +33,20 @@ namespace ITI_Hackathon.Controllers
             };
 
             return View(vm);
+        }
+
+        public async Task< IActionResult> GetMedicines()
+        {
+            IEnumerable<MedicineListDto> Medicines = await _medicineService.GetAllMedicineAsync();
+
+			return View(Medicines);
+        }
+
+        public async Task<IActionResult> GetDoctors()
+        {
+            IEnumerable<DoctorApprovedDTO> Doctors = await _doctorService.GetApprovedDoctorsAsync();
+
+			return View(Doctors);
         }
 
         public IActionResult Privacy()

@@ -7,6 +7,10 @@ using ITI_Hackathon.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using ITI_Hackathon.Entities;
+using ITI_Hackathon.ServiceContracts;
+using ITI_Hackathon.ServiceContracts.DTO;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ITI_Hackathon.Controllers
 {
@@ -17,20 +21,34 @@ namespace ITI_Hackathon.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _db;
         private readonly ILogger<AccountController> _logger;
+        private readonly IOrderService _orderservice;
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             ApplicationDbContext db,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IOrderService orderservice)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _db = db;
             _logger = logger;
+            _orderservice = orderservice;
         }
-
+        [Authorize]
+        [HttpGet]
+        public async  Task<IActionResult> UserProfile()
+        {
+            var userId= User.FindFirstValue(ClaimTypes.NameIdentifier);
+			if (string.IsNullOrEmpty(userId))
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			IEnumerable<OrderDto> Orders=await _orderservice.GetOrdersForUserAsync(userId);
+            return View(Orders);
+        }
         // GET: /Account/Register
         [HttpGet]
         public IActionResult Register()

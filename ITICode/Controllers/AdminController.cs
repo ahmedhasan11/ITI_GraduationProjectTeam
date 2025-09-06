@@ -124,11 +124,11 @@ namespace ITI_Hackathon.Controllers
 		#region Add Medicine -->Done  
 
 		// GET: /Medicine/Create
-		[HttpGet]
-		public IActionResult Create()
-        {
-            return View("AddMedicine");
-        }
+		//[HttpGet]
+		//public IActionResult Create()
+  //      {
+  //          return View("AddMedicine");
+  //      }
 
         // POST: /Medicine/Create
         [HttpPost]
