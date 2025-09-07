@@ -1,0 +1,207 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@using ITI_Hackathon.ServiceContracts
+@model IEnumerable<DoctorApprovedDTO>
+@inject IConsultationService ConsultationService
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Doctors Page";
+}
+@using ITI_Hackathon.Entities
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var userId = UserManager.GetUserId(User);
+}
+<div class="container mt-5">
+
+    <!-- Doctors Section -->
+    <div class="row mb-5">
+        @foreach (var d in Model)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-3 h-100 text-center position-relative p-3 doctor-card"
+                     style="transition: all 0.3s ease; cursor: pointer; overflow: hidden;"
+                     onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.25)';"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.15)';">
+
+                    <!-- Top Badge -->
+                    <span class="badge bg-warning position-absolute top-0 start-50 translate-middle-x mt-3 px-3 py-1 shadow-sm">Top Rated</span>
+
+                    <!-- Doctor Image -->
+                    <div class="d-flex justify-content-center mt-4">
+                        <img src="~/assets/images/user/avatar-1.jpg" alt="@d.FullName"
+                             class="rounded-circle shadow border border-white img-hover-scale"
+                             style="width: 130px; height: 130px; object-fit: cover; transition: all 0.3s ease;">
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body mt-2 p-2">
+                        <h5 class="fw-bold mb-1 fs-6">
+                            <a asp-controller="Home"
+                               asp-action="DoctorDetails"
+                               asp-route-userId="@d.UserId"
+                               class="text-dark text-decoration-none">
+                                @d.FullName
+                            </a>
+                        </h5>
+
+                        <p class="small text-muted mb-1">
+                            <i class="ti ti-mail text-primary"></i> @d.Email
+                            <span> | <i class="ti ti-phone text-primary"></i> 01002211345</span>
+                        </p>
+
+                        <p class="small text-muted mb-1">
+                            <i class="fa-solid fa-user-doctor text-primary me-1"></i> @d.Specialty
+                        </p>
+
+                        <p class="fw-semibold text-primary mb-2">
+                            Consultation: $10
+                        </p>
+
+                        <p class="small text-secondary mb-2 px-2" style="min-height: 40px;">
+                            @(string.IsNullOrEmpty(d.Bio) ? "No bio provided." : d.Bio)
+                        </p>
+
+                        <p class="mb-2">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= 3)
+                                {
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa-solid fa-star text-warning" style="opacity:0.3;"></i>
+                                }
+                            }
+                        </p>
+
+                        <div class="d-flex justify-content-center gap-2 px-2">
+                            <a asp-controller="Home"
+                               asp-action="DoctorDetails"
+                               asp-route-userId="@d.UserId"
+                               class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                <i class="fa-solid fa-calendar-check me-1"></i> Book
+                            </a>
+
+                            @{
+
+                                var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                // If you need to check payment status, determine it on the server and pass it via the model.
+                                bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
+                                // bool hasPaid = true; <--- replace with server-side logic
+                            }
+
+                            @if (hasPaid)
+                            {
+                                <!-- If already paid, show direct chat link -->
+                                <button class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm start-chat-btn"
+                                        data-doctor-id="@d.UserId"
+                                        data-patient-id="@userId">
+                                    <i class="fa-solid fa-comments me-1"></i> Chat Now
+                                </button>
+                            }
+                            else
+                            {
+                                <!-- If NOT paid, show form that goes to Stripe -->
+                                <form asp-controller="Payment" asp-action="CreateConsultationCheckout" method="post" class="d-inline">
+                                    <input type="hidden" name="doctorId" value="@d.UserId" />
+                                    <button type="submit" class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                        <i class="fa-solid fa-comments me-1"></i> Chat ($50)
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@* Render anti-forgery token so JS can pick it up for fetch POSTs *@
+@Html.AntiForgeryToken()
+
+<style>
+    .btn-gradient-primary {
+        background: linear-gradient(135deg, #4a90e2, #007bff);
+        border: none;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+        .btn-gradient-primary:hover {
+            background: linear-gradient(135deg, #007bff, #4a90e2);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+    .img-hover-scale:hover {
+        transform: scale(1.08);
+        transition: all 0.3s ease;
+    }
+
+    .doctor-card {
+        min-height: 380px;
+    }
+
+    .product-card {
+        min-height: 320px;
+    }
+</style>
+
+<script>
+    // All interactive JS now runs inside a single DOMContentLoaded handler
+    document.addEventListener("DOMContentLoaded", function () {
+        // ----- Start Chat Buttons -----
+        const chatButtons = document.querySelectorAll('.start-chat-btn');
+        chatButtons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const doctorId = this.dataset.doctorId;
+                const patientId = this.dataset.patientId;
+
+                if (!patientId) {
+                    if (confirm('Please log in to start a chat. Go to login page?')) {
+                        window.location.href = '/Account/Login';
+                    }
+                    return;
+                }
+
+                try {
+                    const res = await fetch('/api/Chat/GetOrCreateThread', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': antiForgeryToken
+                        },
+                        body: JSON.stringify({
+                            DoctorId: doctorId,
+                            PatientId: patientId
+                        })
+                    });
+
+                    if (!res.ok) {
+                        const text = await res.text();
+                        throw new Error('Server error: ' + text);
+                    }
+
+                    const data = await res.json();
+
+                    if (data.success && data.thread && data.thread.id) {
+                        // Redirect to Chat Page
+                        window.location.href = `/ChatPage/Index?threadId=${encodeURIComponent(data.thread.id)}`;
+                    } else {
+                        alert('Cannot start chat: ' + (data.message || 'Unknown error'));
+                    }
+                } catch (err) {
+                    console.error('Error starting chat:', err);
+                    alert('Cannot start chat. Please try again.');
+                }
+            });
+        });
+
+        // Initial cart count update
+        updateCartCount();
+    });
+</script>
+

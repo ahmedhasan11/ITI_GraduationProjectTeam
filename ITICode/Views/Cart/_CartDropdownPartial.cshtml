@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.CartItemDto>
+
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <div class="dropdown-item-cart d-flex align-items-center py-2 border-bottom">
+@*             <img src="@(item.ImageUrl ?? "/images/medicine-placeholder.jpg")"
+                 alt="@item.MedicineName" class="rounded me-3" width="40" height="40"> *@
+            <div class="flex-grow-1">
+                <h6 class="mb-0">@item.MedicineName</h6>
+                <small class="text-muted">Qty: @item.Quantity × $@item.UnitPrice</small>
+            </div>
+            <div class="text-end">
+                <strong>$@(item.UnitPrice * item.Quantity)</strong>
+            </div>
+        </div>
+    }
+
+    <div class="dropdown-item-cart py-2">
+        <div class="d-flex justify-content-between fw-bold">
+            <span>Total:</span>
+            <span>$@Model.Sum(item => item.UnitPrice * item.Quantity)</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center p-3">
+        <i class="ti ti-shopping-cart fs-1 text-muted mb-2"></i>
+        <p class="text-muted mb-0">Your cart is empty</p>
+    </div>
+}

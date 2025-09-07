@@ -1,0 +1,178 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@model IEnumerable<MedicineListDto>
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container mt-5">
+
+    <!-- Medicines Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold text-primary">Top Medicines</h2>
+            <p class="text-muted">Browse some of the most popular medicines</p>
+        </div>
+
+        @foreach (var m in Model)
+        {
+            <div class="col-sm-6 col-xl-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-3 h-100 product-card position-relative"
+                     style="transition: all 0.3s ease; cursor: pointer; overflow: hidden;"
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.25)';"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.15)';">
+
+                    <div class="position-relative">
+                        <img src="~/images/download.jpeg" class="card-img-top img-fluid rounded-top img-hover-scale" alt="@m.Name"
+                             style="height: 180px; object-fit: cover; transition: all 0.3s ease;">
+
+                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm">
+                            <i data-feather="heart" class="text-danger"></i>
+                        </button>
+
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-2 shadow-sm">@m.Category</span>
+                    </div>
+
+                    <div class="card-body text-center p-3">
+                        <h6 class="fw-bold mb-1 text-truncate">
+                            <a href="/Medicines/Details/@m.Id" class="text-dark text-decoration-none">@m.Name</a>
+                        </h6>
+
+                        @if (m.Stock > 0)
+                        {
+                            <span class="badge bg-success mb-2 shadow-sm">In Stock</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger mb-2 shadow-sm">Out of Stock</span>
+                        }
+
+                        <div class="fw-bold text-primary mb-3 fs-5">
+                            $@m.Price
+                            <span class="text-muted text-decoration-line-through ms-1">$15.99</span>
+                        </div>
+
+                        <button class="btn btn-gradient-primary btn-sm w-100 rounded-pill shadow-sm add-to-cart-btn"
+                                data-medicine-id="@m.Id">
+                            <i class="bi bi-cart-plus me-1"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Toast container -->
+<div class="position-fixed end-0 p-3" style="top: 60px; z-index: 1080;">
+    <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="cartToastBody">
+                Added to cart!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+@* Render anti-forgery token so JS can pick it up for fetch POSTs *@
+@Html.AntiForgeryToken()
+
+<style>
+    .btn-gradient-primary {
+        background: linear-gradient(135deg, #4a90e2, #007bff);
+        border: none;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+        .btn-gradient-primary:hover {
+            background: linear-gradient(135deg, #007bff, #4a90e2);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+    .img-hover-scale:hover {
+        transform: scale(1.08);
+        transition: all 0.3s ease;
+    }
+
+    .doctor-card {
+        min-height: 380px;
+    }
+
+    .product-card {
+        min-height: 320px;
+    }
+</style>
+
+<script>
+    // All interactive JS now runs inside a single DOMContentLoaded handler
+    document.addEventListener("DOMContentLoaded", function () {
+        const antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]')?.value || '';
+
+        // ----- Add to cart -----
+        const buttons = document.querySelectorAll('.add-to-cart-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const medicineId = this.dataset.medicineId;
+
+                try {
+                    const response = await fetch('/Cart/Add', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': antiForgeryToken
+                        },
+                        body: JSON.stringify({ medicineId: parseInt(medicineId, 10), quantity: 1 })
+                    });
+
+                    const result = await response.json();
+
+                    const toastEl = document.getElementById('cartToast');
+                    const toastBody = document.getElementById('cartToastBody');
+
+                    if (response.ok && result.success) {
+                        // Update cart count after adding item
+                        updateCartCount();
+
+                        // Show success toast
+                        toastBody.textContent = `Added to cart! Total items: ${result.totalItems ?? ''}`;
+                        const bsToast = new bootstrap.Toast(toastEl);
+                        bsToast.show();
+                    } else {
+                        // Show error toast
+                        toastBody.textContent = `Failed to add to cart. ${result && result.message ? result.message : ''}`;
+                        const bsToast = new bootstrap.Toast(toastEl);
+                        bsToast.show();
+                    }
+                } catch (error) {
+                    console.error(error);
+                    const toastEl = document.getElementById('cartToast');
+                    const toastBody = document.getElementById('cartToastBody');
+                    toastBody.textContent = `Error adding to cart.`;
+                    const bsToast = new bootstrap.Toast(toastEl);
+                    bsToast.show();
+                }
+            });
+        });
+        // Initial cart count update
+        updateCartCount();
+    });
+
+    async function updateCartCount() {
+        try {
+            const response = await fetch('/Cart/GetCartCount');
+            if (!response.ok) return;
+            const data = await response.json();
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = data.count ?? 0;
+                cartCountElement.style.display = (data.count && data.count > 0) ? 'block' : 'none';
+            }
+        } catch (error) {
+            console.error('Error updating cart count:', error);
+        }
+    }
+</script>
+

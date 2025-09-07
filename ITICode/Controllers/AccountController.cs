@@ -7,6 +7,10 @@ using ITI_Hackathon.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using ITI_Hackathon.Entities;
+using ITI_Hackathon.ServiceContracts;
+using ITI_Hackathon.ServiceContracts.DTO;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ITI_Hackathon.Controllers
 {
@@ -17,20 +21,34 @@ namespace ITI_Hackathon.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _db;
         private readonly ILogger<AccountController> _logger;
+        private readonly IOrderService _orderservice;
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             ApplicationDbContext db,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IOrderService orderservice)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _db = db;
             _logger = logger;
+            _orderservice = orderservice;
         }
-
+        [Authorize]
+        [HttpGet]
+        public async  Task<IActionResult> UserProfile()
+        {
+            var userId= User.FindFirstValue(ClaimTypes.NameIdentifier);
+			if (string.IsNullOrEmpty(userId))
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			IEnumerable<OrderDto> Orders=await _orderservice.GetOrdersForUserAsync(userId);
+            return View(Orders);
+        }
         // GET: /Account/Register
         [HttpGet]
         public IActionResult Register()
@@ -90,7 +108,7 @@ namespace ITI_Hackathon.Controllers
 
                 // Do not auto-sign-in doctors (wait for admin approve)
                 TempData["Message"] = "Registration successful. Your doctor account is pending admin approval.";
-                return RedirectToAction(nameof(RegisterSuccess));
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -164,6 +182,97 @@ namespace ITI_Hackathon.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login");
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (user == null) return NotFound();
+
+            var roles = await _userManager.GetRolesAsync(user);
+            string role = roles.FirstOrDefault() ?? "Patient";
+
+            var vm = new EditProfileViewModel
+            {
+                UserId = user.Id,
+                FullName = user.FullName,
+                Email = user.Email!,
+                Role = role
+            };
+
+            if (role == "Doctor")
+            {
+                var doctor = await _db.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
+                if (doctor != null)
+                {
+                    vm.Specialty = doctor.Specialty;
+                    vm.Bio = doctor.Bio;
+                    vm.LicenseNumber = doctor.LicenseNumber;
+                }
+            }
+            else
+            {
+                var patient = await _db.Patients.FirstOrDefaultAsync(p => p.UserId == userId);
+                if (patient != null)
+                {
+                    vm.DateOfBirth = patient.DateOfBirth;
+                    vm.Gender = patient.Gender;
+                    vm.Address = patient.Address;
+                }
+            }
+
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null) return NotFound();
+
+            // update basic info
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.UserName = model.Email;
+
+            await _userManager.UpdateAsync(user);
+
+            if (model.Role == "Doctor")
+            {
+                var doctor = await _db.Doctors.FirstOrDefaultAsync(d => d.UserId == model.UserId);
+                if (doctor != null)
+                {
+                    doctor.Specialty = model.Specialty ?? doctor.Specialty;
+                    doctor.Bio = model.Bio;
+                    doctor.LicenseNumber = model.LicenseNumber;
+                    _db.Doctors.Update(doctor);
+                }
+            }
+            else
+            {
+                var patient = await _db.Patients.FirstOrDefaultAsync(p => p.UserId == model.UserId);
+                if (patient != null)
+                {
+                    patient.DateOfBirth = model.DateOfBirth;
+                    patient.Gender = model.Gender;
+                    patient.Address = model.Address;
+                    _db.Patients.Update(patient);
+                }
+            }
+
+            await _db.SaveChangesAsync();
+
+            TempData["Message"] = "Profile updated successfully!";
+            return RedirectToAction("UserProfile");
         }
 
         public IActionResult AccessDenied()

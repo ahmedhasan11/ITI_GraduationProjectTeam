@@ -1,0 +1,44 @@
+﻿@model List<ITI_Hackathon.ServiceContracts.DTO.AppointmentDto>
+
+<h2>Available Appointments</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No available appointments found.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var appt in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. @appt.DoctorName</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            @appt.AppointmentDate.ToString("dd MMM yyyy")
+                        </h6>
+                        <p class="card-text">
+                            <i class="fas fa-clock"></i>
+                            @appt.StartTime.ToString(@"hh\:mm") - @appt.EndTime.ToString(@"hh\:mm")
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <form asp-action="Book" method="post">
+                            <input type="hidden" name="appointmentId" value="@appt.Id" />
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-calendar-check"></i> Book Appointment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">
+    <i class="fas fa-arrow-left"></i> Back to Home
+</a>

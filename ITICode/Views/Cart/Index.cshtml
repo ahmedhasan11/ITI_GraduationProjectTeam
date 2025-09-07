@@ -1,0 +1,611 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@model List<CartItemDto>
+@{
+    ViewData["Title"] = "Privacy Policy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    decimal subTotal = Model.Sum(m => m.UnitPrice * m.Quantity);
+}
+<!-- [ Main Content ] start -->
+<div class="pc-content mx-5">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h2 class="mb-0">Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <ul class="nav nav-tabs checkout-tabs mb-0" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="ecomtab-tab-1" data-bs-toggle="tab" href="#ecomtab-1" role="tab"
+                            aria-controls="ecomtab-1" aria-selected="true">
+                                <div class="media align-items-center">
+                                    <div class="avtar avtar-xs">
+                                        <i class="ti ti-shopping-cart"></i>
+                                    </div>
+                                    <div class="media-body ms-3">
+                                        <h5 class="mb-0">Cart Details</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane show active" id="ecomtab-1" role="tabpanel" aria-labelledby="ecomtab-tab-1">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card table-card">
+                                <div class="card-header">
+                                    <h5>Cart Item <span class="ms-2 f-14 px-2 badge bg-light-secondary rounded-pill">1</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table" id="pc-dt-simple">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th class="text-end">Price</th>
+                                                    <th class="text-center">Quantity</th>
+                                                    <th class="text-end">Total</th>
+                                                    <th class="text-end"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (CartItemDto medicine in Model)
+                                                { 
+                                                    
+
+                                                <tr>
+                                                    <td>
+                                                        <div class="media align-items-center">
+                                                            <img src="../assets/images/application/prod-img-1.png" alt="image"
+                                                                 class="bg-light wid-50 rounded">
+                                                            <div class="media-body ms-3">
+                                                                <h5 class="mb-1">@medicine.MedicineName</h5>
+                                                                <p class="text-sm text-muted mb-0">Dark Red</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <h5 class="mb-0">$@medicine.UnitPrice</h5>
+                                                        <span class="text-sm text-muted text-decoration-line-through">$129.99</span>
+                                                    </td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group btn-group-sm mb-2 border" role="group">
+                                                                <button type="button" onclick="decreaseValue(@medicine.Id, @medicine.UnitPrice)">
+                                                                    <i class="ti ti-minus"></i>
+                                                                </button>
+                                                                <input type="text" id="number-@medicine.Id" value="@medicine.Quantity" class="wid-35 text-center border-0 m-0 form-control rounded-0 shadow-none">
+                                                                <button type="button" onclick="increaseValue(@medicine.Id, @medicine.UnitPrice)">
+                                                                    <i class="ti ti-plus"></i>
+                                                                </button>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <h5 class="mb-0" id="total-@medicine.Id">@((medicine.UnitPrice * medicine.Quantity).ToString("0.00"))</h5>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <form asp-action="Remove" asp-controller="Cart" method="post">
+                                                                <input type="hidden" name="id" value="@medicine.Id" />
+                                                                <button type="submit" class="avtar avtar-s btn-link-danger">
+                                                                    <i class="ti ti-trash f-18"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <a asp-controller="Home" asp-action="Index"
+                                   class="btn btn-link-secondary d-inline-flex align-items-center">
+                                    <i class="ti ti-chevron-left me-2"></i> Back to Shopping
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- Right SideBar-->
+                        <div class="col-xl-4">
+
+                            <!-- Discount Card To Do Another Time-->
+                            @* <div class="card">
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-sm btn-link-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#couponModal">
+                                        Have a coupon code?
+                                    </button>
+                                    <div class="input-group my-2">
+                                        <input type="text" class="form-control" placeholder="Discount Coupon">
+                                        <button class="btn btn-outline-secondary" type="button">Apply</button>
+                                    </div>
+                                </div>
+                            </div> *@
+
+                            <div class="card">
+                                <div class="card-body py-2">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0">
+                                            <h5 class="mb-0">Order Summary</h5>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="float-end">
+                                                <h5 class="mb-0" id="subtotal">@subTotal.ToString("0.00")</h5>
+                                            </div>
+                                            <span class="text-muted">Sub Total</span>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="float-end">
+                                                <h5 class="mb-0" id="delivery">20.00</h5>
+                                            </div><span class="text-muted">Estimated Delivery</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body py-2">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0">
+                                            <div class="float-end">
+                                                <h5 class="mb-0" id="total">@((subTotal + 20).ToString("0.00"))</h5>
+                                            </div>
+                                            <h5 class="mb-0 d-inline-block">Total</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="text-end mt-3">
+                                <form asp-controller="Payment" asp-action="CreateCheckout" method="post">
+                                    <button type="submit" class="btn btn-success">
+                                        Checkout
+                                    </button>
+                                </form>
+                            </div>
+
+
+
+        <!-- [ sample-page ] end -->
+    </div>
+    <!-- [ Main Content ] end -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="couponModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="calendar-modal-title f-w-600 text-truncate">Festival gift for your</h4>
+                <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                    <i class="ti ti-x f-20"></i>
+                </a>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card my-2 coupon-card border border-secondary"
+                                     style="background-image: url('../assets/images/application/discount.png')">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h4 class="mb-0">Up to 50% Off</h4>
+                                            <button class="btn coupon-btn btn-light-secondary">BERRY50</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card my-2 coupon-card border border-danger"
+                                     style="background-image: url('../assets/images/application/discount.png')">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h4 class="mb-0">Festival Fires</h4>
+                                            <button class="btn coupon-btn btn-light-danger">FLAT05</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item px-0">
+                        <div class="media align-items-center mb-3">
+                            <div class="avtar bg-primary text-white">
+                                <i class="ti ti-gift f-22"></i>
+                            </div>
+                            <div class="media-body mx-3">
+                                <h5 class="mb-1">Get $150 off on your subscription</h5>
+                                <p class="mb-0 text-sm text-muted">When you subscribe to the unlimited consultation plan on berry.</p>
+                            </div>
+                            <button class="btn coupon-btn btn-light-primary">SUB150</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item px-0">
+                        <div class="media align-items-center mb-3">
+                            <div class="avtar bg-warning text-white">
+                                <i class="ti ti-trophy f-22"></i>
+                            </div>
+                            <div class="media-body mx-3">
+                                <h5 class="mb-1">Save up to $200</h5>
+                                <p class="mb-0 text-sm text-muted">Make 4 play store recharge code purchases & save up to $200</p>
+                            </div>
+                            <button class="btn coupon-btn btn-light-warning">UPTO200</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addressModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <h4 class="calendar-modal-title f-w-600 text-truncate mb-0">Add Billing Address</h4>
+                <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                    <i class="ti ti-x f-20"></i>
+                </a>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-end">
+                    <div class="col-sm-12">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_address" id="radio_address1">
+                                    <label class="form-check-label" for="radio_address1">Home</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_address" id="radio_address2" checked>
+                                    <label class="form-check-label" for="radio_address2">Office</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Building No./Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Building No./Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Street</label>
+                            <input type="text" class="form-control" placeholder="Enter Street">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control" placeholder="Enter City">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control" placeholder="Enter City">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Country</label>
+                            <input type="text" class="form-control" placeholder="Enter Country">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Area Code</label>
+                            <input type="text" class="form-control" placeholder="Enter Area Code">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Contact</label>
+                            <input type="text" class="form-control" placeholder="Enter Contact">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <div class="me-auto">
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input input-secondary" id="customCheckc2" checked>
+                        <label class="form-check-label" for="customCheckc2">Set as Default</label>
+                    </div>
+                </div>
+                <div class="flex-grow-1 text-end">
+                    <button type="button" class="btn btn-link-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cardModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <h4 class="calendar-modal-title f-w-600 text-truncate mb-0">Add Payment Card</h4>
+                <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                    <i class="ti ti-x f-20"></i>
+                </a>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-end">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio_address" id="radio_address111">
+                                <label class="form-check-label" for="radio_address111">Home</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio_address" id="radio_address21" checked>
+                                <label class="form-check-label" for="radio_address21">Office</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Bank</label>
+                            <input type="text" class="form-control" placeholder="Enter Bank">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Card Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Card Number">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="text" class="form-control" placeholder="Enter Expiry Date">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="form-control" placeholder="Enter CVV">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radio_address" id="radio_address11">
+                            <label class="form-check-label" for="radio_address11">Credit Card</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radio_address" id="radio_address12">
+                            <label class="form-check-label" for="radio_address12">debit</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radio_address" id="radio_address13" checked>
+                            <label class="form-check-label" for="radio_address13">Net Banking</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/simplebar.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+<script src="../assets/js/fonts/custom-font.js"></script>
+<script src="../assets/js/pcoded.js"></script>
+<script src="../assets/js/plugins/feather.min.js"></script>
+
+<script>layout_change('light');</script>
+<script>change_box_container('false');</script>
+<script>layout_rtl_change('false');</script>
+<script>preset_change("preset-1");</script>
+<script>font_change("Public-Sans");</script>
+
+<!-- [Page Specific JS] start -->
+<script>
+    // quantity start
+    function updateTotal(medicineId, unitPrice) {
+        const input = document.getElementById(`number-${medicineId}`);
+        const total = document.getElementById(`total-${medicineId}`);
+
+        let value = parseInt(input.value) || 0;
+        total.textContent = (value * unitPrice).toFixed(2); // update row total
+
+        // بعد ما نحدّث row واحد، نحدّث SubTotal كله
+        updateSubTotal();
+    }
+
+    function increaseValue(medicineId, unitPrice) {
+        const input = document.getElementById(`number-${medicineId}`);
+        let value = parseInt(input.value) || 0;
+        input.value = value + 1;
+        updateTotal(medicineId, unitPrice);
+    }
+
+    function decreaseValue(medicineId, unitPrice) {
+        const input = document.getElementById(`number-${medicineId}`);
+        let value = parseInt(input.value) || 0;
+        if (value > 1) {
+            input.value = value - 1;
+            updateTotal(medicineId, unitPrice);
+        }
+    }
+
+    // تحديث SubTotal
+    function updateSubTotal() {
+        let subtotal = 0;
+
+        // نعدّي على كل الـ totals الخاصة بالأدوية
+        document.querySelectorAll("[id^='total-']").forEach(el => {
+            subtotal += parseFloat(el.textContent) || 0;
+        });
+
+        // نعرض الناتج
+        document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+
+        // لو عندك delivery fee مثلًا
+        let delivery = 20.00; // ثابت أو ممكن تجيبه ديناميك
+        document.getElementById("total").innerText = (subtotal + delivery).toFixed(2);
+    }
+
+    // لما الصفحة تفتح أول مرة
+    window.addEventListener("load", updateSubTotal);
+    // quantity end
+</script>
+
+
+
+<!-- [Page Specific JS] end -->
+<div class="offcanvas pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
+    <div class="offcanvas-header bg-primary">
+        <h5 class="offcanvas-title text-white">Mantis Customizer</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="pct-body" style="height: calc(100% - 60px)">
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="btn border-0 text-start w-100" data-bs-toggle="collapse" href="#pctcustcollapse1">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="avtar avtar-xs bg-light-primary">
+                                    <i class="ti ti-layout-sidebar f-18"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Theme Layout</h6>
+                                <span>Choose your layout</span>
+                            </div>
+                            <i class="ti ti-chevron-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse show" id="pctcustcollapse1">
+                        <div class="pct-content">
+                            <div class="pc-rtl">
+                                <p class="mb-1">Direction</p>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="layoutmodertl">
+                                    <label class="form-check-label" for="layoutmodertl">RTL</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a class="btn border-0 text-start w-100" data-bs-toggle="collapse" href="#pctcustcollapse2">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="avtar avtar-xs bg-light-primary">
+                                    <i class="ti ti-brush f-18"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Theme Mode</h6>
+                                <span>Choose light or dark mode</span>
+                            </div>
+                            <i class="ti ti-chevron-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse show" id="pctcustcollapse2">
+                        <div class="pct-content">
+                            <div class="theme-color themepreset-color theme-layout">
+                                <a href="#!" class="active" onclick="layout_change('light')" data-value="false"><span><img src="../assets/images/customization/default.svg" alt="img"></span><span>Light</span></a>
+                                <a href="#!" class="" onclick="layout_change('dark')" data-value="true"><span><img src="../assets/images/customization/dark.svg" alt="img"></span><span>Dark</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a class="btn border-0 text-start w-100" data-bs-toggle="collapse" href="#pctcustcollapse3">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="avtar avtar-xs bg-light-primary">
+                                    <i class="ti ti-color-swatch f-18"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Color Scheme</h6>
+                                <span>Choose your primary theme color</span>
+                            </div>
+                            <i class="ti ti-chevron-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse show" id="pctcustcollapse3">
+                        <div class="pct-content">
+                            <div class="theme-color preset-color">
+                                <a href="#!" class="active" data-value="preset-1"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 1</span></a>
+                                <a href="#!" class="" data-value="preset-2"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 2</span></a>
+                                <a href="#!" class="" data-value="preset-3"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 3</span></a>
+                                <a href="#!" class="" data-value="preset-4"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 4</span></a>
+                                <a href="#!" class="" data-value="preset-5"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 5</span></a>
+                                <a href="#!" class="" data-value="preset-6"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 6</span></a>
+                                <a href="#!" class="" data-value="preset-7"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 7</span></a>
+                                <a href="#!" class="" data-value="preset-8"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 8</span></a>
+                                <a href="#!" class="" data-value="preset-9"><span><img src="../assets/images/customization/theme-color.svg" alt="img"></span><span>Theme 9</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item pc-boxcontainer">
+                    <a class="btn border-0 text-start w-100" data-bs-toggle="collapse" href="#pctcustcollapse4">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="avtar avtar-xs bg-light-primary">
+                                    <i class="ti ti-border-inner f-18"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Layout Width</h6>
+                                <span>Choose fluid or container layout</span>
+                            </div>
+                            <i class="ti ti-chevron-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse show" id="pctcustcollapse4">
+                        <div class="pct-content">
+                            <div class="theme-color themepreset-color boxwidthpreset theme-container">
+                                <a href="#!" class="active" onclick="change_box_container('false')" data-value="false"><span><img src="../assets/images/customization/default.svg" alt="img"></span><span>Fluid</span></a>
+                                <a href="#!" class="" onclick="change_box_container('true')" data-value="true"><span><img src="../assets/images/customization/container.svg" alt="img"></span><span>Container</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a class="btn border-0 text-start w-100" data-bs-toggle="collapse" href="#pctcustcollapse5">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="avtar avtar-xs bg-light-primary">
+                                    <i class="ti ti-typography f-18"></i>
+                                </div>
+                            </div>
+                            <div

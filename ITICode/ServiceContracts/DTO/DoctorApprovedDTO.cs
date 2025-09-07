@@ -11,5 +11,7 @@
 			public string LicenseNumber { get; set; }
 			public bool IsApproved { get; set; }
 			public string Bio { get; set; }
-	}
+			public List<AppointmentDto> AvailableAppointments { get; set; } = new();
+
+    }
 }

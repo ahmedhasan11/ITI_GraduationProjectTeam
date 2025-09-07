@@ -8,13 +8,10 @@ namespace ITI_Hackathon.Entities
         public int Id { get; set; }
 
         public string PatientId { get; set; } = default!;
-        public ApplicationUser Patient { get; set; } = default!;
-
         public string DoctorId { get; set; } = default!;
-        public ApplicationUser Doctor { get; set; } = default!;
-
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
+        public ApplicationUser Patient { get; set; } = default!;
+        public ApplicationUser Doctor { get; set; } = default!;
         public List<ChatMessage> Messages { get; set; } = new();
     }
 }

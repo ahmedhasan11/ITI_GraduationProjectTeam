@@ -1,6 +1,16 @@
-﻿@model ITI_Hackathon.Models.HomeIndexViewModel
+﻿@using ITI_Hackathon.ServiceContracts
+@model ITI_Hackathon.Models.HomeIndexViewModel
+@inject IConsultationService ConsultationService
+@using System.Security.Claims
 @{
     ViewData["Title"] = "Home Page";
+}
+
+@using ITI_Hackathon.Entities
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var userId = UserManager.GetUserId(User);
 }
 
 <div class="container mt-5">
@@ -74,7 +84,7 @@
         @foreach (var d in Model.Doctors)
         {
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card shadow-lg border-0 rounded-3 h-100 text-center position-relative p-3 doctor-card"
+                <div class="card shadow-lg border-0 rounded-3 h-100 text-center position-relative p-3 doctor-card d-flex flex-column"
                      style="transition: all 0.3s ease; cursor: pointer; overflow: hidden;"
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.25)';"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.15)';">
@@ -90,9 +100,14 @@
                     </div>
 
                     <!-- Card Body -->
-                    <div class="card-body mt-2 p-2">
+                    <div class="card-body mt-2 p-2 flex-grow-1 d-flex flex-column">
                         <h5 class="fw-bold mb-1 fs-6">
-                            <a href="/Doctors/Details/@d.UserId" class="text-dark text-decoration-none">@d.FullName</a>
+                            <a asp-controller="Home"
+                               asp-action="DoctorDetails"
+                               asp-route-userId="@d.UserId"
+                               class="text-dark text-decoration-none">
+                                @d.FullName
+                            </a>
                         </h5>
 
                         <p class="small text-muted mb-1">
@@ -108,7 +123,7 @@
                             Consultation: $10
                         </p>
 
-                        <p class="small text-secondary mb-2 px-2" style="min-height: 40px;">
+                        <p class="small text-secondary mb-2 px-2 flex-grow-1" style="min-height: 40px;">
                             @(string.IsNullOrEmpty(d.Bio) ? "No bio provided." : d.Bio)
                         </p>
 
@@ -125,21 +140,62 @@
                                 }
                             }
                         </p>
+                    </div>
 
-                        <div class="d-flex justify-content-center gap-2 px-2">
-                            <a href="/Booking/Create/@d.UserId" class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
-                                <i class="fa-solid fa-calendar-check me-1"></i> Book
-                            </a>
-                            <a href="/Chat/Start/@d.UserId" class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
-                                <i class="fa-solid fa-comments me-1"></i> Chat
-                            </a>
-                        </div>
+                    <!-- Card Footer Buttons -->
+                    <div class="d-flex justify-content-center gap-2 px-2 mt-auto">
+                        <a asp-controller="Home"
+                           asp-action="DoctorDetails"
+                           asp-route-userId="@d.UserId"
+                           class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                            <i class="fa-solid fa-calendar-check me-1"></i> Book
+                        </a>
+
+                        @{
+
+                            var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                            bool hasPaid = true; // Replace with server-side logic
+                        }
+
+                        @if (hasPaid)
+                        {
+                            <button class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm start-chat-btn"
+                                    data-doctor-id="@d.UserId"
+                                    data-patient-id="@userId">
+                                <i class="fa-solid fa-comments me-1"></i> Chat Now
+                            </button>
+                        }
+                        else
+                        {
+                            <form asp-controller="Payment" asp-action="CreateConsultationCheckout" method="post" class="d-inline flex-grow-1">
+                                <input type="hidden" name="doctorId" value="@d.UserId" />
+                                <button type="submit" class="btn btn-outline-primary btn-sm w-100 rounded-pill shadow-sm">
+                                    <i class="fa-solid fa-comments me-1"></i> Chat ($50)
+                                </button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
+
         }
     </div>
 </div>
+
+<!-- Toast container -->
+<div class="position-fixed end-0 p-3" style="top: 60px; z-index: 1080;">
+    <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="cartToastBody">
+                Added to cart!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+@* Render anti-forgery token so JS can pick it up for fetch POSTs *@
+@Html.AntiForgeryToken()
 
 <style>
     .btn-gradient-primary {
@@ -161,16 +217,20 @@
     }
 
     .doctor-card {
-        min-height: 380px; /* Reduced height for compact look */
+        min-height: 380px;
     }
 
     .product-card {
-        min-height: 320px; /* Slightly smaller for medicines */
+        min-height: 320px;
     }
 </style>
 
 <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    // All interactive JS now runs inside a single DOMContentLoaded handler
+    document.addEventListener("DOMContentLoaded", function () {
+        const antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]')?.value || '';
+
+        // ----- Add to cart -----
         const buttons = document.querySelectorAll('.add-to-cart-btn');
 
         buttons.forEach(button => {
@@ -178,27 +238,108 @@
                 const medicineId = this.dataset.medicineId;
 
                 try {
-                    const response = await fetch('/api/Cart/add', {
+                    const response = await fetch('/Cart/Add', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': antiForgeryToken
                         },
-                        body: JSON.stringify({ medicineId: parseInt(medicineId), quantity: 1 })
+                        body: JSON.stringify({ medicineId: parseInt(medicineId, 10), quantity: 1 })
                     });
 
                     const result = await response.json();
 
-                    if (result.success) {
-                        // Optional: show a toast or update cart count
-                        alert(`Added to cart! Total items in cart: ${result.totalItems}`);
+                    const toastEl = document.getElementById('cartToast');
+                    const toastBody = document.getElementById('cartToastBody');
+
+                    if (response.ok && result.success) {
+                        // Update cart count after adding item
+                        updateCartCount();
+
+                        // Show success toast
+                        toastBody.textContent = `Added to cart! Total items: ${result.totalItems ?? ''}`;
+                        const bsToast = new bootstrap.Toast(toastEl);
+                        bsToast.show();
                     } else {
-                        alert('Failed to add to cart.');
+                        // Show error toast
+                        toastBody.textContent = `Failed to add to cart. ${result && result.message ? result.message : ''}`;
+                        const bsToast = new bootstrap.Toast(toastEl);
+                        bsToast.show();
                     }
                 } catch (error) {
                     console.error(error);
-                    alert('Error adding to cart.');
+                    const toastEl = document.getElementById('cartToast');
+                    const toastBody = document.getElementById('cartToastBody');
+                    toastBody.textContent = `Error adding to cart.`;
+                    const bsToast = new bootstrap.Toast(toastEl);
+                    bsToast.show();
                 }
             });
         });
+
+        // ----- Start Chat Buttons -----
+        const chatButtons = document.querySelectorAll('.start-chat-btn');
+        chatButtons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const doctorId = this.dataset.doctorId;
+                const patientId = this.dataset.patientId;
+
+                if (!patientId) {
+                    if (confirm('Please log in to start a chat. Go to login page?')) {
+                        window.location.href = '/Account/Login';
+                    }
+                    return;
+                }
+
+                try {
+                    const res = await fetch('/api/Chat/GetOrCreateThread', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': antiForgeryToken
+                        },
+                        body: JSON.stringify({
+                            DoctorId: doctorId,
+                            PatientId: patientId
+                        })
+                    });
+
+                    if (!res.ok) {
+                        const text = await res.text();
+                        throw new Error('Server error: ' + text);
+                    }
+
+                    const data = await res.json();
+
+                    if (data.success && data.thread && data.thread.id) {
+                        // Redirect to Chat Page
+                        window.location.href = `/ChatPage/Index?threadId=${encodeURIComponent(data.thread.id)}`;
+                    } else {
+                        alert('Cannot start chat: ' + (data.message || 'Unknown error'));
+                    }
+                } catch (err) {
+                    console.error('Error starting chat:', err);
+                    alert('Cannot start chat. Please try again.');
+                }
+            });
+        });
+
+        // Initial cart count update
+        updateCartCount();
     });
+
+    async function updateCartCount() {
+        try {
+            const response = await fetch('/Cart/GetCartCount');
+            if (!response.ok) return;
+            const data = await response.json();
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = data.count ?? 0;
+                cartCountElement.style.display = (data.count && data.count > 0) ? 'block' : 'none';
+            }
+        } catch (error) {
+            console.error('Error updating cart count:', error);
+        }
+    }
 </script>

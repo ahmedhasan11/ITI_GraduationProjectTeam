@@ -1,0 +1,35 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@model OrderDetailsDto
+
+<div class="container mt-4">
+    <h2>Order Details</h2>
+    <p><strong>Order ID:</strong> @Model.Id</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Total:</strong> $@Model.Total.ToString("0.00")</p>
+    <p><strong>Date:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+
+    <h4>Items</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.MedicineName</td>
+                    <td>@item.Quantity</td>
+                    <td>$@item.UnitPrice</td>
+                    <td>$@(item.Quantity * item.UnitPrice)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
