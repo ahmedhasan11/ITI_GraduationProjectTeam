@@ -1,0 +1,460 @@
+﻿@using ITI_Hackathon.ServiceContracts.DTO
+@model List<AppointmentDto>
+
+@{
+    ViewData["Title"] = "My Appointments";
+}
+
+<div class="pc-content mx-5">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h2 class="mb-0">My Appointments</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- Filter Buttons and Add Button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="btn-group" role="group">
+            <a asp-action="MyAppointments" asp-route-filter="all"
+               class="btn btn-outline-primary @(ViewBag.Filter == "all" || ViewBag.Filter == null ? "active" : "")">
+                All Appointments
+            </a>
+            <a asp-action="MyAppointments" asp-route-filter="available"
+               class="btn btn-outline-primary @(ViewBag.Filter == "available" ? "active" : "")">
+                Available
+            </a>
+            <a asp-action="MyAppointments" asp-route-filter="booked"
+               class="btn btn-outline-primary @(ViewBag.Filter == "booked" ? "active" : "")">
+                Booked
+            </a>
+            <a asp-action="MyAppointments" asp-route-filter="completed"
+               class="btn btn-outline-primary @(ViewBag.Filter == "completed" ? "active" : "")">
+                Completed
+            </a>
+        </div>
+
+        <div class="d-flex">
+            <form asp-action="MyAppointments" method="get" class="d-flex me-2">
+                <input type="hidden" name="filter" value="@ViewBag.Filter" />
+                <input type="text" name="searchTerm" class="form-control me-2" style="width: 250px;"
+                       placeholder="Search by patient or date" value="@ViewBag.SearchTerm" />
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+            </form>
+
+            <!-- Button to trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
+                <i class="bi bi-plus-circle"></i> Add New Slot
+            </button>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="fa-solid fa-calendar-xmark fa-2x mb-2"></i>
+            <h5>No appointments found</h5>
+            <p>@(ViewBag.Filter != null ? $"No {ViewBag.Filter} appointments found." : "You don't have any appointments yet.")</p>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card table-card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Patient</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var appt in Model.Select((value, index) => new { value, index }))
+                                    {
+                                        <tr>
+                                            <td>@(appt.index + 1)</td>
+                                            <td>@appt.value.AppointmentDate.ToString("dd MMM yyyy")</td>
+                                            <td>@appt.value.StartTime.ToString(@"hh\:mm") - @appt.value.EndTime.ToString(@"hh\:mm")</td>
+                                            <td>@(appt.value.PatientName ?? "Not booked")</td>
+                                            <td>
+                                                @if (!appt.value.IsBooked)
+                                                {
+                                                    <span class="badge bg-warning">Available</span>
+                                                }
+                                                else if (!appt.value.IsCompleted)
+                                                {
+                                                    <span class="badge bg-primary">Booked</span>
+                                                }
+                                                else if (!appt.value.IsRated)
+                                                {
+                                                    <span class="badge bg-success">Completed</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-info">Rated</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (appt.value.IsBooked && !appt.value.IsCompleted)
+                                                {
+                                                    <button type="button" class="btn btn-success btn-sm me-1"
+                                                            data-bs-toggle="modal" data-bs-target="#completeConfirmationModal"
+                                                            data-appointment-id="@appt.value.Id">
+                                                        <i class="fa-solid fa-check"></i> Complete
+                                                    </button>
+                                                }
+
+                                                @if (!appt.value.IsBooked)
+                                                {
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                            data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal"
+                                                            data-appointment-id="@appt.value.Id">
+                                                        <i class="fa-solid fa-trash"></i> Delete
+                                                    </button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Add Appointment Modal -->
+<div class="modal fade" id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addAppointmentModalLabel">
+                    <i class="bi bi-plus-circle me-2"></i>Add New Appointment Slot
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="appointmentForm">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label for="appointmentDate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="appointmentDate" name="AppointmentDate"
+                               min="@DateTime.Today.ToString("yyyy-MM-dd")" required>
+                        <div class="invalid-feedback">Please select a valid date</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="startTime" class="form-label">Start Time</label>
+                                <input type="time" class="form-control" id="startTime" name="StartTime" required>
+                                <div class="invalid-feedback">Please select start time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="endTime" class="form-label">End Time</label>
+                                <input type="time" class="form-control" id="endTime" name="EndTime" required>
+                                <div class="invalid-feedback">Please select end time</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="validateTime" checked>
+                        <label class="form-check-label" for="validateTime">
+                            Validate time range
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="submitAppointmentBtn">
+                    <i class="bi bi-plus-circle me-1"></i>Add Slot
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Confirmation Modal -->
+<div class="modal fade" id="completeConfirmationModal" tabindex="-1" aria-labelledby="completeConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="completeConfirmationModalLabel">
+                    <i class="bi bi-check-circle me-2"></i>Confirm
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Mark as completed?</h5>
+                <p class="text-muted">Are you sure you want to complete this appointment?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="completeForm" method="post" asp-action="CompleteAppointment">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="completeAppointmentId" name="appointmentId" />
+                    <button type="submit" class="btn btn-success">Yes, Complete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">
+                    <i class="bi bi-exclamation-triangle me-2"></i>Confirm
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="bi bi-trash text-danger" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Delete Appointment?</h5>
+                <p class="text-muted">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post" asp-action="DeleteAppointment">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="deleteAppointmentId" name="appointmentId" />
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success/Error Toast Container -->
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Appointment Modal
+            const modal = new bootstrap.Modal(document.getElementById('addAppointmentModal'));
+            const form = document.getElementById('appointmentForm');
+            const submitBtn = document.getElementById('submitAppointmentBtn');
+
+            // Reset form when modal is shown
+            document.getElementById('addAppointmentModal').addEventListener('show.bs.modal', function() {
+                form.reset();
+                clearValidation();
+            });
+
+            // Time validation function
+            function validateTime() {
+                const startTime = document.getElementById('startTime').value;
+                const endTime = document.getElementById('endTime').value;
+
+                if (startTime && endTime && document.getElementById('validateTime').checked) {
+                    if (endTime <= startTime) {
+                        showToast('End time must be after start time!', 'error');
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // Clear validation errors
+            function clearValidation() {
+                document.querySelectorAll('.is-invalid').forEach(el => {
+                    el.classList.remove('is-invalid');
+                });
+            }
+
+            // Form validation
+            function validateForm() {
+                let isValid = true;
+                const inputs = ['appointmentDate', 'startTime', 'endTime'];
+
+                inputs.forEach(inputId => {
+                    const input = document.getElementById(inputId);
+                    if (!input.value) {
+                        input.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                return isValid && validateTime();
+            }
+
+            // Submit form
+            submitBtn.addEventListener('click', function() {
+                if (!validateForm()) return;
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Adding...';
+
+                const formData = new FormData(form);
+                const data = {
+                    DoctorId: '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value',
+                    AppointmentDate: formData.get('AppointmentDate'),
+                    StartTime: formData.get('StartTime'),
+                    EndTime: formData.get('EndTime')
+                };
+
+                fetch('@Url.Action("Add", "Appointment")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json().then(data => ({ status: response.status, data })))
+                .then(({ status, data }) => {
+                    if (status === 200) {
+                        showToast('Appointment slot added successfully!', 'success');
+                        setTimeout(() => {
+                            modal.hide();
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        showToast('Error: ' + (data.message || 'Failed to add appointment'), 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('An error occurred. Please try again.', 'error');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="bi bi-plus-circle me-1"></i>Add Slot';
+                });
+            });
+
+            // Show toast notification
+            function showToast(message, type) {
+                const toast = document.createElement('div');
+                toast.className = `toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0`;
+                toast.innerHTML = `
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2"></i>
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                `;
+
+                document.getElementById('toastContainer').appendChild(toast);
+                const bsToast = new bootstrap.Toast(toast, { autohide: true, delay: 5000 });
+                bsToast.show();
+
+                toast.addEventListener('hidden.bs.toast', () => toast.remove());
+            }
+
+            // Real-time validation
+            document.getElementById('appointmentDate').addEventListener('change', function() {
+                const selectedDate = new Date(this.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    showToast('Cannot select past dates!', 'error');
+                    this.value = '';
+                }
+            });
+
+            document.getElementById('endTime').addEventListener('change', validateTime);
+
+            // Delete Confirmation Modal
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+            const deleteForm = document.getElementById('deleteForm');
+            const deleteAppointmentIdInput = document.getElementById('deleteAppointmentId');
+
+            document.querySelectorAll('[data-bs-target="#deleteConfirmationModal"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    deleteAppointmentIdInput.value = this.getAttribute('data-appointment-id');
+                });
+            });
+
+            deleteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleFormSubmission(this, 'Deleting...', 'Appointment slot deleted successfully!');
+            });
+
+            // Complete Confirmation Modal
+            const completeModal = new bootstrap.Modal(document.getElementById('completeConfirmationModal'));
+            const completeForm = document.getElementById('completeForm');
+            const completeAppointmentIdInput = document.getElementById('completeAppointmentId');
+
+            document.querySelectorAll('[data-bs-target="#completeConfirmationModal"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    completeAppointmentIdInput.value = this.getAttribute('data-appointment-id');
+                });
+            });
+
+            completeForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleFormSubmission(this, 'Completing...', 'Appointment marked as completed successfully!');
+            });
+
+            // Generic form submission handler
+            function handleFormSubmission(form, loadingText, successMessage) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>${loadingText}`;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': document.querySelector(`#${form.id} input[name="__RequestVerificationToken"]`).value,
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(new FormData(form))
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showToast(successMessage, 'success');
+                        const modalId = form.id === 'deleteForm' ? 'deleteConfirmationModal' : 'completeConfirmationModal';
+                        bootstrap.Modal.getInstance(document.getElementById(modalId)).hide();
+                        setTimeout(() => location.reload(), 1500);
+                    } else {
+                        showToast('Operation failed.', 'error');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('An error occurred.', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                });
+            }
+        });
+    </script>
+}

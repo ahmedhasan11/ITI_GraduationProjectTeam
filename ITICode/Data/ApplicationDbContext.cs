@@ -19,6 +19,9 @@ namespace ITI_Hackathon.Data
         public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();
         public DbSet<Prescription> Prescriptions => Set<Prescription>();
         public DbSet<PrescriptionItem> PrescriptionItems => Set<PrescriptionItem>();
+        public DbSet<Consultation> DoctorPayments => Set<Consultation>();
+        public DbSet<Appointment> Appointments => Set<Appointment>();
+
 
         public DbSet<Consultation> DoctorPayments => Set<Consultation>();
 
@@ -122,6 +125,26 @@ namespace ITI_Hackathon.Data
                 .HasIndex(m => new { m.ThreadId, m.SentAt });
 
 
+
+            b.Entity<Consultation>()
+            .HasOne(c => c.Patient)
+            .WithMany()
+            .HasForeignKey(c => c.PatientId)
+            .OnDelete(DeleteBehavior.Restrict); // Important: Don't cascade delete if user is deleted
+
+            b.Entity<Consultation>()
+                .HasOne(c => c.Doctor)
+                .WithMany()
+                .HasForeignKey(c => c.DoctorId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            b.Entity<Appointment>()
+            .HasOne(a => a.Doctor)
+            .WithMany()
+            .HasForeignKey(a => a.DoctorId)
+            .OnDelete(DeleteBehavior.Restrict);
+        }
+
 			b.Entity<Consultation>()
 	        .HasOne(c => c.Patient)
 	        .WithMany()
@@ -134,5 +157,6 @@ namespace ITI_Hackathon.Data
 				.HasForeignKey(c => c.DoctorId)
 				.OnDelete(DeleteBehavior.Restrict);
 		}
+
     }
 }

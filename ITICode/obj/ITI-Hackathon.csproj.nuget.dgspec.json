@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Working\\GitHub\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj": {}
+    "D:\\Working\\GitHub\\BACK END\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj": {}
   },
   "projects": {
-    "D:\\Working\\GitHub\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj": {
+    "D:\\Working\\GitHub\\BACK END\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Working\\GitHub\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj",
+        "projectUniqueName": "D:\\Working\\GitHub\\BACK END\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj",
         "projectName": "ITI-Hackathon",
-        "projectPath": "D:\\Working\\GitHub\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj",
+        "projectPath": "D:\\Working\\GitHub\\BACK END\\ITI_GraduationProjectTeam\\ITICode\\ITI-Hackathon.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\Working\\GitHub\\ITI_GraduationProjectTeam\\ITICode\\obj\\",
+        "outputPath": "D:\\Working\\GitHub\\BACK END\\ITI_GraduationProjectTeam\\ITICode\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[9.0.8, )"
             },
+            "Microsoft.AspNetCore.SignalR.Common": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.6, )"
@@ -70,6 +74,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[9.0.6, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[48.5.0, )"
             }
           },
           "imports": [

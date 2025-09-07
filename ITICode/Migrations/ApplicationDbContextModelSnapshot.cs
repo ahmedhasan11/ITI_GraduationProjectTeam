@@ -22,6 +22,57 @@ namespace ITI_Hackathon.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("BookedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRated")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PatientId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Appointments");
+                });
+
             modelBuilder.Entity("ITI_Hackathon.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -599,6 +650,23 @@ namespace ITI_Hackathon.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Appointment", b =>
+                {
+                    b.HasOne("ITI_Hackathon.Entities.ApplicationUser", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ITI_Hackathon.Entities.ApplicationUser", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("ITI_Hackathon.Entities.ApplicationUser", b =>

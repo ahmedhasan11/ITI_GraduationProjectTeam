@@ -2,7 +2,10 @@ using System.Diagnostics;
 using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models;
 using ITI_Hackathon.ServiceContracts;
+
+
 using ITI_Hackathon.ServiceContracts;
+
 using ITI_Hackathon.ServiceContracts.DTO;
 using ITI_Hackathon.Services;
 using Medicine_Mvc.Services;
@@ -14,13 +17,15 @@ namespace ITI_Hackathon.Controllers
     {
         private readonly IDoctorService _doctorService;
         private readonly IMedicineService _medicineService;
+        private readonly IAppointmentService _appointmentService;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IMedicineService medicineService, IDoctorService doctorService)
+        public HomeController(ILogger<HomeController> logger, IMedicineService medicineService, IDoctorService doctorService, IAppointmentService appointmentService)
         {
             _logger = logger;
             _medicineService = medicineService;
             _doctorService = doctorService;
+            _appointmentService = appointmentService;
 
         }
 
@@ -48,6 +53,25 @@ namespace ITI_Hackathon.Controllers
 
 			return View(Doctors);
         }
+
+
+        public async Task<IActionResult> DoctorDetails(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+                return BadRequest("Doctor UserId is required");
+
+            var doctor = await _doctorService.GetDoctorDetails(userId);
+
+            if (doctor == null)
+                return NotFound("Doctor not found");
+
+            var availableAppointments = await _appointmentService.GetAvailableAppointmentsAsync(userId);
+            doctor.AvailableAppointments = availableAppointments;
+
+            return View(doctor);
+        }
+
+
 
         public IActionResult Privacy()
         {

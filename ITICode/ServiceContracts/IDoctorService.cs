@@ -30,6 +30,8 @@ namespace ITI_Hackathon.ServiceContracts
 		Task<string> RejectDoctorAsync(string userId);
 		Task<bool> EditDoctorRoleAsyncc(DoctorEditRoleDTO dto);
 		Task<string> DeleteDoctorAsync(string userId);
+		Task<DoctorApprovedDTO> GetDoctorDetails(string UserId);
+
 	}
 }
 

@@ -1,0 +1,114 @@
+﻿@model ITI_Hackathon.ServiceContracts.DTO.AppointmentDto
+
+@{
+    ViewData["Title"] = "Add New Appointment Slot";
+}
+
+<div class="pc-content">
+    
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Appointment Details</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Add" method="post" id="appointmentForm">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label asp-for="AppointmentDate" class="form-label">Date</label>
+                            <input asp-for="AppointmentDate" type="date" class="form-control"
+                                   min="@DateTime.Today.ToString("yyyy-MM-dd")" required
+                                   id="appointmentDate" name="AppointmentDate">
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="StartTime" class="form-label">Start Time</label>
+                                    <input asp-for="StartTime" type="time" class="form-control" required
+                                           id="startTime" name="StartTime">
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="EndTime" class="form-label">End Time</label>
+                                    <input asp-for="EndTime" type="time" class="form-control" required
+                                           id="endTime" name="EndTime">
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <i class="bi bi-plus-circle"></i> Add Appointment Slot
+                            </button>
+                            <a asp-action="MyAppointments" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('appointmentForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...';
+
+                const doctorId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
+                const formData = new FormData(form);
+                const data = {
+                    DoctorId: doctorId,
+                    AppointmentDate: formData.get('AppointmentDate'),
+                    StartTime: formData.get('StartTime'),
+                    EndTime: formData.get('EndTime')
+                };
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json().then(d => ({ status: response.status, data: d })))
+                    .then(({ status, data }) => {
+                        if (status === 200) {
+                            window.location.href = '/Appointment/MyAppointments';
+                        } else {
+                            alert('Error: ' + (data.message || 'Failed to add appointment'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please check console for details.');
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add Appointment Slot';
+                    });
+            });
+        });
+    </script>
+}
