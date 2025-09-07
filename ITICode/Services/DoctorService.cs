@@ -18,8 +18,8 @@ namespace ITI_Hackathon.Services
 		}
 		public async Task<IEnumerable<DoctorApprovedDTO>> GetApprovedDoctorsAsync()
 		{
-            IEnumerable<DoctorApprovedDTO> DoctorsApproved = await _context.Doctors.Include(d => d.User)
-				.Where(d => d.IsApproved == true&&d.User.IsDoctor==true)
+			IEnumerable<DoctorApprovedDTO> DoctorsApproved = await _context.Doctors.Include(d => d.User)
+				.Where(d => d.IsApproved == true && d.User.IsDoctor == true)
 				.Select(d => new DoctorApprovedDTO
 				{
 					UserId = d.UserId,
@@ -38,16 +38,16 @@ namespace ITI_Hackathon.Services
 
 		public async Task<IEnumerable<DoctorPendingDTO>> GetPendningDoctorsAsync()
 		{
-            IEnumerable<DoctorPendingDTO> DoctorsPending = await _context.Doctors.Include(d => d.User)
-				.Where(d=>d.IsApproved==false)
+			IEnumerable<DoctorPendingDTO> DoctorsPending = await _context.Doctors.Include(d => d.User)
+				.Where(d => d.IsApproved == false)
 				.Select(d => new DoctorPendingDTO()
 				{
-					UserId=d.UserId,
-					FullName=d.User.FullName,
-					Email=d.User.Email,
-					Specialty=d.Specialty,
-					Bio=d.Bio,
-					LicenseNumber=d.LicenseNumber
+					UserId = d.UserId,
+					FullName = d.User.FullName,
+					Email = d.User.Email,
+					Specialty = d.Specialty,
+					Bio = d.Bio,
+					LicenseNumber = d.LicenseNumber
 				}).ToListAsync();
 			return DoctorsPending;
 		}
@@ -57,7 +57,7 @@ namespace ITI_Hackathon.Services
 				.Include(d => d.User)
 				.FirstOrDefaultAsync(d => d.UserId == userId);
 
-			if (doctor==null)
+			if (doctor == null)
 			{
 				return "Doctor not found";
 			}
@@ -75,7 +75,7 @@ namespace ITI_Hackathon.Services
 		public async Task<string> RejectDoctorAsync(string userId)
 		{
 			var doctor = await _context.Doctors.Include(d => d.User).FirstOrDefaultAsync(d => d.UserId == userId);
-			if (doctor==null)
+			if (doctor == null)
 			{
 				return "doctor not found";
 			}
@@ -89,12 +89,12 @@ namespace ITI_Hackathon.Services
 		}
 		public async Task<string> DeleteDoctorAsync(string userId)
 		{
-			var doctor = await _context.Doctors.Include(d=>d.User).FirstOrDefaultAsync(d => d.UserId == userId);
-			if (doctor==null)
+			var doctor = await _context.Doctors.Include(d => d.User).FirstOrDefaultAsync(d => d.UserId == userId);
+			if (doctor == null)
 			{
 				return "doctor not found";
 			}
-			 _context.Doctors.Remove(doctor);
+			_context.Doctors.Remove(doctor);
 			var user = await _context.Users.FindAsync(userId);
 			if (user != null)
 			{
@@ -108,8 +108,8 @@ namespace ITI_Hackathon.Services
 		//we need to convert thedoctor profile obj -->to patientprofile if changedtopatient
 		public async Task<bool> EditDoctorRoleAsyncc(DoctorEditRoleDTO dto)
 		{
-			var user =await  _userManager.FindByIdAsync(dto.UserId);
-			if (user==null)
+			var user = await _userManager.FindByIdAsync(dto.UserId);
+			if (user == null)
 			{
 				return false;
 			}
@@ -117,7 +117,7 @@ namespace ITI_Hackathon.Services
 			var currentRoles = await _userManager.GetRolesAsync(user);
 			await _userManager.RemoveFromRolesAsync(user, currentRoles);
 
-			if (dto.NewRole=="Doctor")
+			if (dto.NewRole == "Doctor")
 			{
 				await _userManager.AddToRoleAsync(user, "Doctor");
 				user.IsDoctor = true;
@@ -132,5 +132,29 @@ namespace ITI_Hackathon.Services
 			await _userManager.UpdateAsync(user);
 			return true;
 		}
+		public async Task<DoctorApprovedDTO> GetDoctorDetails(string userId)
+        {
+            var doctor = await _context.Doctors
+                .Include(d => d.User)
+                .FirstOrDefaultAsync(d => d.UserId == userId);
+
+            if (doctor == null)
+                return null;
+
+            // Map to DTO
+            var doctorDto = new DoctorApprovedDTO
+            {
+                UserId = doctor.UserId,
+                FullName = doctor.User.FullName,
+                Email = doctor.User.Email,
+                Bio = doctor.Bio,
+                Specialty = doctor.Specialty,
+                LicenseNumber = doctor.LicenseNumber,
+                Rating = doctor.Rating,
+                AvailableAppointments = new List<AppointmentDto>() 
+            };
+
+            return doctorDto;
+        }
 	}
 }

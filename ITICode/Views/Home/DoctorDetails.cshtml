@@ -1,0 +1,267 @@
+﻿@model ITI_Hackathon.ServiceContracts.DTO.DoctorApprovedDTO
+
+
+<div class="container mt-5">
+
+<div class="row">
+    <!-- [ doctor-details-page ] start -->
+    <div class="col-sm-12">
+        <div class="card" style="border-radius:5px;">
+            <div class="card-body">
+                <div class="row">
+                    <!-- Doctor Image -->
+                    <div class="col-md-5 text-center">
+                        <img src="../assets/images/application/prod-img-1.png"
+                             alt="Doctor Image"
+                             class="img-fluid"
+                             style="max-width:250px; border-radius:5px; margin-bottom:15px;">
+                    </div>
+
+                    <!-- Doctor Details -->
+                    <div class="col-md-7">
+                        <h3 class="my-2">@Model.FullName</h3>
+                        <div class="mb-2"><strong>Specialty:</strong> @Model.Specialty</div>
+                        <div class="mb-2"><strong>License Number:</strong> @Model.LicenseNumber</div>
+                        <div class="mb-2"><strong>Email:</strong> @Model.Email</div>
+                        <div class="mb-2"><strong>Phone:</strong> 010033551242</div>
+
+                        @if (!string.IsNullOrEmpty(Model.Bio))
+                        {
+                            <p class="text-muted mt-2">@Model.Bio</p>
+                        }
+
+                        <!-- Rating -->
+                        <div class="mb-2">
+                            <strong>Rating:</strong>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= Math.Floor(Model.Rating))
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                                else if (i - 0.5 <= Model.Rating)
+                                {
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                }
+                                else
+                                {
+                                    <i class="far fa-star text-muted"></i>
+                                }
+                            }
+                            <span class="text-muted">(@Model.Rating.ToString("0.0"))</span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-2 mt-3">
+                            <button type="button" class="btn btn-primary flex-fill" onclick="startChat('@Model.UserId')">
+                                <i class="fas fa-comment-dots me-1"></i>Chat
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary flex-fill">
+                                <i class="fas fa-arrow-left me-1"></i>Back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ doctor-details-page ] end -->
+</div>
+
+<!-- Available Appointments Section -->
+<div class="row mt-4">
+    <div class="col-12">
+        <h5 class="mb-3">Available Appointments</h5>
+    </div>
+
+    @if (Model.AvailableAppointments != null && Model.AvailableAppointments.Any(a => !a.IsBooked && !a.IsCompleted))
+    {
+        @foreach (var appointment in Model.AvailableAppointments.Where(a => !a.IsBooked && !a.IsCompleted))
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Card Header -->
+                    <div class="card-header bg-primary text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">Dr. @Model.FullName</h6>
+                            <span class="badge bg-light text-dark">@Model.Specialty</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>
+                                @appointment.AppointmentDate.ToString("dd MMM yyyy")
+                            </small>
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                @appointment.StartTime.ToString(@"hh\:mm") - @appointment.EndTime.ToString(@"hh\:mm")
+                            </small>
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="fas fa-star me-1"></i>
+                                Rating: @Model.Rating.ToString("0.0")/5
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer -->
+                    <div class="card-footer bg-transparent">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-controller="Appointment" asp-action="Book" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="appointmentId" value="@appointment.Id" />
+                                <button type="submit" class="btn btn-success btn-sm w-100">
+                                    <i class="fas fa-calendar-check"></i> Book Now
+                                </button>
+                            </form>
+
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-success btn-sm w-100">
+                                <i class="fas fa-sign-in-alt me-1"></i> Login to Book
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="card text-center py-5">
+                <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No Available Appointments</h5>
+                <p class="text-muted">This doctor doesn't have any available appointments at the moment.</p>
+                @if (User.IsInRole("Doctor") && User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == Model.UserId)
+                {
+                    <a asp-controller="Appointment" asp-action="Create" class="btn btn-primary mt-2">
+                        <i class="fas fa-plus me-1"></i>Add Appointments
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
+</div>
+
+@section Scripts {
+    <script>
+        function startChat(doctorId) {
+            @if (User.Identity.IsAuthenticated)
+            {
+                    <text>
+                    const patientId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
+                    if (patientId) {
+                        window.location.href = `/ChatPage/Index?doctorId=${doctorId}`;
+                    } else {
+                        alert('Please log in to start a chat.');
+                        window.location.href = '/Identity/Account/Login';
+                    }
+                    </text>
+            }
+            else
+            {
+                    <text>
+                    alert('Please log in to start a chat.');
+                    window.location.href = '/Identity/Account/Login';
+                    </text>
+            }
+        }
+
+        async function bookAppointment(appointmentId, doctorId) {
+            if (!confirm('Are you sure you want to book this appointment?')) return;
+
+            try {
+                const patientId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
+
+                if (!patientId) {
+                    alert('Please log in to book an appointment.');
+                    window.location.href = '/Identity/Account/Login';
+                    return;
+                }
+
+                console.log('Booking appointment:', { appointmentId, patientId });
+
+                const response = await fetch('/api/Appointment/Book', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+                    },
+                    body: JSON.stringify({
+                        AppointmentId: appointmentId,
+                        PatientId: patientId
+                    })
+                });
+
+                console.log('Response status:', response.status);
+
+                const result = await response.json();
+                console.log('Response result:', result);
+
+                if (result.success) {
+                    alert('Appointment booked successfully!');
+                    location.reload();
+                } else {
+                    alert('Failed to book appointment: ' + (result.message || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error details:', error);
+                alert('Error booking appointment. Please check console for details.');
+            }
+        }
+
+        async function checkApiAvailability() {
+            try {
+                const response = await fetch('/api/Appointment/Book', {
+                    method: 'OPTIONS'
+                });
+                console.log('API availability check:', response.status);
+            } catch (error) {
+                console.error('API not available:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkApiAvailability();
+        });
+    </script>
+
+    <style>
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #dee2e6;
+        }
+
+            .card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+        .border-success {
+            border: 2px solid #198754 !important;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #198754, #0f5132);
+            border: none;
+        }
+
+            .btn-success:hover {
+                background: linear-gradient(135deg, #0f5132, #198754);
+                transform: translateY(-1px);
+            }
+    </style>
+}
+}
