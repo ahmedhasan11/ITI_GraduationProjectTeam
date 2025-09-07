@@ -1,7 +1,11 @@
 ﻿@using ITI_Hackathon.ServiceContracts
 @model ITI_Hackathon.Models.HomeIndexViewModel
 @inject IConsultationService ConsultationService
+
 @using System.Security.Claims
+
+@using System.Security.Claims 
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -142,6 +146,7 @@
                         </p>
                     </div>
 
+
                     <!-- Card Footer Buttons -->
                     <div class="d-flex justify-content-center gap-2 px-2 mt-auto">
                         <a asp-controller="Home"
@@ -174,6 +179,36 @@
                                 </button>
                             </form>
                         }
+
+                        <div class="d-flex justify-content-center gap-2 px-2">
+                            <a href="/Booking/Create/@d.UserId" class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                <i class="fa-solid fa-calendar-check me-1"></i> Book
+                            </a>
+
+                            @{
+                                var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
+                            }
+
+                            @if (hasPaid)
+                            {
+                                <!-- If already paid, show direct chat link -->
+                                <a href="/Chat/ChatWithDoctor?doctorId=@d.UserId" class="btn btn-success btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                    <i class="fa-solid fa-comments me-1"></i> Chat Now
+                                </a>
+                            }
+                            else
+                            {
+                                <!-- If NOT paid, show form that goes to Stripe -->
+                                <form asp-controller="Payment" asp-action="CreateConsultationCheckout" method="post" class="d-inline">
+                                    <input type="hidden" name="doctorId" value="@d.UserId" />
+                                    <button type="submit" class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                        <i class="fa-solid fa-comments me-1"></i> Chat ($50)
+                                    </button>
+                                </form>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -226,11 +261,15 @@
 </style>
 
 <script>
+
     // All interactive JS now runs inside a single DOMContentLoaded handler
     document.addEventListener("DOMContentLoaded", function () {
         const antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]')?.value || '';
 
         // ----- Add to cart -----
+
+    document.addEventListener("DOMContentLoaded", function () {
+
         const buttons = document.querySelectorAll('.add-to-cart-btn');
 
         buttons.forEach(button => {
@@ -249,6 +288,7 @@
 
                     const result = await response.json();
 
+
                     const toastEl = document.getElementById('cartToast');
                     const toastBody = document.getElementById('cartToastBody');
 
@@ -260,6 +300,14 @@
                         toastBody.textContent = `Added to cart! Total items: ${result.totalItems ?? ''}`;
                         const bsToast = new bootstrap.Toast(toastEl);
                         bsToast.show();
+
+                    if (result.success) {
+                        // Update cart count after adding item
+                        updateCartCount();
+
+                        // Show success message
+                        alert(`Added to cart! Total items: ${result.totalItems}`);
+
                     } else {
                         // Show error toast
                         toastBody.textContent = `Failed to add to cart. ${result && result.message ? result.message : ''}`;

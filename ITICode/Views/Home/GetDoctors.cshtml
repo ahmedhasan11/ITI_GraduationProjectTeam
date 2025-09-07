@@ -4,6 +4,7 @@
 @inject IConsultationService ConsultationService
 @using System.Security.Claims
 @{
+
     ViewData["Title"] = "Doctors Page";
 }
 @using ITI_Hackathon.Entities
@@ -12,6 +13,12 @@
 @{
     var userId = UserManager.GetUserId(User);
 }
+<div class="container mt-5">
+
+
+    ViewData["Title"] = "Home Page";
+}
+
 <div class="container mt-5">
 
     <!-- Doctors Section -->
@@ -37,12 +44,16 @@
                     <!-- Card Body -->
                     <div class="card-body mt-2 p-2">
                         <h5 class="fw-bold mb-1 fs-6">
+
                             <a asp-controller="Home"
                                asp-action="DoctorDetails"
                                asp-route-userId="@d.UserId"
                                class="text-dark text-decoration-none">
                                 @d.FullName
                             </a>
+
+                            <a href="/Doctors/Details/@d.UserId" class="text-dark text-decoration-none">@d.FullName</a>
+
                         </h5>
 
                         <p class="small text-muted mb-1">
@@ -77,29 +88,44 @@
                         </p>
 
                         <div class="d-flex justify-content-center gap-2 px-2">
+
                             <a asp-controller="Home"
                                asp-action="DoctorDetails"
                                asp-route-userId="@d.UserId"
                                class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+
+                            <a href="/Booking/Create/@d.UserId" class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+
                                 <i class="fa-solid fa-calendar-check me-1"></i> Book
                             </a>
 
                             @{
 
+
                                 var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                 // If you need to check payment status, determine it on the server and pass it via the model.
                                 bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
                                 // bool hasPaid = true; <--- replace with server-side logic
+
+                                var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
+
                             }
 
                             @if (hasPaid)
                             {
                                 <!-- If already paid, show direct chat link -->
+
                                 <button class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm start-chat-btn"
                                         data-doctor-id="@d.UserId"
                                         data-patient-id="@userId">
                                     <i class="fa-solid fa-comments me-1"></i> Chat Now
                                 </button>
+
+                                <a href="/Chat/ChatWithDoctor?doctorId=@d.UserId" class="btn btn-success btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                    <i class="fa-solid fa-comments me-1"></i> Chat Now
+                                </a>
+
                             }
                             else
                             {
@@ -119,8 +145,10 @@
     </div>
 </div>
 
+
 @* Render anti-forgery token so JS can pick it up for fetch POSTs *@
 @Html.AntiForgeryToken()
+
 
 <style>
     .btn-gradient-primary {
@@ -142,15 +170,24 @@
     }
 
     .doctor-card {
+
         min-height: 380px;
     }
 
     .product-card {
         min-height: 320px;
+
+        min-height: 380px; /* Reduced height for compact look */
+    }
+
+    .product-card {
+        min-height: 320px; /* Slightly smaller for medicines */
+
     }
 </style>
 
 <script>
+
     // All interactive JS now runs inside a single DOMContentLoaded handler
     document.addEventListener("DOMContentLoaded", function () {
         // ----- Start Chat Buttons -----
@@ -202,6 +239,40 @@
 
         // Initial cart count update
         updateCartCount();
+    });
+</script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll('.add-to-cart-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const medicineId = this.dataset.medicineId;
+
+                try {
+                    const response = await fetch('/Cart/add', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ medicineId: parseInt(medicineId), quantity: 1 })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Optional: show a toast or update cart count
+                        alert(`Added to cart! Total items in cart: ${result.totalItems}`);
+                    } else {
+                        alert('Failed to add to cart.');
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert('Error adding to cart.');
+                }
+            });
+        });
     });
 </script>
 

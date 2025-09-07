@@ -4,6 +4,10 @@ using ITI_Hackathon.Models;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.Services;
 using ITI_Hackathon.Stripe;
+
+
+using ITI_Hackathon.Stripe;
+
 using Medicine_Mvc.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +27,13 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+
 builder.Services.AddSignalR(options =>
 {
     options.EnableDetailedErrors = true;
 });
+
+
 
 // Add Razor Pages support (needed for Identity UI scaffolding)
 builder.Services.AddRazorPages();
@@ -36,8 +43,10 @@ builder.Services.AddScoped<IMedicineService, MedicineService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
+
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IChatService, ChatService>();
+
 
 
 

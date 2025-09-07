@@ -4,6 +4,11 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="container mt-5">
+
+
+
 <div class="container mt-5">
 
     <!-- Medicines Section -->
@@ -77,6 +82,7 @@
 @* Render anti-forgery token so JS can pick it up for fetch POSTs *@
 @Html.AntiForgeryToken()
 
+
 <style>
     .btn-gradient-primary {
         background: linear-gradient(135deg, #4a90e2, #007bff);
@@ -97,20 +103,54 @@
     }
 
     .doctor-card {
+
         min-height: 380px;
     }
 
     .product-card {
         min-height: 320px;
+
+        min-height: 380px; /* Reduced height for compact look */
+    }
+
+    .product-card {
+        min-height: 320px; /* Slightly smaller for medicines */
+    }
+
+    .dropdown-cart {
+        min-width: 320px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .dropdown-item-cart {
+        padding: 0.75rem 1rem;
+        transition: background-color 0.2s;
+    }
+
+        .dropdown-item-cart:hover {
+            background-color: #f8f9fa;
+        }
+
+    #cart-count {
+        font-size: 0.7rem;
+        padding: 0.25em 0.5em;
+        min-width: 1.5em;
+        height: 1.5em;
+
     }
 </style>
 
 <script>
+
     // All interactive JS now runs inside a single DOMContentLoaded handler
     document.addEventListener("DOMContentLoaded", function () {
         const antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]')?.value || '';
 
         // ----- Add to cart -----
+
+    document.addEventListener("DOMContentLoaded", function () {
+
         const buttons = document.querySelectorAll('.add-to-cart-btn');
 
         buttons.forEach(button => {
@@ -121,10 +161,16 @@
                     const response = await fetch('/Cart/Add', {
                         method: 'POST',
                         headers: {
+
                             'Content-Type': 'application/json',
                             'RequestVerificationToken': antiForgeryToken
                         },
                         body: JSON.stringify({ medicineId: parseInt(medicineId, 10), quantity: 1 })
+
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ medicineId: parseInt(medicineId), quantity: 1 })
+
                     });
 
                     const result = await response.json();
@@ -174,5 +220,24 @@
             console.error('Error updating cart count:', error);
         }
     }
+</script>
+
+
+                    if (result.success) {
+                        // Update cart count after adding item
+                        updateCartCount();
+
+                        // Show success message
+                        alert(`Added to cart! Total items: ${result.totalItems}`);
+                    } else {
+                        alert('Failed to add to cart.');
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert('Error adding to cart.');
+                }
+            });
+        });
+    });
 </script>
 

@@ -1,3 +1,4 @@
+
 ﻿    @using ITI_Hackathon.Entities
     @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
@@ -94,10 +95,81 @@
                             </li>
                         }
 
+
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mantis HTML Admin Template | Mantis Bootstrap 5 Admin Template</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+    <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
+    <meta name="author" content="CodedThemes">
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+    <!-- [Page specific CSS] start -->
+    <link href="~/assets/css/plugins/animate.min.css" rel="stylesheet" type="text/css">
+    <!-- [Page specific CSS] end -->
+    <!-- [Google Font] Family -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="~/assets/fonts/tabler-icons.min.css">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="~/assets/fonts/feather.css">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome.css">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="~/assets/fonts/material.css">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="~/assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="~/assets/css/style-preset.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+        <!-- Header -->
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm border-0"
+         style="background: linear-gradient(135deg, #ffffff, #f0f4ff); backdrop-filter: blur(10px);">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center fs-4" href="/" aria-label="Mediux Home">
+                Mediux
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a asp-action="GetMedicines" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Medicines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="GetDoctors" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Doctors</a>
+                    </li>
+                </ul>
+
+                <!-- Right side -->
+                <ul class="navbar-nav align-items-center ms-lg-3">
+
                         <!-- Cart -->
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark fs-5 position-relative" href="#" id="cartDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
+
                                 <i class="ti ti-shopping-cart"></i>
                                 <span id="cart-count"
                                       class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill shadow-sm">
@@ -109,11 +181,26 @@
                                 <li class="mb-2 text-center fw-semibold">Your Cart</li>
                                 <li>
                                     <div id="cart-items" class="d-flex flex-column gap-2 text-center p-3">
+
+                                <i class="ti ti-shopping-cart fs-5"></i>
+                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill shadow-sm">
+                                    0 <!-- This will be updated by JavaScript -->
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-cart shadow-lg" aria-labelledby="cartDropdown">
+                                <div class="dropdown-cart-header">
+                                    <h6 class="mb-0">Shopping Cart</h6>
+                                </div>
+                                <div class="dropdown-cart-body" id="cart-dropdown-content">
+                                    <!-- Cart items will be loaded here dynamically -->
+                                    <div class="text-center p-3">
+
                                         <div class="spinner-border spinner-border-sm text-primary" role="status">
                                             <span class="visually-hidden">Loading...</span>
                                         </div>
                                         <span class="ms-2">Loading cart...</span>
                                     </div>
+
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
@@ -182,8 +269,16 @@
                                     <li><a class="dropdown-item" href="/Account/Register"><i class="ti ti-user-plus me-2 text-success"></i> Register</a></li>
                                 }
                             </ul>
+
+                                </div>
+                                <div class="dropdown-cart-footer">
+                                    <a href="/Cart" class="btn btn-primary w-100">View Cart</a>
+                                </div>
+                            </div>
+
                         </li>
                     </ul>
+
 
                     <!-- Mobile Menu -->
                     <ul class="navbar-nav d-lg-none text-center mt-3">
@@ -252,6 +347,110 @@
                             </ul>
                         </li>
                     </ul>
+
+                    <!-- Profile -->
+                        <a asp-action="Login" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Login</a>
+                        <a asp-action="Register" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Register</a>
+                    <li class="nav-item dropdown"> 
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                           id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="~/assets/images/user/avatar-2.jpg" alt="User" width="36" height="36"
+                                 class="rounded-circle border border-light shadow-sm me-2">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 p-2"
+                            aria-labelledby="userDropdown"
+                            style="transition: all 0.3s ease;">
+                            <li><a class="dropdown-item d-flex align-items-center" href="/Profile">
+                                <i class="ti ti-user me-2 text-primary"></i>Profile
+                            </a></li>
+                            <li><a class="dropdown-item d-flex align-items-center" href="/Settings">
+                                <i class="ti ti-settings me-2 text-warning"></i>Settings
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item d-flex align-items-center text-danger fw-semibold" href="/Account/Logout">
+                                <i class="ti ti-power me-2"></i>Logout
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+    /* Animated underline hover */
+    .underline-hover {
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .underline-hover::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 2px;
+        background: #007bff; /* underline color */
+        border-radius: 2px;
+        transition: width 0.3s ease;
+    }
+
+    .underline-hover:hover::after {
+        width: 100%;
+    }
+
+    .underline-hover:hover {
+        color: #007bff;
+    }
+
+    /* Dropdown Hover */
+    .dropdown-menu a.dropdown-item:hover {
+        background-color: #f0f4ff;
+        color: #007bff !important;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+    }
+
+        .dropdown-cart {
+            min-width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dropdown-item-cart {
+            padding: 0.75rem 1rem;
+            transition: background-color 0.2s;
+        }
+
+            .dropdown-item-cart:hover {
+                background-color: #f8f9fa;
+            }
+
+        #cart-count {
+            font-size: 0.7rem;
+            padding: 0.25em 0.5em;
+            min-width: 1.5em;
+            height: 1.5em;
+        }
+</style>
+
+
+    <!-- Main Content -->
+    <main class=" py-5 mt-4 flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top mt-auto py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <h5 class="fw-bold text-primary mb-1">Mediux</h5>
+                    <small class="text-muted">Your trusted medical platform.</small>
+
                 </div>
             </div>
         </nav>
@@ -350,6 +549,7 @@
                     <small class="text-muted">© @DateTime.Now.Year Mediux. All rights reserved.</small>
                 </div>
             </div>
+
         </footer>
 
         <!-- Scripts -->
@@ -376,6 +576,75 @@
                     }
                 } catch (error) {
                     console.error('Error updating cart count:', error);
+
+            <hr class="my-3">
+            <div class="text-center">
+                <small class="text-muted">© @DateTime.Now.Year Mediux. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/assets/js/plugins/popper.min.js"></script>
+    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/simplebar.min.js"></script>
+    <script src="~/assets/js/plugins/feather.min.js"></script>
+    <script src="~/assets/js/pcoded.js"></script>
+
+    <!-- Active Link Script -->
+    <script>
+                // Function to update cart count
+        async function updateCartCount() {
+            try {
+                const response = await fetch('/Cart/GetCartCount');
+                const data = await response.json();
+
+                const cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = data.count;
+
+                    // Show/hide badge based on count
+                    if (data.count > 0) {
+                        cartCountElement.style.display = 'block';
+                    } else {
+                        cartCountElement.style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.error('Error updating cart count:', error);
+            }
+        }
+
+        // Function to update cart dropdown content
+        async function updateCartDropdown() {
+            try {
+                const response = await fetch('/Cart/GetCartItemsDropdown');
+                const cartDropdown = document.getElementById('cart-dropdown-content');
+
+                if (cartDropdown) {
+                    cartDropdown.innerHTML = await response.text();
+                }
+            } catch (error) {
+                console.error('Error updating cart dropdown:', error);
+            }
+        }
+
+        // Update cart when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateCartDropdown();
+        });
+
+        // Optional: Update cart when dropdown is shown
+        document.getElementById('cartDropdown')?.addEventListener('show.bs.dropdown', function() {
+            updateCartDropdown();
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPath = location.pathname;
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active', 'bg-primary', 'text-white');
+
                 }
             }
 
