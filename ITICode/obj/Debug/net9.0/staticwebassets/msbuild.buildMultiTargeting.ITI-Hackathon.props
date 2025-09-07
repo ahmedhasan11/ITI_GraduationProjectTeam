@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\ITI-Hackathon.props" />
-</Project>
