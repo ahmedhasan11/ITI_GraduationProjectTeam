@@ -27,7 +27,10 @@ namespace ITI_Hackathon.Services
                 MedicineId = c.MedicineId,
                 MedicineName = c.Medicine.Name,
                 UnitPrice = c.Medicine.Price,
-                Quantity = c.Quantity
+                Quantity = c.Quantity,
+                ImageUrl=c.Medicine.ImageUrl
+                
+
             }).ToList();
         }
 

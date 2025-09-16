@@ -20,7 +20,6 @@ namespace ITI_Hackathon.Entities
 
         [MaxLength(250)]
         public string? Address { get; set; }
-
         public ApplicationUser User { get; set; } = default!;
     }
 

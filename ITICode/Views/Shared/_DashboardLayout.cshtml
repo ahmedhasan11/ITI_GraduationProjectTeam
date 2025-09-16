@@ -1,252 +1,756 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-<!-- [Head] start -->
-
 <head>
-    <title>Home | Mantis Bootstrap 5 Admin Template</title>
-    <!-- [Meta] -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description"
-          content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
-    <meta name="keywords"
-          content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
-    <meta name="author" content="CodedThemes">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - ClickClinic</title>
 
-    <!-- [Favicon] icon -->
-    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon"> 
-    <!-- [Google Font] Family -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
-          id="main-font-link">
-    <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="~/assets/fonts/tabler-icons.min.css">
-    <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="~/assets/fonts/feather.css">
-    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link href="~/fontawesome/css/all.min.css" rel="stylesheet" />
-    <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="~/assets/fonts/material.css">
-    <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="~/assets/css/style.css" id="main-style-link">
-    <link rel="stylesheet" href="~/assets/css/style-preset.css">    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #2a7de1;
+            --primary-dark: #1c65c1;
+            --primary-light: #e8f2ff;
+            --secondary-color: #3bbab5;
+            --secondary-light: #e6f7f6;
+            --accent-color: #ff6b6b;
+            --accent-light: #ffeded;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --light-bg: #f8fafc;
+            --light-border: #e2e8f0;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+            --white: #ffffff;
+            --medical-gradient: linear-gradient(135deg, #2a7de1, #3bbab5);
+            --medical-gradient-hover: linear-gradient(135deg, #1c65c1, #2da69f);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --footer-bg: #0f172a;
+            --footer-color: #e2e8f0;
+            --card-radius: 16px;
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 80px;
+            --header-height: 70px;
+        }
+
+        [data-theme="dark"] {
+            --light-bg: #0f172a;
+            --dark-text: #f1f5f9;
+            --light-text: #94a3b8;
+            --light-border: #334155;
+            --footer-bg: #020617;
+            --card-bg: #1e293b;
+            --primary-light: #1e3a8a;
+            --secondary-light: #164e63;
+            --white: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Public Sans', sans-serif;
+            background: var(--light-bg);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: var(--white);
+            color: var(--dark-text);
+            transition: var(--transition);
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            border-right: 1px solid var(--light-border);
+            padding-bottom: 20px;
+        }
+
+        [data-theme="dark"] .sidebar {
+            background: var(--card-bg);
+        }
+
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            height: var(--header-height);
+            border-bottom: 1px solid var(--light-border);
+        }
+
+            .sidebar-header i {
+                margin-right: 12px;
+                font-size: 1.8rem;
+                color: var(--primary-color);
+            }
+
+        .sidebar.collapsed .sidebar-header span {
+            display: none;
+        }
+
+        .sidebar-menu {
+            padding: 16px 0;
+        }
+
+        .menu-category {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--light-text);
+            margin-top: 10px;
+        }
+
+        .sidebar.collapsed .menu-category {
+            display: none;
+        }
+
+        .sidebar a {
+            color: var(--dark-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            transition: var(--transition);
+            border-radius: 8px;
+            margin: 6px 12px;
+            position: relative;
+            font-weight: 500;
+        }
+
+            .sidebar a:hover {
+                background: var(--primary-light);
+                color: var(--primary-color);
+            }
+
+            .sidebar a.active {
+                background: var(--primary-color);
+                color: white;
+                box-shadow: var(--shadow-sm);
+            }
+
+            .sidebar a i {
+                font-size: 1.2rem;
+                margin-right: 16px;
+                width: 24px;
+                text-align: center;
+            }
+
+        .sidebar.collapsed a span {
+            display: none;
+        }
+
+
+        .sidebar.collapsed a .badge {
+            right: 8px;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--light-border);
+            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .sidebar.collapsed .sidebar-footer {
+            display: none;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--medical-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .user-details {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .user-role {
+            font-size: 0.8rem;
+            color: var(--light-text);
+        }
+
+        /* Main content */
+        .content {
+            margin-left: var(--sidebar-width);
+            padding: 24px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+            min-height: 0;
+        }
+
+        .sidebar.collapsed ~ .content {
+            margin-left: var(--sidebar-collapsed-width);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-sm);
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+
+        [data-theme="dark"] .header {
+            background: var(--card-bg);
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+            .page-title i {
+                margin-right: 12px;
+                color: var(--primary-color);
+            }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+            .search-box input {
+                border: 1px solid var(--light-border);
+                border-radius: 50px;
+                padding: 10px 16px 10px 40px;
+                background: var(--light-bg);
+                color: var(--dark-text);
+                width: 240px;
+                transition: var(--transition);
+            }
+
+            .search-box i {
+                position: absolute;
+                left: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--light-text);
+            }
+
+            .search-box input:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.1);
+            }
+
+        .notification-btn, .profile-btn, .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-bg);
+            color: var(--dark-text);
+            border: none;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .notification-btn,
+        [data-theme="dark"] .profile-btn,
+        [data-theme="dark"] .theme-toggle {
+            background: var(--light-border);
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--white);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--card-bg);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-gradient {
+            background: var(--medical-gradient);
+            color: white;
+        }
+
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            padding: 24px;
+        }
+
+            .stat-card i {
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+                font-size: 3rem;
+                opacity: 0.2;
+            }
+
+            .stat-card h2 {
+                font-size: 2.2rem;
+                margin: 10px 0;
+                font-weight: 700;
+            }
+
+            .stat-card .label {
+                font-size: 0.9rem;
+                color: var(--light-text);
+                margin-bottom: 8px;
+                display: block;
+            }
+
+        [data-theme="dark"] .stat-card .label {
+            color: var(--footer-color);
+        }
+
+        .stat-card .trend {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .trend.up {
+            color: var(--success-color);
+        }
+
+        .trend.down {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-color);
+            text-align: center;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-sm);
+            padding: 16px 24px;
+            height: var(--header-height);
+            flex-shrink: 0;
+            margin-top: auto;
+            align-content: center;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--primary-light);
+            border-radius: var(--card-radius);
+            padding: 12px 20px;
+            margin-bottom: 24px;
+        }
+
+        [data-theme="dark"] .breadcrumb {
+            background: var(--primary-dark);
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .breadcrumb-item a {
+            color: var(--primary-light);
+        }
+
+        .breadcrumb-item.active {
+            color: var(--dark-text);
+        }
+
+        [data-theme="dark"] .breadcrumb-item.active {
+            color: var(--light-text);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-border);
+            border-radius: 4px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--light-text);
+            }
+
+        /* Responsive adjustments */
+        @@media (max-width: 1200px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: var(--sidebar-width);
+            }
+
+                .sidebar.show {
+                    transform: translateX(0);
+                }
+
+            .content {
+                margin-left: 0 !important;
+            }
+
+            .search-box input {
+                width: 180px;
+            }
+        }
+
+        @@media (max-width: 992px) {
+            .sidebar-header {
+                padding: 20px 15px;
+            }
+
+            .sidebar a {
+                padding: 12px 15px;
+                margin: 4px 8px;
+            }
+
+            .content {
+                padding: 16px;
+            }
+
+            .header {
+                padding: 12px 16px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                gap: 16px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-box {
+                flex: 1;
+            }
+
+                .search-box input {
+                    width: 100%;
+                }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            : root {
+                --header-height: 60px;
+            }
+
+            .header-actions {
+                flex-wrap: wrap;
+            }
+
+            .search-box {
+                order: 1;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .page-title {
+                font-size: 1.3rem;
+            }
+
+            .stat-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation enhancements */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .sidebar a, .header {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .sidebar a {
+            animation-duration: 0.5s;
+        }
+
+        /* Focus states for accessibility */
+        a:focus, button:focus, input:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(42, 125, 225, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @@keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    @RenderSection("Styles", required: false)
 </head>
-<!-- [Head] end -->
-<!-- [Body] Start -->
+<body>
 
-<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
-    <!-- [ Pre-loader ] start -->
-    <div class="loader-bg">
-        <div class="loader-track">
-            <div class="loader-fill"></div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="bi bi-heart-pulse"></i>
+            <span>ClickClinic</span>
+        </div>
+        <div class="sidebar-menu">
+            
+            <a asp-controller="Admin" asp-action="ApprovedDoctors"><i class="fa-solid fa-user-doctor"></i> <span>Doctors</span></a>
+            <a asp-controller="Admin" asp-action="PendingDoctors"><i class="fa-solid fa-hourglass-half"></i> <span>Pending Doctors</span></a>
+            <a asp-controller="Admin" asp-action="GetAllMedicines"><i class="fa-solid fa-capsules"></i> <span>Medicines</span></a>
+
+            
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-details">
+                    <div class="user-name">Admin User</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+@*             <a  asp-controller="Account" asp-action="Logout"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a> *@
+            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="dropdown-item text-danger">
+                    <i class="fa-solid fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
         </div>
     </div>
-    <!-- [ Pre-loader ] End -->
-    <!-- [ Sidebar Menu ] start -->
-    <nav class="pc-sidebar">
-        <div class="navbar-wrapper">
-            <div class="m-header">
-                <a href="../dashboard/index.html" class="b-brand text-primary">
-                    <!-- ========   Change your logo from here   ============ -->
-                    <img src="~/assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
-                </a>
-            </div>
-            <div class="navbar-content">
-                <ul class="pc-navbar">
-                    <li class="pc-item">
-                        <a href="../dashboard/index.html" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
-                            <span class="pc-mtext">Dashboard</span>
-                        </a>
-                    </li>
-                    @*Let when he clicks onitgetsApprovedDoctors*@
-                    <li class="pc-item pc-caption">
-                        <label>Doctors</label>
-                        <i class="ti ti-dashboard"></i>
-                    </li>
-                    <li class="pc-item">
 
-                        <a asp-area="" asp-controller="Admin" asp-action="ApprovedDoctors" class="pc-link">
-
-
-
-                            <span class="pc-micon"><i class="fa-solid fa-user-doctor"></i></span>
-                            <span class="pc-mtext">Doctors</span>
-                        </a>
-
-                    </li>
-                    <li class="pc-item">
-                        <a asp-area="" asp-controller="Admin" asp-action="PendingDoctors" class="pc-link">
-                            <span class="pc-micon"><i class="fa-solid fa-hourglass-half"></i></span>
-                            <span class="pc-mtext">Pending Doctors</span>
-                        </a>
-                    </li>
-
-                    <li class="pc-item pc-caption">
-                        <label>Medicines</label>
-                        <i class="fa-solid fa-capsules"></i>
-                    </li>
-                    <li class="pc-item">
-                        <a asp-action="GetAllMedicines" asp-controller="Admin" class="pc-link">
-                            <span class="pc-micon"><i class="fa-solid fa-capsules"></i></span>
-                            <span class="pc-mtext">Medicines</span>
-                        </a>
-                </ul>
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="page-title">
+                <i class="bi bi-speedometer2"></i> @ViewData["Title"]
+            </h1>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button class="theme-toggle" id="themeToggle"><i class="bi bi-sun"></i></button>
+@*                 <button class="profile-btn">
+                    <i class="bi bi-person"></i>
+                </button> *@
             </div>
         </div>
-    </nav>
-    <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
-    <header class="pc-header">
-        <div class="header-wrapper">
-            <!-- [Mobile Media Block] start -->
-            <div class="me-auto pc-mob-drp">
-                <ul class="list-unstyled">
-                    <!-- ======= Menu collapse Icon ===== -->
-                    <li class="pc-h-item pc-sidebar-collapse">
-                        <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
-                            <i class="ti ti-menu-2"></i>
-                        </a>
-                    </li>
-                    <li class="pc-h-item pc-sidebar-popup">
-                        <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
-                            <i class="ti ti-menu-2"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown pc-h-item d-inline-flex d-md-none">
-                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" aria-expanded="false">
-                            <i class="ti ti-search"></i>
-                        </a>
-                        <div class="dropdown-menu pc-h-dropdown drp-search">
-                            <form class="px-3">
-                                <div class="form-group mb-0 d-flex align-items-center">
-                                    <i data-feather="search"></i>
-                                    <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- [Mobile Media Block end] -->
-            <div class="ms-auto">
-                <ul class="list-unstyled">
-                    <li class="dropdown pc-h-item header-user-profile">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-                            <img src="~/assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-                            <span>Stebin Ben</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
-                            <div class="dropdown-header">
-                                <div class="d-flex mb-1">
-                                    <div class="flex-shrink-0">
-                                        <img src="~/assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h6 class="mb-1">Stebin Ben</h6>
-                                        <span>UI/UX Designer</span>
-                                    </div>
-                                    <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
-                                </div>
-                            </div>
-                            <ul class="nav drp-tabs nav-fill nav-tabs" id="mydrpTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="drp-t1" data-bs-toggle="tab" data-bs-target="#drp-tab-1"
-                                            type="button" role="tab" aria-controls="drp-tab-1" aria-selected="true">
-                                        <i class="ti ti-user"></i>
-                                        Profile
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="drp-t2" data-bs-toggle="tab" data-bs-target="#drp-tab-2" type="button"
-                                            role="tab" aria-controls="drp-tab-2" aria-selected="false">
-                                        <i class="ti ti-settings"></i>
-                                        Setting
-                                    </button>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="mysrpTabContent">
-                                <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1"
-                                     tabindex="0">
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-edit-circle"></i>
-                                        <span>Edit Profile</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-user"></i>
-                                        <span>View Profile</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-clipboard-list"></i>
-                                        <span>Social Profile</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-wallet"></i>
-                                        <span>Billing</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-power"></i>
-                                        <span>Logout</span>
-                                    </a>
-                                </div>
-                                <div class="tab-pane fade" id="drp-tab-2" role="tabpanel" aria-labelledby="drp-t2" tabindex="0">
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-help"></i>
-                                        <span>Support</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-user"></i>
-                                        <span>Account Settings</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-lock"></i>
-                                        <span>Privacy Center</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-messages"></i>
-                                        <span>Feedback</span>
-                                    </a>
-                                    <a href="#!" class="dropdown-item">
-                                        <i class="ti ti-list"></i>
-                                        <span>History</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+            </ol>
+        </nav>
+
+        <!-- Page Body -->
+        <div class="page-body" style="flex: 1;">
+            @RenderBody()
         </div>
-    </header>
-    <!-- [ Header ] end -->
-    <!-- [ Main Content ] start -->
-    <div class="pc-container">
-        @RenderBody()
+
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2025 ClickClinic. All rights reserved. <span class="d-none d-md-inline">| Healthcare Management System</span>
+        </div>
     </div>
-    <!-- [ Main Content ] end -->
-    <!-- [Page Specific JS] start -->
-    <script src="~/assets/js/plugins/apexcharts.min.js"></script>
-    <script src="~/assets/js/pages/dashboard-default.js"></script>
-    <!-- [Page Specific JS] end -->
-    <!-- Required Js -->
-    <script src="~/assets/js/plugins/popper.min.js"></script>
-    <script src="~/assets/js/plugins/simplebar.min.js"></script>
-    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="~/assets/js/fonts/custom-font.js"></script>
-    <script src="~/assets/js/pcoded.js"></script>
-    <script src="~/assets/js/plugins/feather.min.js"></script>
 
-    <script>layout_change('light');</script>
-    <script>change_box_container('false');</script>
-    <script>layout_rtl_change('false');</script>
-    <script>preset_change("preset-1");</script>
-    <script>font_change("Public-Sans");</script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+
+        // Sidebar toggle
+        let sidebarToggle = document.getElementById('sidebarToggle');
+        if (!sidebarToggle) {
+            sidebarToggle = document.createElement('button');
+            sidebarToggle.className = 'btn btn-light me-3 d-lg-none';
+            sidebarToggle.id = 'sidebarToggle';
+            sidebarToggle.innerHTML = '<i class="bi bi-list"></i>';
+            document.querySelector('.header-actions').prepend(sidebarToggle);
+        }
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeIcon.classList.replace('bi-moon','bi-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('bi-sun','bi-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('bi-sun','bi-moon');
+        }
+
+        // Auto-collapse sidebar on small screens
+        function checkWidth() {
+            if (window.innerWidth < 1200) {
+                sidebar.classList.remove('collapsed');
+            }
+        }
+
+        window.addEventListener('resize', checkWidth);
+        checkWidth();
+
+        // Enhanced search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                // Implement search functionality here
+                console.log('Search for:', this.value);
+            }
+        });
+
+
+        // Profile button functionality
+        const profileBtn = document.querySelector('.profile-btn');
+        profileBtn.addEventListener('click', function() {
+            // Implement profile menu toggle
+            console.log('Profile clicked');
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
 </body>
-<!-- [Body] end -->
-@await RenderSectionAsync("Scripts", required: false)
-
 </html>

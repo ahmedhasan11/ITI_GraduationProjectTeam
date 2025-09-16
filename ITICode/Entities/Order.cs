@@ -48,7 +48,6 @@ namespace ITI_Hackathon.Entities
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
-
         public virtual Medicine Medicine { get; set; } = default!;
         public virtual Order Order { get; set; } = default!;
     }

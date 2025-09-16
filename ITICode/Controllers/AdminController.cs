@@ -84,8 +84,8 @@ namespace ITI_Hackathon.Controllers
 
             return RedirectToAction("ApprovedDoctors");
         }
-
-        public async Task<IActionResult> DeleteDoctorAsync(string? userID)
+        [HttpPost]
+        public async Task<IActionResult> DeleteDoctorAsyncc(string? userID)
         {
             if (string.IsNullOrEmpty(userID))
             {
@@ -151,42 +151,65 @@ namespace ITI_Hackathon.Controllers
 
 
 		// GET: /Admin/EditMedicine/id
-		[HttpGet]
-        public async Task<IActionResult> EditMedicine(int? id)
-        {
-            if (id==null)
-            {
-                return NotFound("id is empty");
-            }
-            var medicine = await _medicineservice.GetMedicineByIdAsync(id.Value);
-            if (medicine == null) return NotFound("medicine not found");
+		//[HttpGet]
+  //      public async Task<IActionResult> EditMedicine(int? id)
+  //      {
+  //          if (id==null)
+  //          {
+  //              return NotFound("id is empty");
+  //          }
+  //          var medicine = await _medicineservice.GetMedicineByIdAsync(id.Value);
+  //          if (medicine == null) return NotFound("medicine not found");
 
-            MedicineUpdateRequestDto dto = new MedicineUpdateRequestDto
-            {
-                Id = medicine.Id,
-                Name = medicine.Name,
-                Category = medicine.Category,
-                Description = medicine.Description,
-                Price = medicine.Price,
-                Stock = medicine.Stock,
-                ImageUrl = medicine.ImageUrl
-            };
+  //          MedicineUpdateRequestDto dto = new MedicineUpdateRequestDto
+  //          {
+  //              Id = medicine.Id,
+  //              Name = medicine.Name,
+  //              Category = medicine.Category,
+  //              Description = medicine.Description,
+  //              Price = medicine.Price,
+  //              Stock = medicine.Stock,
+  //              ImageUrl = medicine.ImageUrl
+  //          };
 
-            return View(dto);
-        }
+  //          return View(dto);
+  //      }
 
         // POST: /Admin/Edit/dto
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(MedicineUpdateRequestDto request)
+        public async Task<IActionResult> Editt(MedicineUpdateRequestDto request)
         {
-            //if (!ModelState.IsValid) return View(request);
+			if (request.ImageFile != null && request.ImageFile.Length > 0)
+			{
+				var fileName = Path.GetFileNameWithoutExtension(request.ImageFile.FileName);
+				var extension = Path.GetExtension(request.ImageFile.FileName);
+				var uniqueFileName = $"{fileName}_{Guid.NewGuid()}{extension}";
+				var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/medicines", uniqueFileName);
 
-            MedicineUpdateResponseDto medicineresponse = await _medicineservice.UpdateMedicineAsync(request);
+				using (var stream = new FileStream(filePath, FileMode.Create))
+				{
+					await request.ImageFile.CopyToAsync(stream);
+				}
+
+				request.ImageUrl = $"/images/medicines/{uniqueFileName}";
+			}
+			else if (string.IsNullOrEmpty(request.ImageUrl))
+			{
+				// لو الهيدن فاضي لازم نجيب الصورة القديمة من الداتا بيز
+				var existingMedicine = await _medicineservice.GetMedicineByIdAsync(request.Id);
+				if (existingMedicine != null)
+				{
+					request.ImageUrl = existingMedicine.ImageUrl;
+				}
+			}
+
+
+			MedicineUpdateResponseDto medicineresponse = await _medicineservice.UpdateMedicineAsync(request);
             if (medicineresponse.Success==false)
             {
 				TempData["Error"] = medicineresponse.Message;
-				return View("Edit",request);
+                return NotFound("error");
 			}
 
 			TempData["Success"] = medicineresponse.Message;

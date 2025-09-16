@@ -69,7 +69,6 @@ namespace ITI_Hackathon.Services
 
 			return $"Doctor {doctor.User.FullName} has been approved successfully.";
 
-			// هنا ممكن تبعت إيميل Approved return true;
 		}
 
 		public async Task<string> RejectDoctorAsync(string userId)
@@ -89,21 +88,55 @@ namespace ITI_Hackathon.Services
 		}
 		public async Task<string> DeleteDoctorAsync(string userId)
 		{
-			var doctor = await _context.Doctors.Include(d => d.User).FirstOrDefaultAsync(d => d.UserId == userId);
+			var doctor = await _context.Doctors
+				.Include(d => d.User)
+				.FirstOrDefaultAsync(d => d.UserId == userId);
+
 			if (doctor == null)
 			{
-				return "doctor not found";
+				return "Doctor not found";
 			}
+			var threads = await _context.ChatThreads
+				.Where(t => t.DoctorId == userId)
+				.ToListAsync();
+
+			if (threads.Any())
+			{
+				_context.ChatThreads.RemoveRange(threads);
+			}
+			var doctorPayments = await _context.DoctorPayments
+				.Where(p => p.DoctorId == userId)
+				.ToListAsync();
+
+			if (doctorPayments.Any())
+			{
+				_context.DoctorPayments.RemoveRange(doctorPayments);
+			}
+
+			var appointments = await _context.Appointments
+				.Where(a => a.DoctorId == userId)
+				.ToListAsync();
+
+			if (appointments.Any())
+			{
+				_context.Appointments.RemoveRange(appointments);
+			}
+
 			_context.Doctors.Remove(doctor);
+
 			var user = await _context.Users.FindAsync(userId);
 			if (user != null)
 			{
 				await _userManager.DeleteAsync(user);
 			}
+
 			await _context.SaveChangesAsync();
 
-			return $"Doctor {doctor.User.FullName} has been completely removed from the system.";
+			return $"Doctor {doctor.User.FullName} and all related data (chats, payments, appointments) have been completely removed.";
 		}
+
+
+
 
 		//we need to convert thedoctor profile obj -->to patientprofile if changedtopatient
 		public async Task<bool> EditDoctorRoleAsyncc(DoctorEditRoleDTO dto)

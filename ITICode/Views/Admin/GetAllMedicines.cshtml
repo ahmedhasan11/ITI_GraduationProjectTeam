@@ -2,262 +2,989 @@
 @model IEnumerable<MedicineListDto>
 @{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
-    ViewData["Title"] = "All Medicines";
+    ViewData["Title"] = "Medicines";
 }
 
-<div class="pc-content">
-    <!-- [ breadcrumb ] start -->
-    <div class="page-header">
-        <div class="page-block">
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <div class="page-header-title">
-                        <h2 class="mb-0">Doctors List</h2>
+<div class="page-body p-4">
+
+    <!-- Header + Add/Search -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold mb-1 text-gradient-primary"><i class="bi bi-capsule me-2"></i>Medicines</h3>
+            <p class="text-muted mb-0">Manage your pharmacy inventory efficiently</p>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn btn-gradient-primary shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#createMedicine">
+                <i class="bi bi-plus-circle me-2"></i> Add Medicine
+            </button>
+
+            <form asp-action="Search" asp-controller="Admin" method="get" class="d-flex">
+                <div class="input-group shadow-sm rounded">
+                    <input type="text" name="searchTerm" value="@Context.Request.Query["searchTerm"]"
+                           class="form-control border-end-0" style="width: 250px;" placeholder="Search medicines..." />
+                    <button type="submit" class="btn btn-outline-primary border-start-0">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card bg-primary bg-opacity-10 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Total Medicines</h6>
+                            <h4 class="mb-0 text-dark fw-bold">@Model.Count()</h4>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-capsule-pill text-primary fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-success bg-opacity-10 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">In Stock</h6>
+                            <h4 class="mb-0 text-dark fw-bold">@Model.Count(m => m.Stock > 0)</h4>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-check-circle text-success fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-warning bg-opacity-10 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Low Stock</h6>
+                            <h4 class="mb-0 text-dark fw-bold">@Model.Count(m => m.Stock > 0 && m.Stock <= 10)</h4>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-exclamation-triangle text-warning fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-danger bg-opacity-10 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Out of Stock</h6>
+                            <h4 class="mb-0 text-dark fw-bold">@Model.Count(m => m.Stock == 0)</h4>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-x-circle text-danger fs-1"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- [ breadcrumb ] end -->
-    <!-- Search + Add Medicine -->
-    <div class="d-flex justify-content-between mb-3">
-        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createMedicine">
-            <i class="bi bi-plus-circle"></i> Add Medicine
-        </a>
 
-        <form asp-action="Search" asp-controller="Admin" method="get" class="d-flex">
-            <input type="text" name="searchTerm" value="@Context.Request.Query["searchTerm"]"
-                   class="form-control me-2" style="width: 250px;" placeholder="Search by name or category" />
-            <button type="submit" class="btn btn-outline-primary">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    <!-- Alerts -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-circle-fill me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show shadow-sm d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>@TempData["Info"]
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- View Toggle -->
+    <div class="d-flex justify-content-end mb-3">
+        <div class="btn-group shadow-sm modern-toggle" role="group">
+            <button type="button" id="gridViewBtn" class="btn btn-outline-primary active">
+                <i class="bi bi-grid-3x3-gap"></i> Grid
             </button>
-        </form>
+            <button type="button" id="listViewBtn" class="btn btn-outline-primary">
+                <i class="bi bi-list-ul"></i> List
+            </button>
+        </div>
     </div>
 
-    <!-- ✅ Create Medicine Modal (مرة واحدة برة اللوب) -->
-    <div class="modal fade" id="createMedicine" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Add New Medicine</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+    <!-- Medicines Grid View -->
+    <div id="gridView">
+        @if (Model.Any())
+        {
+            <div class="row g-4">
+                @foreach (var med in Model)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card medicine-card shadow-sm h-100 border-0">
+                            <div class="card-img-container position-relative">
+                                <img src="@med.ImageUrl"
+                                     class="card-img-top p-3" alt="@med.Name">
+                                <span class="position-absolute top-0 end-0 m-2 badge @(med.Stock > 10 ? "bg-success" : med.Stock > 0 ? "bg-warning" : "bg-danger")">
+                                    @med.Stock in stock
+                                </span>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold text-primary">@med.Name</h5>
+                                <div class="mb-2">
+                                    <span class="badge bg-light text-dark border">@med.Category</span>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="fw-bold text-success fs-5">$@med.Price</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="btn-group w-100 action-buttons" role="group">
+                                        <button class="btn btn-outline-primary btn-action" data-bs-toggle="modal" data-bs-target="#viewMedicine-@med.Id" title="View Details">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-action" data-bs-toggle="modal" data-bs-target="#editMedicine-@med.Id" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-action" data-bs-toggle="modal" data-bs-target="#deleteMedicine-@med.Id" title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-capsule text-muted" style="font-size: 4rem;"></i>
+                <h4 class="text-muted mt-3">No medicines found</h4>
+                <p class="text-muted">Get started by adding your first medicine to the inventory.</p>
+                <button type="button" class="btn btn-gradient-primary mt-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#createMedicine">
+                    <i class="bi bi-plus-circle me-2"></i> Add Medicine
+                </button>
+            </div>
+        }
+    </div>
+
+    <!-- Medicines List View -->
+    <div id="listView" class="d-none">
+        <div class="card shadow-sm border-0 modern-card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="ps-4 text-dark fw-bold">Medicine</th>
+                                <th scope="col" class="text-dark fw-bold">Category</th>
+                                <th scope="col" class="text-dark fw-bold">Price</th>
+                                <th scope="col" class="text-dark fw-bold">Stock</th>
+                                <th scope="col" class="text-end pe-4 text-dark fw-bold">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var med in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@med.ImageUrl"
+                                                 class="rounded me-3" width="50" height="50" alt="@med.Name">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold text-dark">@med.Name</h6>
+                                                <small class="text-muted">@(string.IsNullOrEmpty(med.Description) ? "No description" : (med.Description.Length > 40 ? med.Description.Substring(0, 40) + "..." : med.Description))</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border">@med.Category</span>
+                                    </td>
+                                    <td class="fw-bold text-success">$@med.Price</td>
+                                    <td>
+                                        <span class="badge @(med.Stock > 10 ? "bg-success" : med.Stock > 0 ? "bg-warning" : "bg-danger")">
+                                            @med.Stock in stock
+                                        </span>
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <div class="btn-group action-buttons" role="group">
+                                            <button class="btn btn-sm btn-outline-primary btn-action" data-bs-toggle="modal" data-bs-target="#viewMedicine-@med.Id" title="View Details">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary btn-action" data-bs-toggle="modal" data-bs-target="#editMedicine-@med.Id" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger btn-action" data-bs-toggle="modal" data-bs-target="#deleteMedicine-@med.Id" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Pagination -->
+    @if (Model.Any())
+    {
+        <nav aria-label="Medicine pagination" class="mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-muted">
+                    Showing <strong>1-@Model.Count()</strong> of <strong>@Model.Count()</strong> medicines
+                </div>
+                <ul class="pagination modern-pagination mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="bi bi-three-dots"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    }
+</div>
+
+<!-- MODALS - Placed outside both view containers to ensure they're always available -->
+@foreach (var med in Model)
+{
+    <!-- View Modal -->
+    <div class="modal fade" id="viewMedicine-@med.Id" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0 modern-modal">
+                <div class="modal-header bg-gradient-primary text-white">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-capsule me-2"></i>Medicine Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form asp-action="Create" asp-controller="Admin" method="post" enctype="multipart/form-data" class="mt-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center">
+                            <img class="img-fluid rounded shadow-sm mb-3" style="max-height: 200px;"
+                                 src="@med.ImageUrl">
+                            <h4 class="fw-bold text-primary">@med.Name</h4>
+                            <span class="badge bg-primary">@med.Category</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row mt-3 g-3">
+                                <div class="col-6">
+                                    <div class="info-card border rounded p-3 text-center shadow-sm">
+                                        <div class="text-muted small">Price</div>
+                                        <div class="fw-bold fs-5 text-success">$@med.Price</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-card border rounded p-3 text-center shadow-sm">
+                                        <div class="text-muted small">Stock</div>
+                                        <div class="fw-bold fs-5 @(med.Stock > 10 ? "text-success" : med.Stock > 0 ? "text-warning" : "text-danger")">@med.Stock</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label class="form-label fw-bold text-dark">Description</label>
+                                <p class="text-muted">@(string.IsNullOrEmpty(med.Description) ? "No description available." : med.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMedicine-@med.Id" data-bs-dismiss="modal">
+                        <i class="bi bi-pencil me-1"></i> Edit Medicine
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editMedicine-@med.Id" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg modern-modal">
+                <div class="modal-header bg-gradient-secondary text-white">
+                    <h5 class="modal-title"><i class="bi bi-pencil me-2"></i>Edit Medicine</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Editt" asp-controller="Admin" method="post" enctype="multipart/form-data">
+
                         @Html.AntiForgeryToken()
-
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" name="Name" class="form-control" placeholder="Enter medicine name" required />
+                        <input type="hidden" id="edit_ImageUrl" name="ImageUrl" value="@med.ImageUrl"> <!-- هنا نخزن الصورة القديمة -->
+                        <input type="hidden" name="Id" value="@med.Id" />
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-dark">Medicine Name</label>
+                                <input type="text" name="Name" value="@med.Name" class="form-control form-control-lg shadow-sm" placeholder="Enter medicine name" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-dark">Category</label>
+                                <input type="text" name="Category" value="@med.Category" class="form-control form-control-lg shadow-sm" placeholder="Enter category" required />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold text-dark">Description</label>
+                                <textarea name="Description" class="form-control form-control-lg shadow-sm" rows="3" placeholder="Enter description">@med.Description</textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-dark">Price ($)</label>
+                                <input type="number" name="Price" value="@med.Price" step="0.01" class="form-control form-control-lg shadow-sm" placeholder="0.00" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-dark">Stock</label>
+                                <input type="number" name="Stock" value="@med.Stock" class="form-control form-control-lg shadow-sm" placeholder="Enter quantity" required />
+                            </div>
+                            <div class="mb-3">
+                                @if (!string.IsNullOrEmpty(med.ImageUrl))
+                                {
+                                    <img src="@med.ImageUrl" alt="Current Image" width="100" class="mb-2" />
+                                }
+                                <label>Upload New Image</label>
+                                <input name="ImageFile" type="file" class="form-control" />
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <input type="text" name="Category" class="form-control" placeholder="Enter category" required />
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-gradient-secondary btn-lg"><i class="bi bi-check-circle me-1"></i> Update Medicine</button>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea name="Description" class="form-control" placeholder="Enter description"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" name="Price" class="form-control" step="0.01" placeholder="Enter price" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock</label>
-                            <input type="number" name="Stock" class="form-control" placeholder="Enter stock quantity" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Upload Image</label>
-                            <input type="file" name="ImageUrl" class="form-control" accept="image/*" />
-                            <small class="text-muted">Optional, you can upload medicine image</small>
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100">Add Medicine</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success">@TempData["Success"]</div>
-    }
-    @if (TempData["Error"] != null)
-    {
-        <div class="alert alert-danger">@TempData["Error"]</div>
-    }
-    @if (TempData["Info"] != null)
-    {
-        <div class="alert alert-info">@TempData["Info"]</div>
-    }
-
-    <!-- Medicines Table -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card table-card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover" id="pc-dt-simple">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Medicine</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var med in Model.Select((value, index) => new { value, index }))
-                                {
-                                    <tr>
-                                        <td>@(med.index + 1)</td>
-                                        <td>@med.value.Name</td>
-                                        <td>@med.value.Category</td>
-                                        <td>@med.value.Price</td>
-                                        <td>@med.value.Stock</td>
-
-                                        <td class="text-center">
-                                            <ul class="list-inline me-auto mb-0">
-                                                <li class="list-inline-item align-bottom" title="View">
-                                                    <a href="#" class="text-info me-2" data-bs-toggle="modal" data-bs-target="#viewMedicine-@med.value.Id">
-                                                        <i class="ti ti-eye"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item align-bottom" title="Edit">
-                                                    <a href="#" class="text-warning me-2" title="Edit"
-                                                       data-bs-toggle="modal" data-bs-target="#editMedicine-@med.value.Id">
-                                                        <i class="ti ti-pencil"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item align-bottom" title="Delete">
-                                                    <a href="#" class="text-danger" title="Delete"
-                                                       data-bs-toggle="modal" data-bs-target="#deletemedicine-@med.value.Id">
-                                                        <i class="ti ti-trash"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <!-- View Modal -->
-                                    <div class="modal fade" id="viewMedicine-@med.value.Id" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                                            <div class="modal-content">
-                                                <div class="modal-header border-0 pb-0">
-                                                    <h5 class="mb-0">Medicine Details</h5>
-                                                    <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
-                                                        <i class="ti ti-x f-20"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <img class="rounded-circle img-fluid wid-60 mb-3"
-                                                         src="~/images/download.jpeg" alt="Medicine image">
-                                                    <h5 class="mb-0">@med.value.Name</h5>
-                                                    <p>Category: @med.value.Category</p>
-                                                    <hr class="my-3">
-                                                    <div class="row g-3">
-                                                        <div class="col-4">
-                                                            <h5>@med.value.Price</h5>
-                                                            <small class="text-muted">Price</small>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h5>@med.value.Stock</h5>
-                                                            <small class="text-muted">Stock</small>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h5>@med.value.Id</h5>
-                                                            <small class="text-muted">Medicine ID</small>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="my-3">
-                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Edit Medicine Modal -->
-                                    <div class="modal fade" id="editMedicine-@med.value.Id" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-md modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-primary text-white">
-                                                    <h5 class="modal-title">Edit Medicine</h5>
-                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <img src="~/images/medicines/@(string.IsNullOrEmpty(med.value.ImageUrl) ? "default.png" : med.value.ImageUrl)"
-                                                         class="rounded mb-3 border border-2 border-primary" style="width:90px;" />
-
-                                                    <h5 class="mb-0">@med.value.Name</h5>
-                                                    <div class="mt-2">
-                                                        <span class="badge bg-info me-1">Category: @med.value.Category</span>
-                                                        <span class="badge bg-success me-1">Price: @med.value.Price</span>
-                                                        <span class="badge bg-warning text-dark">Stock: @med.value.Stock</span>
-                                                    </div>
-
-                                                    <form asp-action="Edit" asp-controller="Admin" method="post" enctype="multipart/form-data" class="mt-3 text-start">
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="Id" value="@med.value.Id" />
-
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Name</label>
-                                                            <input type="text" name="Name" class="form-control" value="@med.value.Name" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Category</label>
-                                                            <input type="text" name="Category" class="form-control" value="@med.value.Category" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Description</label>
-                                                            <textarea name="Description" class="form-control">@med.value.Description</textarea>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Price</label>
-                                                            <input type="number" name="Price" class="form-control" step="0.01" value="@med.value.Price" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Stock</label>
-                                                            <input type="number" name="Stock" class="form-control" value="@med.value.Stock" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Change Image</label>
-                                                            <input type="file" name="ImageUrl" class="form-control" accept="image/*" />
-                                                            <small class="text-muted">Leave empty to keep current image</small>
-                                                        </div>
-
-                                                        <button type="submit" class="btn btn-primary w-100">Update Medicine</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Delete Modal -->
-                                    <div class="modal fade" id="deletemedicine-@med.value.Id" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-md modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body text-center">
-                                                    <h5>Are you sure you want to delete <b>@med.value.Name</b>?</h5>
-                                                    <div class="mt-3">
-                                                        <form method="post" action="@Url.Action("DeleteMedicinee", "Admin")">
-                                                            <input type="hidden" name="id" value="@med.value.Id" />
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </tbody>
-                        </table>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteMedicine-@med.Id" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg modern-modal">
+                <div class="modal-header bg-gradient-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-exclamation-triangle me-2"></i>Delete Medicine</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
                     </div>
+                    <h5 class="text-dark">Are you sure you want to delete this medicine?</h5>
+                    <p class="text-muted">This action cannot be undone. The medicine "<strong>@med.Name</strong>" will be permanently removed from your inventory.</p>
+
+                    <form asp-action="DeleteMedicinee" asp-controller="Admin" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@med.Id" />
+                        <div class="d-flex gap-2 justify-content-center mt-4">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-1"></i> Delete Medicine
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+}
+
+<!-- Create Medicine Modal -->
+<div class="modal fade" id="createMedicine" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg modern-modal">
+            <div class="modal-header bg-gradient-primary text-white">
+                <h5 class="modal-title"><i class="bi bi-plus-circle me-2"></i>Add New Medicine</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-dark">Medicine Name</label>
+                            <input type="text" name="Name" class="form-control form-control-lg shadow-sm" placeholder="Enter medicine name" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-dark">Category</label>
+                            <input type="text" name="Category" class="form-control form-control-lg shadow-sm" placeholder="Enter category" required />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold text-dark">Description</label>
+                            <textarea name="Description" class="form-control form-control-lg shadow-sm" rows="3" placeholder="Enter description"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-dark">Price ($)</label>
+                            <input type="number" name="Price" step="0.01" class="form-control form-control-lg shadow-sm" placeholder="0.00" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-dark">Stock</label>
+                            <input type="number" name="Stock" class="form-control form-control-lg shadow-sm" placeholder="Enter quantity" required />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold text-dark">Medicine Image</label>
+                            <input type="file" name="ImageFile" class="form-control form-control-lg shadow-sm" accept="image/*" />
+                        </div>
+                    </div>
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-gradient-primary btn-lg"><i class="bi bi-plus-circle me-1"></i> Add Medicine</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Enhanced Gradient Colors */
+    .text-gradient-primary {
+        background: linear-gradient(90deg, #2a7de1, #4b94e6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .btn-gradient-primary {
+        background: linear-gradient(135deg, #2a7de1, #4b94e6);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-gradient-primary:hover {
+            background: linear-gradient(135deg, #1c65c1, #2a7de1);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42, 125, 225, 0.3);
+        }
+
+    .btn-gradient-secondary {
+        background: linear-gradient(135deg, #6c757d, #5a6268);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-gradient-secondary:hover {
+            background: linear-gradient(135deg, #5a6268, #495057);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+        }
+
+    .btn-gradient-danger {
+        background: linear-gradient(135deg, #dc3545, #c82333);
+        color: #fff;
+        border: none;
+    }
+
+    /* Enhanced Medicine Cards */
+    .medicine-card {
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border: 1px solid rgba(0,0,0,0.05) !important;
+    }
+
+        .medicine-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+    .card-img-container {
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+        .card-img-container img {
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+    .medicine-card:hover .card-img-container img {
+        transform: scale(1.1);
+    }
+
+    /* Action Buttons */
+    .action-buttons .btn-action {
+        border-radius: 12px;
+        padding: 8px 12px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        border-width: 2px;
+    }
+
+        .action-buttons .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    /* Stats Cards */
+    .stat-card {
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+    /* Modal Enhancements */
+    .modern-modal {
+        border-radius: 20px;
+        border: none;
+        overflow: hidden;
+    }
+
+        .modern-modal .modal-header {
+            border-radius: 20px 20px 0 0;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .modern-modal .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modern-modal .modal-footer {
+            border-top: none;
+            padding: 1.5rem;
+        }
+
+    /* Info Cards */
+    .info-card {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+    /* Modern Card */
+    .modern-card {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.05) !important;
+    }
+
+    /* Badge Styles */
+    .badge {
+        font-weight: 500;
+        border-radius: 10px;
+        padding: 0.6em 1em;
+        font-size: 0.85em;
+    }
+
+    /* Form Control Styles */
+    .form-control:focus {
+        border-color: #2a7de1;
+        box-shadow: 0 0 0 4px rgba(42, 125, 225, 0.15);
+    }
+
+    .form-control {
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+
+    /* Table Styles for List View */
+    .table th {
+        border-top: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 1.2rem 0.75rem;
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef) !important;
+    }
+
+    .table td {
+        padding: 1rem 0.75rem;
+        vertical-align: middle;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(42, 125, 225, 0.05);
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+
+    /* Modern Toggle */
+    .modern-toggle {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+        .modern-toggle .btn {
+            border-radius: 0;
+            border: none;
+            padding: 12px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .modern-toggle .btn.active {
+                background: linear-gradient(135deg, #2a7de1, #4b94e6);
+                color: white;
+                box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+    /* Modern Pagination */
+    .modern-pagination {
+        gap: 8px;
+    }
+
+        .modern-pagination .page-item .page-link {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            color: #2a7de1;
+            padding: 12px 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+            .modern-pagination .page-item .page-link:hover {
+                background: linear-gradient(135deg, #2a7de1, #4b94e6);
+                border-color: #2a7de1;
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(42, 125, 225, 0.3);
+            }
+
+        .modern-pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, #2a7de1, #4b94e6);
+            border-color: #2a7de1;
+            color: white;
+            box-shadow: 0 4px 15px rgba(42, 125, 225, 0.4);
+        }
+
+        .modern-pagination .page-item.disabled .page-link {
+            background: #f8f9fa;
+            border-color: #dee2e6;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+    /* Text Colors for better visibility */
+    .text-dark {
+        color: #212529 !important;
+    }
+
+    /* Alert Enhancements */
+    .alert {
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Input Group Styling */
+    .input-group {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .input-group .form-control {
+            border-radius: 0;
+            border-right: none;
+        }
+
+        .input-group .btn {
+            border-radius: 0;
+            border-left: none;
+        }
+
+    /* Animation for cards */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .medicine-card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Responsive adjustments */
+    @@media (max-width: 768px) {
+        .action-buttons {
+            flex-direction: column;
+        }
+
+            .action-buttons .btn-action {
+                margin-bottom: 5px;
+            }
+
+        .modern-pagination {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Auto close alerts after 5 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+
+        // View toggle functionality
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
+        const gridView = document.getElementById('gridView');
+        const listView = document.getElementById('listView');
+
+        gridViewBtn.addEventListener('click', function() {
+            gridView.classList.remove('d-none');
+            listView.classList.add('d-none');
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+
+            // Save preference to localStorage
+            localStorage.setItem('medicineViewPreference', 'grid');
+        });
+
+        listViewBtn.addEventListener('click', function() {
+            gridView.classList.add('d-none');
+            listView.classList.remove('d-none');
+            gridViewBtn.classList.remove('active');
+            listViewBtn.classList.add('active');
+
+            // Save preference to localStorage
+            localStorage.setItem('medicineViewPreference', 'list');
+        });
+
+        // Load saved view preference
+        const savedViewPreference = localStorage.getItem('medicineViewPreference');
+        if (savedViewPreference === 'list') {
+            listViewBtn.click();
+        }
+
+        // Add loading states to forms
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Processing...';
+                    submitBtn.disabled = true;
+                }
+            });
+        });
+
+        // Add animation delays for cards
+        document.querySelectorAll('.medicine-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    document.querySelectorAll('[id^="editMedicine-"]').forEach(modal => {
+        modal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const imageUrl = button.getAttribute('data-imageurl');
+            modal.querySelector('#edit_ImageUrl').value = imageUrl;
+            modal.querySelector('#currentImagePreview').src = imageUrl;
+        });
+    });
+
+
+    });
+</script>
+
+@* <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Auto close alerts after 5 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+
+        // View toggle functionality
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
+        const gridView = document.getElementById('gridView');
+        const listView = document.getElementById('listView');
+
+        gridViewBtn.addEventListener('click', function() {
+            gridView.classList.remove('d-none');
+            listView.classList.add('d-none');
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+
+            // Save preference to localStorage
+            localStorage.setItem('medicineViewPreference', 'grid');
+        });
+
+        listViewBtn.addEventListener('click', function() {
+            gridView.classList.add('d-none');
+            listView.classList.remove('d-none');
+            gridViewBtn.classList.remove('active');
+            listViewBtn.classList.add('active');
+
+            // Save preference to localStorage
+            localStorage.setItem('medicineViewPreference', 'list');
+        });
+
+        // Load saved view preference
+        const savedViewPreference = localStorage.getItem('medicineViewPreference');
+        if (savedViewPreference === 'list') {
+            listViewBtn.click();
+        }
+
+        // Image preview for create and edit forms
+        function setupImagePreview(inputSelector, previewSelector) {
+            const imageInput = document.querySelector(inputSelector);
+            if (imageInput) {
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            const previewElement = document.querySelector(previewSelector);
+                            if (previewElement) {
+                                previewElement.src = event.target.result;
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        }
+
+        // Setup image preview for create form
+        setupImagePreview('input[name="ImageUrl"]', '.image-preview');
+
+        // Enhanced tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Add loading states to forms
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Processing...';
+                    submitBtn.disabled = true;
+                }
+            });
+        });
+
+        // Add search functionality enhancement
+        const searchInput = document.querySelector('input[name="searchTerm"]');
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    // You could implement live search here
+                    console.log('Searching for:', this.value);
+                }, 500);
+            });
+        }
+
+        // Add smooth scroll for pagination
+        document.querySelectorAll('.pagination .page-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.page-body').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add confirmation for delete actions
+        document.querySelectorAll('form[asp-action="Delete"]').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const medicineName = form.closest('.modal').querySelector('strong').textContent;
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: `You won't be able to revert this! The medicine "${medicineName}" will be permanently deleted.`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + N to add new medicine
+            if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+                e.preventDefault();
+                document.querySelector('[data-bs-target="#createMedicine"]').click();
+            }
+
+            // Ctrl/Cmd + F to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                searchInput?.focus();
+            }
+        });
+
+        // Add animation delays for cards
+        document.querySelectorAll('.medicine-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script> *@

@@ -4,103 +4,90 @@
     ViewData["Title"] = "My Appointments";
 }
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>
-            <i class="fas fa-calendar-check me-2"></i>My Appointments
-        </h2>
+<div class="appointments-container">
+    <!-- Page Header -->
+    <div class="page-header text-center">
+        <h2><i class="fas fa-calendar-check me-2"></i> My Appointments</h2>
+        <p>Manage and review all your medical appointments in one place</p>
     </div>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info text-center">
-            <i class="fas fa-calendar-times fa-2x mb-3"></i>
+        <div class="empty-state">
+            <i class="fas fa-calendar-times"></i>
             <h4>No appointments yet</h4>
-            <p class="mb-0">You haven't booked any appointments yet.</p>
+            <p>You haven't booked any appointments yet.</p>
         </div>
     }
     else
     {
-        <div class="row">
+        <div class="appointments-grid">
             @foreach (var appointment in Model.OrderByDescending(a => a.AppointmentDate).ThenBy(a => a.StartTime))
             {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header @GetStatusColor(appointment)">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6 class="mb-0">@appointment.AppointmentDate.ToString("dd MMM yyyy")</h6>
-                                <span class="badge @GetStatusBadgeColor(appointment)">
-                                    @GetStatusText(appointment)
-                                </span>
+                <div class="appointment-card">
+                    <!-- Header -->
+                    <div class="card-header @GetStatusColor(appointment)">
+                        <h6>@appointment.AppointmentDate.ToString("dd MMM yyyy")</h6>
+                        <span class="status-badge @GetStatusBadgeColor(appointment)">
+                            @GetStatusText(appointment)
+                        </span>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-body">
+                        <div class="doctor-info">
+                            <div class="doctor-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div>
+                                <h6>Dr. @appointment.DoctorName</h6>
+                                <small class="text-muted">Speciality</small>
                             </div>
                         </div>
 
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="bg-primary rounded-circle p-2 me-3">
-                                    <i class="fas fa-user-md text-white"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">Dr. @appointment.DoctorName</h6>
-                                    <small class="text-muted">@appointment.StartTime.ToString(@"hh\:mm") - @appointment.EndTime.ToString(@"hh\:mm")</small>
-                                </div>
+                        <div class="appointment-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>@appointment.StartTime.ToString(@"hh\:mm") - @appointment.EndTime.ToString(@"hh\:mm")</span>
                             </div>
-
-                            <div class="appointment-details">
-                                <div class="mb-2">
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>
-                                        @appointment.StartTime.ToString(@"hh\:mm") - @appointment.EndTime.ToString(@"hh\:mm")
-                                    </small>
-                                </div>
-
-                                <div class="mb-2">
-                                    <small class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>
-                                        @appointment.AppointmentDate.ToString("dddd, MMMM dd, yyyy")
-                                    </small>
-                                </div>
-
-                                @if (appointment.BookedAt.HasValue)
-                                {
-                                    <div class="mb-2">
-                                        <small class="text-muted">
-                                            <i class="fas fa-bookmark me-1"></i>
-                                            Booked on: @appointment.BookedAt.Value.ToString("MMM dd, yyyy")
-                                        </small>
-                                    </div>
-                                }
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>@appointment.AppointmentDate.ToString("dddd, MMM dd, yyyy")</span>
                             </div>
-                        </div>
-
-                        <div class="card-footer bg-transparent">
-                            @if (appointment.IsCompleted && !appointment.IsRated)
+                            @if (appointment.BookedAt.HasValue)
                             {
-                                <button class="btn btn-outline-primary btn-sm w-100"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#ratingModal"
-                                        data-appointment-id="@appointment.Id"
-                                        data-doctor-id="@appointment.DoctorId">
-                                    <i class="fas fa-star me-1"></i> Rate Appointment
-                                </button>
-                            }
-                            else if (appointment.IsRated)
-                            {
-                                <div class="text-center">
-                                    <small class="text-success">
-                                        <i class="fas fa-check-circle me-1"></i> Rated
-                                    </small>
-                                </div>
-                            }
-                            else if (!appointment.IsCompleted)
-                            {
-                                <div class="text-center">
-                                    <small class="text-info">
-                                        <i class="fas fa-clock me-1"></i> Upcoming
-                                    </small>
+                                <div class="detail-item">
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>Booked on: @appointment.BookedAt.Value.ToString("MMM dd, yyyy")</span>
                                 </div>
                             }
                         </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="card-footer">
+                        @if (appointment.IsCompleted && !appointment.IsRated)
+                        {
+                            <button class="btn-rate"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#ratingModal"
+                                    data-appointment-id="@appointment.Id"
+                                    data-doctor-id="@appointment.DoctorId">
+                                <i class="fas fa-star me-1"></i> Rate Appointment
+                            </button>
+                        }
+                        else if (appointment.IsRated)
+                        {
+                            <span class="rated-text">
+                                <i class="fas fa-check-circle"></i> Rated
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="upcoming-text">
+                                <i class="fas fa-clock"></i> Upcoming
+                            </span>
+                        }
                     </div>
                 </div>
             }
@@ -110,19 +97,19 @@
 
 <!-- Rating Modal -->
 <div class="modal fade" id="ratingModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
             <div class="modal-header">
                 <h5 class="modal-title">Rate Your Appointment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <form id="ratingForm">
                     <input type="hidden" id="appointmentId" name="appointmentId" />
                     <input type="hidden" id="doctorId" name="doctorId" />
 
-                    <div class="mb-3">
-                        <label class="form-label">Rating</label>
+                    <div class="mb-3 text-center">
+                        <label class="form-label d-block">Rating</label>
                         <div class="rating-stars">
                             @for (int i = 1; i <= 5; i++)
                             {
@@ -136,14 +123,13 @@
 
                     <div class="mb-3">
                         <label for="comment" class="form-label">Comment (Optional)</label>
-                        <textarea class="form-control" id="comment" name="comment" rows="3"
-                                  placeholder="Share your experience..."></textarea>
+                        <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Share your experience..."></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="submitRating()">Submit Rating</button>
+                <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn-submit" onclick="submitRating()">Submit</button>
             </div>
         </div>
     </div>
@@ -151,99 +137,244 @@
 
 @section Styles {
     <style>
-        .card-header.bg-upcoming {
-            background: linear-gradient(135deg, #4a90e2, #007bff);
-            color: white;
+        :root {
+            --primary: #2a7de1;
+            --secondary: #3bbab5;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --danger: #ff6b6b;
+            --purple: #6f42c1;
+            --light: #f8f9fa;
+            --dark: #1a365d;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
-        .card-header.bg-completed {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
+        .appointments-container {
+            padding-top: 120px; 
+            padding-bottom: 120px;
+
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .card-header.bg-rated {
-            background: linear-gradient(135deg, #6f42c1, #6610f2);
-            color: white;
+        .page-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .badge.bg-upcoming {
-            background-color: #007bff;
+        .appointments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
-        .badge.bg-completed {
-            background-color: #28a745;
+        .appointment-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform .3s ease, box-shadow .3s ease;
         }
 
-        .badge.bg-rated {
-            background-color: #6f42c1;
+            .appointment-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            }
+
+        .card-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 1rem 1.5rem;
+        }
+
+        .card-footer {
+            background: #fafafa;
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .bg-upcoming {
+            background: rgba(42,125,225,0.08);
+            color: var(--primary);
+        }
+
+        .bg-completed {
+            background: rgba(40,167,69,0.1);
+            color: var(--success);
+        }
+
+        .bg-rated {
+            background: rgba(111,66,193,0.1);
+            color: var(--purple);
+        }
+
+        .badge-upcoming {
+            background: rgba(42,125,225,0.15);
+            color: var(--primary);
+        }
+
+        .badge-completed {
+            background: rgba(40,167,69,0.15);
+            color: var(--success);
+        }
+
+        .badge-rated {
+            background: rgba(111,66,193,0.15);
+            color: var(--purple);
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .doctor-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .appointment-details {
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .detail-item {
+            margin-bottom: .5rem;
+            font-size: .9rem;
+            color: #555;
+        }
+
+            .detail-item i {
+                margin-right: .5rem;
+                color: var(--primary);
+            }
+
+        .btn-rate {
+            background: var(--gradient);
+            color: #fff;
+            border: none;
+            padding: .5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .btn-rate:hover {
+                box-shadow: 0 6px 15px rgba(42,125,225,0.3);
+            }
+
+        .rated-text {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .upcoming-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+            .empty-state i {
+                font-size: 3rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+        /* Modal buttons */
+        .btn-cancel {
+            background: #ddd;
+            border: none;
+            padding: .5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            padding: .5rem 1.5rem;
+            border-radius: 6px;
         }
 
         .rating-stars {
             display: flex;
-            gap: 5px;
+            justify-content: center;
+            gap: 8px;
         }
 
-            .rating-stars .star {
-                cursor: pointer;
-                font-size: 24px;
-                color: #ddd;
-                transition: color 0.2s ease;
-            }
-
-                .rating-stars .star:hover,
-                .rating-stars .star.active {
-                    color: #ffc107;
-                }
-
-        .appointment-details {
-            border-left: 3px solid #007bff;
-            padding-left: 15px;
-            margin-left: -15px;
+        .star {
+            cursor: pointer;
+            font-size: 2rem;
+            color: #ddd;
         }
 
-        .card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-            .card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            .star.active, .star:hover {
+                color: #ffc107;
             }
     </style>
 }
 
 @section Scripts {
     <script>
-        // Initialize rating stars
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const ratingModal = document.getElementById('ratingModal');
             const stars = document.querySelectorAll('.rating-stars .star');
 
-            // Rating modal event
-            ratingModal.addEventListener('show.bs.modal', function(event) {
+            ratingModal.addEventListener('show.bs.modal', function (event) {
                 const button = event.relatedTarget;
-                const appointmentId = button.getAttribute('data-appointment-id');
-                const doctorId = button.getAttribute('data-doctor-id');
+                document.getElementById('appointmentId').value = button.getAttribute('data-appointment-id');
+                document.getElementById('doctorId').value = button.getAttribute('data-doctor-id');
 
-                document.getElementById('appointmentId').value = appointmentId;
-                document.getElementById('doctorId').value = doctorId;
-
-                // Reset stars
                 stars.forEach(star => {
                     star.classList.remove('active');
                     star.innerHTML = '<i class="far fa-star"></i>';
                 });
                 document.getElementById('stars').value = '';
+                document.getElementById('comment').value = '';
             });
 
-            // Star click event
             stars.forEach(star => {
-                star.addEventListener('click', function() {
+                star.addEventListener('click', function () {
                     const rating = parseInt(this.getAttribute('data-rating'));
-
-                    // Update stars display
-                    stars.forEach((s, index) => {
-                        if (index < rating) {
+                    stars.forEach((s, i) => {
+                        if (i < rating) {
                             s.classList.add('active');
                             s.innerHTML = '<i class="fas fa-star"></i>';
                         } else {
@@ -251,23 +382,17 @@
                             s.innerHTML = '<i class="far fa-star"></i>';
                         }
                     });
-
                     document.getElementById('stars').value = rating;
                 });
             });
         });
 
-        // Submit rating
         function submitRating() {
             const appointmentId = document.getElementById('appointmentId').value;
-            const doctorId = document.getElementById('doctorId').value;
             const stars = document.getElementById('stars').value;
             const comment = document.getElementById('comment').value;
 
-            if (!stars) {
-                alert('Please select a rating');
-                return;
-            }
+            if (!stars) { alert('Please select a rating.'); return; }
 
             fetch('/Appointment/Rate', {
                 method: 'POST',
@@ -281,26 +406,19 @@
                     comment: comment
                 })
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                if (data.success) {
-                    // Close modal and reload page
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('ratingModal'));
-                    modal.hide();
-                    location.reload();
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while submitting your rating.');
-            });
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('ratingModal')).hide();
+                        location.reload();
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Something went wrong.');
+                });
         }
     </script>
 }
@@ -315,9 +433,9 @@
 
     private string GetStatusBadgeColor(AppointmentDto appointment)
     {
-        if (appointment.IsRated) return "bg-rated";
-        if (appointment.IsCompleted) return "bg-completed";
-        return "bg-upcoming";
+        if (appointment.IsRated) return "badge-rated";
+        if (appointment.IsCompleted) return "badge-completed";
+        return "badge-upcoming";
     }
 
     private string GetStatusText(AppointmentDto appointment)

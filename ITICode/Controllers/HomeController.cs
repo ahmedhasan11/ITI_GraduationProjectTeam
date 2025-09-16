@@ -2,13 +2,9 @@ using System.Diagnostics;
 using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models;
 using ITI_Hackathon.ServiceContracts;
-
-
-using ITI_Hackathon.ServiceContracts;
-
 using ITI_Hackathon.ServiceContracts.DTO;
 using ITI_Hackathon.Services;
-using Medicine_Mvc.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ITI_Hackathon.Controllers
@@ -53,8 +49,7 @@ namespace ITI_Hackathon.Controllers
 
 			return View(Doctors);
         }
-
-
+        [Authorize]
         public async Task<IActionResult> DoctorDetails(string userId)
         {
             if (string.IsNullOrEmpty(userId))
@@ -70,8 +65,6 @@ namespace ITI_Hackathon.Controllers
 
             return View(doctor);
         }
-
-
 
         public IActionResult Privacy()
         {

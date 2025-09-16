@@ -1,687 +1,287 @@
-
-﻿    @using ITI_Hackathon.Entities
-    @using Microsoft.AspNetCore.Identity
-@inject UserManager<ApplicationUser> UserManager
-
-@{
-    var currentUser = await UserManager.GetUserAsync(User);
-}
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <title>Mantis HTML Admin Template | Mantis Bootstrap 5 Admin Template</title>
-        <!-- [Meta] -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
-        <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
-        <meta name="author" content="CodedThemes">
-
-        <!-- [Favicon] icon -->
-        <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
-        <!-- [Page specific CSS] start -->
-        <link href="~/assets/css/plugins/animate.min.css" rel="stylesheet" type="text/css">
-        <!-- [Page specific CSS] end -->
-        <!-- [Google Font] Family -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
-        <!-- [Tabler Icons] https://tablericons.com -->
-        <link rel="stylesheet" href="~/assets/fonts/tabler-icons.min.css">
-        <!-- [Feather Icons] https://feathericons.com -->
-        <link rel="stylesheet" href="~/assets/fonts/feather.css">
-        <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-        <link rel="stylesheet" href="~/assets/fonts/fontawesome.css">
-        <!-- [Material Icons] https://fonts.google.com/icons -->
-        <link rel="stylesheet" href="~/assets/fonts/material.css">
-        <!-- [Template CSS Files] -->
-        <link rel="stylesheet" href="~/assets/css/style.css" id="main-style-link">
-        <link rel="stylesheet" href="~/assets/css/style-preset.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        @RenderSection("Styles", required: false)
-
-    </head>
-
-    <body class="d-flex flex-column min-vh-100 bg-light">
-
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top shadow-sm border-0"
-             style="background: linear-gradient(135deg, #ffffff, #f0f4ff); backdrop-filter: blur(8px);">
-            <div class="container d-flex align-items-center">
-
-                <!-- Brand -->
-                <a class="navbar-brand fw-bold text-primary d-flex align-items-center fs-4" href="/" aria-label="Mediux Home">
-                    Mediux
-                </a>
-
-                <!-- Toggler -->
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Navbar Content -->
-                <div class="collapse navbar-collapse" id="mainNavbar">
-                    <!-- Spacer (left) -->
-                    <ul class="navbar-nav me-auto"></ul>
-
-                    <!-- Center Links -->
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
-                        <li class="nav-item">
-                            <a asp-action="GetMedicines" asp-controller="Home"
-                               class="nav-link fw-semibold mx-3 text-dark position-relative">
-                                Medicines
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-action="GetDoctors" asp-controller="Home"
-                               class="nav-link fw-semibold mx-3 text-dark position-relative">
-                                Doctors
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side (desktop only) -->
-                    <ul class="navbar-nav ms-auto align-items-center gap-3 d-none d-lg-flex">
-
-                        <!-- Chat -->
-                        @if (currentUser != null && (User.IsInRole("Doctor") || User.IsInRole("Patient")))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark fs-5 position-relative" asp-controller="ChatPage" asp-action="Index">
-                                    <i class="ti ti-message"></i>
-                                </a>
-                            </li>
-                        }
-
-
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Mantis HTML Admin Template | Mantis Bootstrap 5 Admin Template</title>
-    <!-- [Meta] -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
-    <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
-    <meta name="author" content="CodedThemes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickClinic</title>
 
-    <!-- [Favicon] icon -->
-    <link rel="icon" href="~/assets/images/favicon.svg" type="image/x-icon">
-    <!-- [Page specific CSS] start -->
-    <link href="~/assets/css/plugins/animate.min.css" rel="stylesheet" type="text/css">
-    <!-- [Page specific CSS] end -->
-    <!-- [Google Font] Family -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
-    <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="~/assets/fonts/tabler-icons.min.css">
-    <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="~/assets/fonts/feather.css">
-    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="~/assets/fonts/fontawesome.css">
-    <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="~/assets/fonts/material.css">
-    <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="~/assets/css/style.css" id="main-style-link">
-    <link rel="stylesheet" href="~/assets/css/style-preset.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="~/css/styles.css" />
 
+    @RenderSection("Styles", required: false)
 </head>
+<body class="d-flex flex-column min-vh-100">
 
-<body class="d-flex flex-column min-vh-100 bg-light">
-
-        <!-- Header -->
-<header>
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm border-0"
-         style="background: linear-gradient(135deg, #ffffff, #f0f4ff); backdrop-filter: blur(10px);">
-        <div class="container">
-
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
             <!-- Brand -->
-            <a class="navbar-brand fw-bold text-primary d-flex align-items-center fs-4" href="/" aria-label="Mediux Home">
-                Mediux
-            </a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">ClickClinic</a>
 
-            <!-- Toggler -->
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Mobile Toggler aligned right -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item">
-                        <a asp-action="GetMedicines" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Medicines</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="GetDoctors" asp-controller="Home" class="nav-link fw-semibold mx-2 underline-hover text-dark" >Doctors</a>
-                    </li>
+            <!-- Center Menu -->
+            <div class="collapse navbar-collapse center-menu" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="GetMedicines">Medicines</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="GetDoctors">Doctors</a></li>
                 </ul>
 
-                <!-- Right side -->
-                <ul class="navbar-nav align-items-center ms-lg-3">
+                <!-- Mobile actions (replaces right icons on small screens) -->
+                <div class="d-lg-none mt-2 pt-2" style="border-top: 1px solid var(--light-border);">
+                    <div class="menu-section-title">Quick actions</div>
+                    <a class="nav-link px-0" asp-controller="ChatPage" asp-action="Index">
+                        <i class="fa-solid fa-comments me-2 text-primary"></i>Chat
+                    </a>
+                    <a class="nav-link px-0" asp-controller="Cart" asp-action="Index">
+                        <i class="fa-solid fa-shopping-cart me-2 text-primary"></i>Cart
+                    </a>
+                    <a class="nav-link px-0" href="/profile">
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Profile
+                    </a>
+                </div>
+            </div>
 
-                        <!-- Cart -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-dark fs-5 position-relative" href="#" id="cartDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-
-                                <i class="ti ti-shopping-cart"></i>
-                                <span id="cart-count"
-                                      class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill shadow-sm">
-                                    0
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow p-3 rounded-3"
-                                aria-labelledby="cartDropdown" style="min-width: 300px;">
-                                <li class="mb-2 text-center fw-semibold">Your Cart</li>
-                                <li>
-                                    <div id="cart-items" class="d-flex flex-column gap-2 text-center p-3">
-
-                                <i class="ti ti-shopping-cart fs-5"></i>
-                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill shadow-sm">
-                                    0 <!-- This will be updated by JavaScript -->
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-cart shadow-lg" aria-labelledby="cartDropdown">
-                                <div class="dropdown-cart-header">
-                                    <h6 class="mb-0">Shopping Cart</h6>
-                                </div>
-                                <div class="dropdown-cart-body" id="cart-dropdown-content">
-                                    <!-- Cart items will be loaded here dynamically -->
-                                    <div class="text-center p-3">
-
-                                        <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
-                                        <span class="ms-2">Loading cart...</span>
-                                    </div>
-
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a href="/Cart" class="btn btn-primary w-100 rounded-pill">Go to Cart</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <!-- Profile -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="~/assets/images/user/avatar-2.jpg" alt="User" width="32" height="32"
-                                     class="rounded-circle border shadow-sm me-1">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 p-2 text-center"
-                                aria-labelledby="userDropdown" style="min-width: 220px;">
-                                @if (currentUser != null)
-                                {
-                                    <!-- User Info -->
-                                    <li class="mb-2">
-                                        <img src="~/assets/images/user/avatar-2.jpg" alt="User"
-                                             width="48" height="48" class="rounded-circle mb-2 shadow-sm">
-                                        <div class="fw-bold">@currentUser.FullName</div>
-                                        <div class="text-muted small">@currentUser.Email</div>
-                                        <div class="badge bg-light text-dark fw-semibold">
-                                            @(User.IsInRole("Patient") ? "Patient" :
-                                                                                    User.IsInRole("Doctor") ? "Doctor" :
-                                                                                    User.IsInRole("Admin") ? "Admin" : "User")
-                                    </div>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-
-                                    <!-- Role-based menu -->
-                                @if (User.IsInRole("Patient"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile"><i class="ti ti-user me-2 text-primary"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" href="/Orders"><i class="ti ti-shopping-cart me-2 text-success"></i> Orders</a></li>
-                                        <li><a class="dropdown-item" asp-controller="Appointment" asp-action="PatientAppointments"><i class="ti ti-calendar me-2 text-info"></i> Appointments</a></li>
-                                    }
-                                    else if (User.IsInRole("Doctor"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile"><i class="ti ti-user me-2 text-primary"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" asp-controller="Appointment" asp-action="MyAppointments"><i class="ti ti-calendar me-2 text-info"></i> Appointments</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ChatPage" asp-action="Index"><i class="ti ti-message me-2 text-warning"></i> Chats</a></li>
-                                    }
-                                    else if (User.IsInRole("Admin"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile"><i class="ti ti-user me-2 text-primary"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" href="/Dashboard"><i class="ti ti-layout-dashboard me-2 text-success"></i> Dashboard</a></li>
-                                    }
-
-                                    <li><hr class="dropdown-divider"></li>
-                                    <!-- Logout -->
-                                    <li>
-                                        <form method="post" asp-controller="Account" asp-action="Logout" class="m-0">
-                                            <button type="submit" class="dropdown-item text-danger fw-semibold">
-                                                <i class="ti ti-power me-2"></i> Logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li><a class="dropdown-item" href="/Account/Login"><i class="ti ti-login me-2 text-primary"></i> Login</a></li>
-                                    <li><a class="dropdown-item" href="/Account/Register"><i class="ti ti-user-plus me-2 text-success"></i> Register</a></li>
-                                }
-                            </ul>
-
-                                </div>
-                                <div class="dropdown-cart-footer">
-                                    <a href="/Cart" class="btn btn-primary w-100">View Cart</a>
-                                </div>
-                            </div>
-
-                        </li>
-                    </ul>
-
-
-                    <!-- Mobile Menu -->
-                    <ul class="navbar-nav d-lg-none text-center mt-3">
-                        @if (currentUser != null && (User.IsInRole("Doctor") || User.IsInRole("Patient")))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link fw-semibold text-dark" asp-controller="ChatPage" asp-action="Index">Chats</a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold text-dark" href="/Cart">Cart</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <!-- No dropdown-toggle so no arrow -->
-                            <a class="nav-link fw-semibold text-dark" href="#" id="mobileProfileDropdown"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                User
-                            </a>
-                            <ul class="dropdown-menu shadow rounded-3 p-2 text-center" aria-labelledby="mobileProfileDropdown">
-                                @if (currentUser != null)
-                                {
-                                    <li class="mb-2">
-                                        <img src="~/assets/images/user/avatar-2.jpg" alt="User"
-                                             width="48" height="48" class="rounded-circle mb-2 shadow-sm">
-                                        <div class="fw-bold">@currentUser.FullName</div>
-                                        <div class="text-muted small">@currentUser.Email</div>
-                                        <div class="badge bg-light text-dark fw-semibold">
-                                            @(User.IsInRole("Patient") ? "Patient" :
-                                                                                    User.IsInRole("Doctor") ? "Doctor" :
-                                                                                    User.IsInRole("Admin") ? "Admin" : "User")
-                                    </div>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                @if (User.IsInRole("Patient"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile">Profile</a></li>
-                                        <li><a class="dropdown-item" href="/Orders">Orders</a></li>
-                                        <li><a class="dropdown-item" href="/Appointments">Appointments</a></li>
-                                    }
-                                    else if (User.IsInRole("Doctor"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile">Profile</a></li>
-                                        <li><a class="dropdown-item" href="/Appointments">Appointments</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ChatPage" asp-action="Index">Chats</a></li>
-                                    }
-                                    else if (User.IsInRole("Admin"))
-                                    {
-                                        <li><a class="dropdown-item" href="/Profile">Profile</a></li>
-                                        <li><a class="dropdown-item" href="/Dashboard">Dashboard</a></li>
-                                    }
-
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <form method="post" asp-controller="Account" asp-action="Logout">
-                                            <button type="submit" class="dropdown-item text-danger fw-semibold">
-                                                Logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li><a class="dropdown-item" href="/Account/Login">Login</a></li>
-                                    <li><a class="dropdown-item" href="/Account/Register">Register</a></li>
-                                }
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <!-- Profile -->
-                        <a asp-action="Login" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Login</a>
-                        <a asp-action="Register" asp-controller="Account" class="nav-link fw-semibold mx-2 underline-hover text-dark">Register</a>
-                    <li class="nav-item dropdown"> 
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                           id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="~/assets/images/user/avatar-2.jpg" alt="User" width="36" height="36"
-                                 class="rounded-circle border border-light shadow-sm me-2">
+            <!-- Right Menu - Fixed Dropdowns -->
+            <div class="right-menu">
+                <ul class="navbar-nav flex-row">
+                    <!-- Chat -->
+                    <li class="nav-item">
+                        <a class="nav-link nav-icon" asp-controller="ChatPage" asp-action="Index">
+                            <i class="fa-solid fa-comments"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 p-2"
-                            aria-labelledby="userDropdown"
-                            style="transition: all 0.3s ease;">
-                            <li><a class="dropdown-item d-flex align-items-center" href="/Profile">
-                                <i class="ti ti-user me-2 text-primary"></i>Profile
-                            </a></li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="/Settings">
-                                <i class="ti ti-settings me-2 text-warning"></i>Settings
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item d-flex align-items-center text-danger fw-semibold" href="/Account/Logout">
-                                <i class="ti ti-power me-2"></i>Logout
-                            </a></li>
-                        </ul>
                     </li>
+
+                    <!-- Cart Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="#" id="cartDropdown"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge badge-custom">0</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end cart-dropdown" aria-labelledby="cartDropdown" id="cart-dropdown-menu">
+                            <div id="cart-dropdown-items">
+                                <p class="text-muted px-3">Loading...</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Profile Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a class="dropdown-item" href="/Account/Login">
+                                    <i class="fa-solid fa-sign-in-alt"></i> Login
+                                </a>
+                                <a class="dropdown-item" href="/Account/Register">
+                                    <i class="fa-solid fa-user-plus"></i> Register
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="px-3 py-2 text-center mb-2">
+                                    <div class="profile-icon mx-auto mb-2" style="width:50px;height:50px;border-radius:50%;overflow:hidden;background:#f0f0f0;">
+                                        <img src="@Url.Content("~/images/profiles/default.png")" alt="Profile" class="img-fluid" />
+                                        <!-- Replace with actual user image if available -->
+                                    </div>
+                                    <h6 class="mb-0">@User.Identity.Name</h6>
+                                    <small class="d-block text-muted">@User.FindFirst("Email")?.Value</small> <!-- Email second -->
+                                    <small class="d-block text-secondary">
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <span>Admin</span>
+                                        }
+                                        else if (User.IsInRole("Doctor"))
+                                        {
+                                            <span>Doctor</span>
+                                        }
+                                        else if (User.IsInRole("Patient"))
+                                        {
+                                            <span>Patient</span>
+                                        }
+                                    </small>
+                                </div>
+                                <hr class="dropdown-divider">
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" href="/Admin/PendingDoctors">
+                                        <i class="fa-solid fa-tachometer-alt text-primary"></i> Dashboard
+                                    </a>
+                                }
+                                else if (User.IsInRole("Patient"))
+                                {
+                                    <a class="dropdown-item" href="/Appointment/PatientAppointments">
+                                        <i class="fa-solid fa-calendar-check text-primary"></i> Appointments
+                                    </a>
+                                    <a class="dropdown-item" href="/Order/GetOrderHistory">
+                                        <i class="fa-solid fa-box text-secondary"></i> Orders
+                                    </a>
+                                }
+                                else if (User.IsInRole("Doctor"))
+                                {
+                                    <a class="dropdown-item" href="/Appointment/Myappointments">
+                                        <i class="fa-solid fa-calendar-check text-primary"></i> MyAppointments
+                                    </a>
+                                }
+
+                                <hr class="dropdown-divider">
+
+                                <!-- Logout Form -->
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="fa-solid fa-sign-out-alt"></i> Logout
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
-</header>
 
-<style>
-    /* Animated underline hover */
-    .underline-hover {
-        position: relative;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .underline-hover::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 0%;
-        height: 2px;
-        background: #007bff; /* underline color */
-        border-radius: 2px;
-        transition: width 0.3s ease;
-    }
-
-    .underline-hover:hover::after {
-        width: 100%;
-    }
-
-    .underline-hover:hover {
-        color: #007bff;
-    }
-
-    /* Dropdown Hover */
-    .dropdown-menu a.dropdown-item:hover {
-        background-color: #f0f4ff;
-        color: #007bff !important;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-    }
-
-        .dropdown-cart {
-            min-width: 320px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .dropdown-item-cart {
-            padding: 0.75rem 1rem;
-            transition: background-color 0.2s;
-        }
-
-            .dropdown-item-cart:hover {
-                background-color: #f8f9fa;
-            }
-
-        #cart-count {
-            font-size: 0.7rem;
-            padding: 0.25em 0.5em;
-            min-width: 1.5em;
-            height: 1.5em;
-        }
-</style>
-
-
-    <!-- Main Content -->
-    <main class=" py-5 mt-4 flex-grow-1">
+    <!-- MAIN -->
+    <main>
         @RenderBody()
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-top mt-auto py-4">
+    <!-- Enhanced Footer -->
+    <footer class="mt-auto position-relative">
+        <div class="footer-floating"></div>
+        <div class="footer-floating"></div>
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                    <h5 class="fw-bold text-primary mb-1">Mediux</h5>
-                    <small class="text-muted">Your trusted medical platform.</small>
-
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">ClickClinic</div>
+                    <p class="footer-description">
+                        Your trusted medical companion for medicines, doctor consultations,
+                        and AI-powered medical assistance.
+                    </p>
                 </div>
-            </div>
-        </nav>
-    </header>
 
-
-
-    <style>
-        /* Animated underline hover */
-        .underline-hover {
-            position: relative;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .underline-hover::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0%;
-            height: 2px;
-            background: #007bff; /* underline color */
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        .underline-hover:hover::after {
-            width: 100%;
-        }
-
-        .underline-hover:hover {
-            color: #007bff;
-        }
-
-        /* Dropdown Hover */
-        .dropdown-menu a.dropdown-item:hover {
-            background-color: #f0f4ff;
-            color: #007bff !important;
-            border-radius: 0.5rem;
-            transition: all 0.2s ease;
-        }
-
-            .dropdown-cart {
-                min-width: 320px;
-                max-height: 400px;
-                overflow-y: auto;
-            }
-
-            .dropdown-item-cart {
-                padding: 0.75rem 1rem;
-                transition: background-color 0.2s;
-            }
-
-                .dropdown-item-cart:hover {
-                    background-color: #f8f9fa;
-                }
-
-            #cart-count {
-                font-size: 0.7rem;
-                padding: 0.25em 0.5em;
-                min-width: 1.5em;
-                height: 1.5em;
-            }
-    </style>
-
-
-        <!-- Main Content -->
-        <main class=" py-5 mt-4 flex-grow-1">
-            @RenderBody()
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-white border-top mt-auto py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                        <h5 class="fw-bold text-primary mb-1">Mediux</h5>
-                        <small class="text-muted">Your trusted medical platform.</small>
-                    </div>
-                    <div class="col-md-4 text-center mb-3 mb-md-0">
-                        <a href="/Medicines" class="text-muted mx-2 text-decoration-none">Medicines</a>
-                        <a href="/Doctors" class="text-muted mx-2 text-decoration-none">Doctors</a>
-                        <a href="/Contact" class="text-muted mx-2 text-decoration-none">Contact</a>
-                        <a href="/About" class="text-muted mx-2 text-decoration-none">About</a>
-                    </div>
-                    <div class="col-md-4 text-center text-md-end">
-                        <a href="#" class="text-muted mx-2"><i class="ti ti-brand-facebook fs-5"></i></a>
-                        <a href="#" class="text-muted mx-2"><i class="ti ti-brand-twitter fs-5"></i></a>
-                        <a href="#" class="text-muted mx-2"><i class="ti ti-brand-instagram fs-5"></i></a>
-                        <a href="#" class="text-muted mx-2"><i class="ti ti-brand-linkedin fs-5"></i></a>
-                    </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a asp-controller="Home" asp-action="Index"> <i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#features"> <i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a asp-controller="Home" asp-action="GetMedicines"> <i class="fas fa-chevron-right"></i> Medicines</a></li>
+                        <li><a asp-controller="Home" asp-action="GetDoctors"> <i class="fas fa-chevron-right"></i> Doctors</a></li>
+                        <li><a asp-controller="Home" asp-action="About"> <i class="fas fa-chevron-right"></i> About Us</a></li>
+                    </ul>
                 </div>
-                <hr class="my-3">
-                <div class="text-center">
-                    <small class="text-muted">© @DateTime.Now.Year Mediux. All rights reserved.</small>
+
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> AhmedBasem0104@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +20 123 456 7890</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mansoura, Egypt</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/ahmed.basem.2004" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/AhmedBasem04" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/Basem0" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ahmed-basem0104/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
 
-        </footer>
-
-        <!-- Scripts -->
-        <script src="~/assets/js/plugins/popper.min.js"></script>
-        <script src="~/assets/js/plugins/bootstrap.min.js"></script>
-        <script src="~/assets/js/plugins/simplebar.min.js"></script>
-        <script src="~/assets/js/plugins/feather.min.js"></script>
-        <script src="~/assets/js/pcoded.js"></script>
-
-        <!-- Active Link Script -->
-        <script>
-            // Update cart count badge
-            async function updateCartCount() {
-                try {
-                    const response = await fetch('/Cart/GetCartCount');
-                    const data = await response.json();
-
-                    const cartCountElement = document.getElementById('cart-count');
-                    if (cartCountElement) {
-                        cartCountElement.textContent = data.count;
-
-                        // Show/hide badge based on count
-                        cartCountElement.style.display = data.count > 0 ? 'block' : 'none';
-                    }
-                } catch (error) {
-                    console.error('Error updating cart count:', error);
-
-            <hr class="my-3">
-            <div class="text-center">
-                <small class="text-muted">© @DateTime.Now.Year Mediux. All rights reserved.</small>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ClickClinic. All Rights Reserved. | Your Health, Our Priority</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="~/assets/js/plugins/popper.min.js"></script>
-    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="~/assets/js/plugins/simplebar.min.js"></script>
-    <script src="~/assets/js/plugins/feather.min.js"></script>
-    <script src="~/assets/js/pcoded.js"></script>
-
-    <!-- Active Link Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-                // Function to update cart count
-        async function updateCartCount() {
-            try {
-                const response = await fetch('/Cart/GetCartCount');
-                const data = await response.json();
-
-                const cartCountElement = document.getElementById('cart-count');
-                if (cartCountElement) {
-                    cartCountElement.textContent = data.count;
-
-                    // Show/hide badge based on count
-                    if (data.count > 0) {
-                        cartCountElement.style.display = 'block';
-                    } else {
-                        cartCountElement.style.display = 'none';
-                    }
-                }
-            } catch (error) {
-                console.error('Error updating cart count:', error);
-            }
-        }
-
-        // Function to update cart dropdown content
-        async function updateCartDropdown() {
-            try {
-                const response = await fetch('/Cart/GetCartItemsDropdown');
-                const cartDropdown = document.getElementById('cart-dropdown-content');
-
-                if (cartDropdown) {
-                    cartDropdown.innerHTML = await response.text();
-                }
-            } catch (error) {
-                console.error('Error updating cart dropdown:', error);
-            }
-        }
-
-        // Update cart when page loads
+        // Initialize Bootstrap dropdowns
         document.addEventListener('DOMContentLoaded', function() {
-            updateCartCount();
-            updateCartDropdown();
-        });
-
-        // Optional: Update cart when dropdown is shown
-        document.getElementById('cartDropdown')?.addEventListener('show.bs.dropdown', function() {
-            updateCartDropdown();
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            const currentPath = location.pathname;
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
-                    link.classList.add('active', 'bg-primary', 'text-white');
-
-                }
-            }
-
-            // Update cart dropdown content
-            async function updateCartDropdown() {
-                try {
-                    const response = await fetch('/Cart/GetCartItemsDropdown');
-                    const cartItemsContainer = document.getElementById('cart-items');
-
-                    if (cartItemsContainer) {
-                        cartItemsContainer.innerHTML = await response.text();
-
-                        // Update total dynamically if your response provides it
-                        const totalEl = document.getElementById('cart-total');
-                        if (totalEl && window.cartTotal !== undefined) {
-                            totalEl.textContent = `$${window.cartTotal.toFixed(2)}`;
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error updating cart dropdown:', error);
-                }
-            }
-
-            // Initialize when page loads
-            document.addEventListener('DOMContentLoaded', function() {
-                updateCartCount();
-                updateCartDropdown();
+            // Initialize all dropdowns
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl)
             });
 
-            // Update cart whenever dropdown opens
-            document.getElementById('cartDropdown')?.addEventListener('show.bs.dropdown', function() {
-                updateCartDropdown();
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                var isDropdown = event.target.matches('.dropdown-toggle') ||
+                                 event.target.closest('.dropdown-toggle') ||
+                                 event.target.matches('.dropdown-menu') ||
+                                 event.target.closest('.dropdown-menu');
+
+                if (!isDropdown) {
+                    dropdownList.forEach(function(dropdown) {
+                        dropdown.hide();
+                    });
+                }
+            });
+        });
+
+        async function refreshCart() {
+            try {
+                const countRes = await fetch('/Cart/GetCartCount');
+                const countData = await countRes.json();
+                document.getElementById('cart-count').innerText = countData.count;
+
+                const dropdownRes = await fetch('/Cart/GetCartItemsDropdown');
+                const dropdownHtml = await dropdownRes.text();
+                document.getElementById('cart-dropdown-items').innerHTML = dropdownHtml;
+            } catch (error) {
+                console.error('Error refreshing cart:', error);
+            }
+        }
+
+        async function addToCart(medicineId, quantity = 1) {
+            try {
+                const res = await fetch('/Cart/Add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ MedicineId: medicineId, Quantity: quantity })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    await refreshCart();
+                } else {
+                    alert("Failed to add to cart");
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                alert("An error occurred while adding to cart");
+            }
+        }
+
+        // Attach events
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const medicineId = btn.dataset.medicineId;
+                    addToCart(medicineId);
+                });
             });
 
-        </script>
-   
-
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
-    </html>
+            refreshCart();
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -11,5 +11,6 @@ namespace ITI_Hackathon.ServiceContracts.DTO
 		public decimal Price { get; set; }
         public int Stock { get; set; }
         public string? ImageUrl { get; set; }
-    }
+		public IFormFile? ImageFile { get; set; }
+	}
 }

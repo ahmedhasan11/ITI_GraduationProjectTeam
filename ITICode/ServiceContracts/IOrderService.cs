@@ -11,20 +11,11 @@ namespace ITI_Hackathon.ServiceContracts
 		/// <param name="orderID"> usedto findthat specificorder</param>
 		/// <returns></returns>
 		Task<OrderDetailsDto> GetOrderByIdAsync(int orderID);
-
 		///checksfor historyor orders for a specific user
 		Task<IEnumerable<OrderDto>> GetOrdersForUserAsync(string userId);
-
 		//changes order statusfrom pending -->paid-->shipped
 		Task<bool> UpdateOrderStatusAsync(int orderId, string newstatus);
-
 		Task<bool> ClearCartAfterPaymentAsync(int orderId);
-
 		Task<bool> DeleteOrderAsync(int orderId);
-
-
-
-
-
 	}
 }

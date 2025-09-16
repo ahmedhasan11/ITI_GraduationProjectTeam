@@ -1,33 +1,34 @@
 ﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.CartItemDto>
 
-@if (Model.Any())
+<h6 class="dropdown-header fw-bold mb-2">
+    Your Cart <span class="text-primary">(@ViewBag.Count items)</span>
+</h6>
+<hr class="dropdown-divider">
+@if (Model != null && Model.Any())
 {
-    foreach (var item in Model)
+    @foreach (var item in Model)
     {
-        <div class="dropdown-item-cart d-flex align-items-center py-2 border-bottom">
-@*             <img src="@(item.ImageUrl ?? "/images/medicine-placeholder.jpg")"
-                 alt="@item.MedicineName" class="rounded me-3" width="40" height="40"> *@
-            <div class="flex-grow-1">
-                <h6 class="mb-0">@item.MedicineName</h6>
-                <small class="text-muted">Qty: @item.Quantity × $@item.UnitPrice</small>
-            </div>
-            <div class="text-end">
-                <strong>$@(item.UnitPrice * item.Quantity)</strong>
+        <div class="cart-item px-3 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-0">@item.MedicineName</h6>
+                    <small class="text-muted">Qty: @item.Quantity</small>
+                </div>
+                <span class="fw-bold text-primary">$@(item.UnitPrice* item.Quantity)</span>
             </div>
         </div>
     }
-
-    <div class="dropdown-item-cart py-2">
-        <div class="d-flex justify-content-between fw-bold">
-            <span>Total:</span>
-            <span>$@Model.Sum(item => item.UnitPrice * item.Quantity)</span>
-        </div>
-    </div>
 }
 else
 {
-    <div class="text-center p-3">
-        <i class="ti ti-shopping-cart fs-1 text-muted mb-2"></i>
-        <p class="text-muted mb-0">Your cart is empty</p>
-    </div>
+    <p class="text-muted px-3">Your cart is empty</p>
 }
+
+<hr class="dropdown-divider">
+<div class="d-flex justify-content-between mb-3 px-3">
+    <h6 class="mb-0">Total:</h6>
+    <span class="fw-bold text-dark">$@ViewBag.Total</span>
+</div>
+<a class="btn btn-premium w-100" href="/cart">
+    <i class="fas fa-shopping-bag me-2"></i>View Cart
+</a>

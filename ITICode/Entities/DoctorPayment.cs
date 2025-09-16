@@ -8,15 +8,12 @@ namespace ITI_Hackathon.Entities
 	{
 		[Key]
 		public int Id { get; set; }
-
 		[Required]
 		[ForeignKey(nameof(Patient))]
 		public string PatientId { get; set; } = default!;
-
 		[Required]
 		[ForeignKey(nameof(Doctor))]
 		public string DoctorId { get; set; } = default!;
-
 		public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
 
 		// You can store the Stripe PaymentIntent ID for refunds/etc. later

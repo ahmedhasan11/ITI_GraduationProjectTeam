@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Stripe.Checkout;
-using ITI_Hackathon.Stripe;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using ITI_Hackathon.ServiceContracts;
 using ITI_Hackathon.ServiceContracts.DTO;
-using System.Threading.Tasks;
-using System.Security.Claims;
 using ITI_Hackathon.Services;
+using ITI_Hackathon.Stripe;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Stripe;
+using Stripe.Checkout;
 
 namespace ITI_Hackathon.Controllers
 {
@@ -23,63 +24,85 @@ namespace ITI_Hackathon.Controllers
 			_consultationservice = consultationservice;
 		}
 
-		[HttpPost]
-		//Post:Payment/CreateCheckout
-		public async Task<ActionResult> CreateCheckout()
-		{
-			var userId = User.Identity != null && User.Identity.IsAuthenticated	? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value: null;
-			var sessionId = userId == null ? Request.Cookies["GuestSessionId"]:null;
+        [HttpPost]
+        public async Task<ActionResult> CreateCheckout()
+        {
+            var userId = User.Identity != null && User.Identity.IsAuthenticated
+                ? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                : null;
+            var sessionId = userId == null ? Request.Cookies["GuestSessionId"] : null;
 
-			if (userId == null && sessionId == null)
-			{
-				return BadRequest("No cart owner found.");
-			}
-			var order = await _orderservice.CreateOrderFromCartAsync(userId, sessionId);
-			if (order == null)
-			{
-				return BadRequest("Cart is empty or could not create order.");
-			}
+            if (userId == null && sessionId == null)
+                return BadRequest("No cart owner found.");
 
-			//OrderDetailsDto order = await _orderservice.GetOrderByIdAsync(OrderID);
+            var order = await _orderservice.CreateOrderFromCartAsync(userId, sessionId);
+            if (order == null || order.Items == null || !order.Items.Any())
+                return BadRequest("Cart is empty.");
 
-			if (order==null)
-			{
-				return NotFound("there is no order with that id");
-			}
+            decimal deliveryFee = 15m;
 
-			var domain = "https://localhost:7101";
+            var domain = "https://clickclinic.runasp.net";
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string> { "card" },
+                LineItems = new List<SessionLineItemOptions>(),
+                Mode = "payment",
+                SuccessUrl = $"{domain}/Payment/Success?orderId={order.OrderId}",
+                CancelUrl = $"{domain}/Payment/Cancel?orderId={order.OrderId}",
+            };
 
-			//Checkout Session Options
-			var options = new SessionCreateOptions
-			{
-				PaymentMethodTypes = new List<string> { "card" },
-				LineItems = order.Items.Select(orderitem=> new SessionLineItemOptions 
-				{
-					 PriceData= new SessionLineItemPriceDataOptions
-					  {
-						 UnitAmount = (long)(orderitem.UnitPrice * 100),
-						 Currency="usd",
-						 ProductData= new SessionLineItemPriceDataProductDataOptions
-						 {
-							 Name=orderitem.MedicineName
-						 },
-					  },
-					 Quantity=orderitem.Quantity
-				}).ToList(),
-				Mode = "payment",
-				SuccessUrl = $"{domain}/Payment/Success?orderId={order.OrderId}",
-				CancelUrl = $"{domain}/Payment/Cancel?orderId={order.OrderId}",
-			};
 
-			//Start Session With Stripe
-			var service = new SessionService();
-			Session session = service.Create(options);
+            foreach (var item in order.Items)
+            {
+                options.LineItems.Add(new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        Currency = "usd",
+                        UnitAmount = (long)(item.UnitPrice * 100),
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = item.MedicineName
+                        }
+                    },
+                    Quantity = item.Quantity
+                });
+            }
 
-			return Redirect(session.Url);
-		}
+            options.LineItems.Add(new SessionLineItemOptions
+            {
+                PriceData = new SessionLineItemPriceDataOptions
+                {
+                    Currency = "usd",
+                    UnitAmount = (long)(deliveryFee * 100),
+                    ProductData = new SessionLineItemPriceDataProductDataOptions
+                    {
+                        Name = "Delivery Fee"
+                    }
+                },
+                Quantity = 1
+            });
 
-		//Get:Payment/Success
-		[HttpGet]
+            var couponService = new CouponService();
+            var coupon = couponService.Create(new CouponCreateOptions
+            {
+                Name = "Manual Discount",
+                AmountOff = (long)(10 * 100), 
+                Currency = "usd",
+            });
+
+            options.Discounts = new List<SessionDiscountOptions>
+    {
+        new SessionDiscountOptions { Coupon = coupon.Id }
+    };
+
+            var service = new SessionService();
+            var session = service.Create(options);
+
+            return Redirect(session.Url);
+        }
+
+        [HttpGet]
 		public async Task<IActionResult> Success(int orderID)
 		{
 			await _orderservice.UpdateOrderStatusAsync(orderID, "Paid");
@@ -99,7 +122,6 @@ namespace ITI_Hackathon.Controllers
 			return RedirectToAction("GetOrderDetails", "Order", new { orderid = orderId });
 		}
 
-
 		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> CreateConsultationCheckout(string doctorId)
@@ -117,7 +139,7 @@ namespace ITI_Hackathon.Controllers
 			}
 			//create payment session
 			var consultationInfo = await _consultationservice.CreateConsultationPaymentAsync(patientId, doctorId);
-			var domain = "https://localhost:7101";
+			var domain = "https://clickclinic.runasp.net";
 			var options = new SessionCreateOptions
 			{
 				PaymentMethodTypes = new List<string> { "card" },
@@ -175,7 +197,7 @@ namespace ITI_Hackathon.Controllers
 			);
 
 			// Redirect to chat
-			return RedirectToAction("ChatWithDoctor", "Chat", new { doctorId = doctorId });
+			return RedirectToAction("Index", "ChatPage", new { doctorId = doctorId });
 		}
 		[Authorize]
 		[HttpGet]
@@ -185,7 +207,5 @@ namespace ITI_Hackathon.Controllers
 			TempData["Error"] = "Consultation payment was cancelled.";
 			return RedirectToAction("Index", "Home", new { id = doctorId });
 		}
-
-
 	}
 }
