@@ -1,194 +1,776 @@
 ﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.DoctorApprovedDTO>
 @{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewBag.Title = "Doctors Management";
 }
 
+<!-- FontAwesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-jQTXQEkZpY0vX4gRj3qMZshqYknH6eZ4VSkbHzmZlO4QqOdrp2g6pQfl5Y0iJx3Q4iT0HqUb1cYY+HHz9W8Xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    /* Modern Design System */
+    :root {
+        --primary-gradient: linear-gradient(135deg, #2a7de1, #4b94e6);
+        --secondary-gradient: linear-gradient(135deg, #6c757d, #5a6268);
+        --danger-gradient: linear-gradient(135deg, #dc3545, #c82333);
+        --success-gradient: linear-gradient(135deg, #28a745, #20c997);
+        --warning-gradient: linear-gradient(135deg, #ffc107, #fd7e14);
+        --info-gradient: linear-gradient(135deg, #17a2b8, #138496);
+        --card-radius: 16px;
+        --element-radius: 12px;
+        --transition: all 0.3s ease;
+    }
+
+    /* Gradient Text */
+    .text-gradient-primary {
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Gradient Buttons */
+    .btn-gradient-primary,
+    .btn-gradient-secondary,
+    .btn-gradient-danger {
+        color: #fff !important;
+        border: none;
+        transition: var(--transition);
+        border-radius: var(--element-radius);
+        padding: 0.5rem 1.2rem;
+        font-weight: 500;
+    }
+
+    .btn-gradient-primary {
+        background: var(--primary-gradient);
+    }
+
+        .btn-gradient-primary:hover {
+            background: linear-gradient(135deg, #1c65c1, #2a7de1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42, 125, 225, 0.3);
+        }
+
+    .btn-gradient-secondary {
+        background: var(--secondary-gradient);
+    }
+
+        .btn-gradient-secondary:hover {
+            background: linear-gradient(135deg, #5a6268, #495057);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+        }
+
+    .btn-gradient-danger {
+        background: var(--danger-gradient);
+    }
+
+        .btn-gradient-danger:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+        }
+
+    /* Modern Cards */
+    .modern-card {
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        border: none;
+        background: #fff;
+        transition: var(--transition);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+        .modern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+    /* Table */
+    .modern-table {
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+        .modern-table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 1.2rem 0.75rem;
+            background: var(--primary-gradient);
+            color: #fff !important;
+            border: none;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modern-table td {
+            padding: 1.1rem 0.75rem;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .modern-table tbody tr {
+            transition: var(--transition);
+        }
+
+            .modern-table tbody tr:hover {
+                background: rgba(42, 125, 225, 0.03);
+            }
+
+    /* Action Buttons */
+    .action-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--element-radius);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        margin: 0 2px;
+        color: #fff !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .action-btn:hover {
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+    .btn-view {
+        background: var(--info-gradient);
+    }
+
+    .btn-edit {
+        background: var(--primary-gradient);
+    }
+
+    .btn-delete {
+        background: var(--danger-gradient);
+    }
+
+    /* Status Badges */
+    .status-badge {
+        font-weight: 600;
+        border-radius: var(--element-radius);
+        padding: 0.5em 1em;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        color: #fff !important;
+        display: inline-block;
+    }
+
+    .badge-verified {
+        background: var(--success-gradient);
+    }
+
+    .badge-pending {
+        background: var(--warning-gradient);
+    }
+
+    /* Doctor Profile */
+    .doctor-profile {
+        transition: var(--transition);
+        border-radius: var(--element-radius);
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .doctor-profile:hover {
+            background: rgba(42, 125, 225, 0.03);
+        }
+
+        .doctor-profile img {
+            border: 3px solid #f0f4f8;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .doctor-profile:hover img {
+            border-color: #2a7de1;
+            transform: scale(1.05);
+        }
+
+    /* Page Header */
+    .page-header-enhanced {
+        background: rgba(42, 125, 225, 0.03);
+        border-radius: var(--card-radius);
+        margin-bottom: 2rem;
+        padding: 1.5rem 2rem;
+        border-left: 4px solid #2a7de1;
+    }
+
+    /* Rating Stars */
+    .rating-display {
+        color: #ffc107;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Table Controls */
+    .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .search-box {
+        position: relative;
+        min-width: 250px;
+    }
+
+        .search-box input {
+            border-radius: 50px;
+            padding-left: 2.5rem;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+            .search-box input:focus {
+                border-color: #2a7de1;
+                box-shadow: 0 0 0 0.2rem rgba(42, 125, 225, 0.25);
+            }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+    /* Filter dropdown */
+    .filter-dropdown .dropdown-toggle {
+        border-radius: var(--element-radius);
+        border: 1px solid #e2e8f0;
+        background: #fff;
+        color: #495057;
+    }
+
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #6c757d;
+    }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+    /* Modal Enhancements */
+    .modal.modern-modal {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+        .modal.modern-modal .modal-content {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal.modern-modal .modal-header {
+            background: var(--primary-gradient);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .modal.modern-modal .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal.modern-modal .modal-footer {
+            border-top: none;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+    /* Form Styling */
+    .form-floating>.form-control,
+    .form-floating>.form-select {
+        border-radius: var(--element-radius);
+        border: 1px solid #e2e8f0;
+    }
+
+        .form-floating>.form-control:focus,
+        .form-floating>.form-select:focus {
+            border-color: #2a7de1;
+            box-shadow: 0 0 0 0.2rem rgba(42, 125, 225, 0.25);
+        }
+
+    /* Responsive adjustments */
+    @@media (max-width: 768px) {
+        .modern-table {
+            min-width: 700px;
+        }
+        
+        .table-responsive {
+            border-radius: var(--card-radius);
+            overflow: hidden;
+        }
+        
+        .table-controls {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .search-box {
+            width: 100%;
+        }
+        
+        .modal.modern-modal .modal-dialog {
+            margin: 1rem;
+        }
+    }
+
+    /* Loading animation for actions */
+    @@keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .action-btn.loading {
+        animation: pulse 1s infinite;
+        opacity: 0.8;
+    }
+</style>
+
 <div class="pc-content">
-    <!-- [ breadcrumb ] start -->
-    <div class="page-header">
-        <div class="page-block">
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <div class="page-header-title">
-                        <h2 class="mb-0">Doctors List</h2>
-                    </div>
-                </div>
+    <!-- Page Header -->
+    <div class="page-header-enhanced">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="mb-1 text-gradient-primary">
+                    <i class="fa-solid fa-stethoscope me-2"></i> Doctors Management
+                </h2>
+                <p class="text-muted mb-0">Manage and monitor all registered doctors in the system</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Table Controls -->
+    <div class="table-controls">
+        <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" class="form-control" placeholder="Search doctors..." id="doctorSearch">
+        </div>
+        <div class="d-flex gap-2">
+            <div class="filter-dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-filter me-2"></i> Status
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" data-filter="all">All Doctors</a></li>
+                    <li><a class="dropdown-item" href="#" data-filter="verified">Verified Only</a></li>
+                    <li><a class="dropdown-item" href="#" data-filter="pending">Pending Only</a></li>
+                </ul>
+            </div>
+            <div class="filter-dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-sort me-2"></i> Sort By
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" data-sort="name">Name</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="specialty">Specialty</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="rating">Rating</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="status">Status</a></li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- [ breadcrumb ] end -->
-    <!-- [ Main Content ] start -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card table-card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover" id="pc-dt-simple">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Doctor Name</th>
-                                    <th>Speciality</th>
-                                    <th>Rating</th>
-                                    <th>License Number</th>
-                                    <th>Status</th>
-                                    <th class="text-center">Actions</th>
+
+    <!-- Doctors Table -->
+    <div class="card modern-card">
+        <div class="card-header bg-transparent border-0 pb-0 pt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-gradient-primary">
+                    <i class="fa-solid fa-user-doctor me-2"></i> Active Doctors
+                </h5>
+                <div class="badge bg-light text-dark px-3 py-2">
+                    <i class="fa-solid fa-users me-1"></i> Total: <span id="doctorCount">@Model.Count()</span> Doctors
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table modern-table table-hover mb-0" id="doctorsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><i class="fa-solid fa-user"></i> Doctor Name</th>
+                            <th><i class="fa-solid fa-stethoscope"></i> Specialty</th>
+                            <th><i class="fa-solid fa-star"></i> Rating</th>
+                            <th><i class="fa-solid fa-id-card"></i> License</th>
+                            <th><i class="fa-solid fa-shield-halved"></i> Status</th>
+                            <th class="text-center"><i class="fa-solid fa-gear"></i> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var doctor in Model.Select((value, i) => new { i, value }))
+                            {
+                                var d = doctor.value;
+                                <tr data-doctor-id="@d.UserId" data-status="@(d.IsApproved ? "verified" : "pending")">
+                                    <td><div class="badge bg-light text-dark">@((doctor.i + 1))</div></td>
+                                    <td>
+                                        <div class="doctor-profile">
+                                            <img src="~/assets/images/user/avatar-2.jpg" alt="@d.FullName"
+                                                 class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 fw-bold text-dark">@d.FullName</h6>
+                                                <small class="text-muted"><i class="fa-solid fa-envelope me-1"></i>@d.Email</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-light text-dark"><i class="fa-solid fa-stethoscope me-1"></i>@d.Specialty</span></td>
+                                    <td>
+                                        <div class="rating-display">
+                                            <i class="fa-solid fa-star"></i> 
+                                            <span class="ms-1">@d.Rating</span>
+                                        </div>
+                                    </td>
+                                    <td><code class="bg-light px-2 py-1 rounded">@d.LicenseNumber</code></td>
+                                    <td>
+                                        @if (d.IsApproved)
+                                        {
+                                            <span class="status-badge badge-verified"><i class="fa-solid fa-circle-check me-1"></i>Verified</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-badge badge-pending"><i class="fa-solid fa-clock me-1"></i>Pending</span>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" class="action-btn btn-view" data-bs-toggle="modal" data-bs-target="#viewDoctorModal" data-doctor-id="@d.UserId" title="View Details">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a href="#" class="action-btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteDoctorModal" data-doctor-id="@d.UserId" title="Delete Doctor">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var doctor in Model.Select((value, i) => new { i, value }))
-                                {
-                                    var d = doctor.value;
-                                    <tr>
-                                        <td>@(doctor.i + 1)</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-auto pe-0">
-                                                    <img src="~/assets/images/user/avatar-2.jpg" alt="user-image"
-                                                         class="wid-40 rounded-circle">
-                                                </div>
-                                                <div class="col">
-                                                    <h5 class="mb-0">@d.FullName</h5>
-                                                    <p class="text-muted f-12 mb-0">@d.Email</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>@d.Specialty</td>
-                                        <td>@d.Rating</td>
-                                        <td>@d.LicenseNumber</td>
-                                        <td>
-                                            @if (d.IsApproved)
-                                            {
-                                                <span class="badge bg-light-success rounded-pill f-12">Verified</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="badge bg-light-danger rounded-pill f-12">Pending</span>
-                                            }
-                                        </td>
-                                        <td class="text-center">
-                                            <ul class="list-inline me-auto mb-0">
-                                                <li class="list-inline-item align-bottom" title="View">
-                                                    <a href="#" class="avtar avtar-xs btn-link-secondary"
-                                                       data-bs-toggle="modal" data-bs-target="#viewDoctor-@d.UserId">
-                                                        <i class="ti ti-eye f-18"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item align-bottom" title="Edit">
-                                                    <a href="#" class="avtar avtar-xs btn-link-primary"
-                                                       data-bs-toggle="modal" data-bs-target="#editDoctor-@d.UserId">
-                                                        <i class="ti ti-edit-circle f-18"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item align-bottom" title="Delete">
-                                                    <a href="#" class="avtar avtar-xs btn-link-danger"
-                                                       data-bs-toggle="modal" data-bs-target="#deleteDoctor-@d.UserId">
-                                                        <i class="ti ti-trash f-18"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <!-- View Modal -->
-                                    <div class="modal fade" id="viewDoctor-@d.UserId" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                                            <div class="modal-content">
-                                                <div class="modal-header border-0 pb-0">
-                                                    <h5 class="mb-0">Doctor Details</h5>
-                                                    <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
-                                                        <i class="ti ti-x f-20"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <img class="rounded-circle img-fluid wid-60 mb-3"
-                                                         src="~/assets/images/user/avatar-5.jpg" alt="User image">
-                                                    <h5 class="mb-0">@d.FullName</h5>
-                                                    <p>@d.Email</p>
-                                                    <hr class="my-3">
-                                                    <div class="row g-3">
-                                                        <div class="col-4">
-                                                            <h5>@d.Specialty</h5>
-                                                            <small class="text-muted">Speciality</small>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h5>@d.LicenseNumber</h5>
-                                                            <small class="text-muted">License</small>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h5>@d.Rating</h5>
-                                                            <small class="text-muted">Rating</small>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="my-3">
-                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <i class="fa-solid fa-user-doctor"></i>
+                                        <h4>No Doctors Found</h4>
+                                        <p>There are no doctors in the system yet.</p>
+                                        <button class="btn btn-gradient-primary mt-2">
+                                            <i class="fa-solid fa-plus me-2"></i> Add First Doctor
+                                        </button>
                                     </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @if (Model.Any())
+        {
+            <div class="card-footer bg-transparent border-0 pt-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-muted">
+                        Showing <span id="showingCount">@Model.Count()</span> of <span>@Model.Count()</span> doctors
+                    </div>
+                    <nav>
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-                                    <!-- Edit Modal -->
-                                    <!-- Edit Role Modal -->
-                                    <div class="modal fade" id="editDoctor-@d.UserId" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-md modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-primary text-white">
-                                                    <h5 class="modal-title">Edit Doctor Role</h5>
-                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <!-- Profile Image -->
-                                                    <img src="~/assets/images/user/avatar-2.jpg" class="rounded-circle mb-3 border border-2 border-primary" style="width:90px;" />
-
-                                                    <!-- Doctor Info -->
-                                                    <h5 class="mb-0">@d.FullName</h5>
-                                                    <small class="text-muted">@d.Email</small>
-                                                    <div class="mt-2">
-                                                        <span class="badge bg-info me-1">License: @d.LicenseNumber</span>
-                                                        <span class="badge bg-success me-1">Specialty: @d.Specialty</span>
-                                                        <span class="badge bg-warning text-dark">Rating: @d.Rating</span>
-                                                    </div>
-
-                                                    <!-- Role Form -->
-                                                    <form form method="post" asp-controller="Admin" asp-action="EditDoctorRoleAsyncc" class="mt-3 text-start">
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="UserId" value="@d.UserId" />
-
-                                                        <label class="form-label">Role</label>
-                                                        <select class="form-select mb-3" id="role-@d.UserId" name="NewRole">
-                                                            <option value="Patient">Patient</option>
-                                                            <option value="Doctor" selected>Doctor</option>
-                                                        </select>
-                                                        <button type="submit" class="btn btn-primary w-100">Save Role</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Delete Modal -->
-                                    <div class="modal fade" id="deleteDoctor-@d.UserId" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-md modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body text-center">
-                                                    <h5>Are you sure you want to delete <b>@d.FullName</b>?</h5>
-                                                    <div class="mt-3">
-                                                        <form method="post" action="@Url.Action("DeleteDoctor","Admin")">
-                                                            <input type="hidden" name="UserId" value="@d.UserId" />
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </tbody>
-                        </table>
+<!-- View Doctor Modal -->
+<div class="modal fade modern-modal" id="viewDoctorModal" tabindex="-1" aria-labelledby="viewDoctorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewDoctorModalLabel">Doctor Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img id="viewDoctorImage" src="~/assets/images/user/avatar-2.jpg" alt="Doctor Image" class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <h4 id="viewDoctorName" class="mt-2">Dr. John Doe</h4>
+                        <div id="viewDoctorRating" class="rating-display justify-content-center">
+                            <i class="fa-solid fa-star"></i> 
+                            <span class="ms-1">4.8</span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Email</label>
+                                    <p id="viewDoctorEmail" class="form-control bg-light">johndoe@example.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Specialty</label>
+                                    <p id="viewDoctorSpecialty" class="form-control bg-light">Cardiology</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">License Number</label>
+                                    <p id="viewDoctorLicense" class="form-control bg-light">MED123456</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Status</label>
+                                    <p id="viewDoctorStatus" class="form-control bg-light"><span class="status-badge badge-verified">Verified</span></p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Biography</label>
+                                    <p id="viewDoctorBio" class="form-control bg-light" style="min-height: 100px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Delete Doctor Modal -->
+<div class="modal fade modern-modal" id="deleteDoctorModal" tabindex="-1" aria-labelledby="deleteDoctorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteDoctorModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa-solid fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3">Are you sure?</h4>
+                    <p>You are about to delete doctor: <strong id="deleteDoctorName">Dr. John Doe</strong>. This action cannot be undone.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteDoctorForm" method="post" asp-controller="Admin" asp-action="DeleteDoctorAsyncc">
+                    <input type="hidden" id="deleteDoctorId" name="userID" value="">
+                    <button type="submit" class="btn btn-gradient-danger">Delete Doctor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for enhanced functionality -->
+<script>
+    // Initialize tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('doctorSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                filterDoctors();
+            });
+        }
+        
+        // Filter functionality
+        document.querySelectorAll('[data-filter]').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filter = this.getAttribute('data-filter');
+                filterDoctorsByStatus(filter);
+            });
+        });
+        
+        // Sort functionality
+        document.querySelectorAll('[data-sort]').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sortBy = this.getAttribute('data-sort');
+                sortDoctors(sortBy);
+            });
+        });
+        
+        // Modal event handlers
+        setupModalHandlers();
+    });
+    
+    // Setup modal handlers
+    function setupModalHandlers() {
+        // View doctor modal
+        const viewDoctorModal = document.getElementById('viewDoctorModal');
+        if (viewDoctorModal) {
+            viewDoctorModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const doctorId = button.getAttribute('data-doctor-id');
+                loadDoctorData(doctorId, 'view');
+            });
+        }
+        
+
+        
+        // Delete doctor modal
+        const deleteDoctorModal = document.getElementById('deleteDoctorModal');
+        if (deleteDoctorModal) {
+            deleteDoctorModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const doctorId = button.getAttribute('data-doctor-id');
+                const doctorName = getDoctorName(doctorId);
+                
+                document.getElementById('deleteDoctorId').value = doctorId;
+                document.getElementById('deleteDoctorName').textContent = doctorName;
+            });
+        }
+    }
+    
+    // Get doctor name from table row
+    function getDoctorName(doctorId) {
+        const row = document.querySelector(`tr[data-doctor-id="${doctorId}"]`);
+        if (row) {
+            return row.querySelector('h6').textContent;
+        }
+        return 'Unknown Doctor';
+    }
+    
+    // Load doctor data for modals
+    function loadDoctorData(doctorId, mode) {
+        // In a real application, you would fetch this data from the server
+        // For demo purposes, we're extracting from the table row
+        
+        const row = document.querySelector(`tr[data-doctor-id="${doctorId}"]`);
+        if (!row) return;
+        
+        const name = row.querySelector('h6').textContent;
+        const email = row.querySelector('small').textContent.replace('@@', '').trim();
+        const specialty = row.querySelector('td:nth-child(3)').textContent;
+        const rating = row.querySelector('td:nth-child(4) span').textContent;
+        const license = row.querySelector('td:nth-child(5) code').textContent;
+        const status = row.querySelector('td:nth-child(6) span').textContent.toLowerCase().includes('verified');
+        
+        if (mode === 'view') {
+            document.getElementById('viewDoctorName').textContent = name;
+            document.getElementById('viewDoctorEmail').textContent = email;
+            document.getElementById('viewDoctorSpecialty').textContent = specialty;
+            document.getElementById('viewDoctorRating').querySelector('span').textContent = rating;
+            document.getElementById('viewDoctorLicense').textContent = license;
+            
+            const statusElement = document.getElementById('viewDoctorStatus');
+            statusElement.innerHTML = status ? 
+                '<span class="status-badge badge-verified">Verified</span>' : 
+                '<span class="status-badge badge-pending">Pending</span>';
+                
+            // Set a sample bio (in a real app, this would come from the server)
+            document.getElementById('viewDoctorBio').textContent = 
+                `Dr. ${name} is a specialist in ${specialty} with over 10 years of experience. ` +
+                `They graduated from Medical University and have been practicing since 2013. ` +
+                `Their license number is ${license} and they maintain a ${rating} star rating.`;
+        } 
+        else if (mode === 'edit') {
+            document.getElementById('editDoctorId').value = doctorId;
+            document.getElementById('editDoctorName').value = name;
+            document.getElementById('editDoctorEmail').value = email;
+            document.getElementById('editDoctorSpecialty').value = specialty;
+            document.getElementById('editDoctorRating').value = rating;
+            document.getElementById('editDoctorLicense').value = license;
+            document.getElementById('editDoctorStatus').value = status;
+            
+            // Set a sample bio (in a real app, this would come from the server)
+            document.getElementById('editDoctorBio').value = 
+                `Dr. ${name} is a specialist in ${specialty} with over 10 years of experience. ` +
+                `They graduated from Medical University and have been practicing since 2013. ` +
+                `Their license number is ${license} and they maintain a ${rating} star rating.`;
+        }
+    }
+    
+    // Filter doctors based on search input
+    function filterDoctors() {
+        const searchTerm = document.getElementById('doctorSearch').value.toLowerCase();
+        const rows = document.querySelectorAll('#doctorsTable tbody tr');
+        let visibleCount = 0;
+        
+        rows.forEach(row => {
+            const name = row.querySelector('h6').textContent.toLowerCase();
+            const email = row.querySelector('small').textContent.toLowerCase();
+            const specialty = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+            const license = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || email.includes(searchTerm) || 
+                specialty.includes(searchTerm) || license.includes(searchTerm)) {
+                row.style.display = '';
+                visibleCount++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('showingCount').textContent = visibleCount;
+    }
+    
+    // Filter doctors by status
+    function filterDoctorsByStatus(status) {
+        const rows = document.querySelectorAll('#doctorsTable tbody tr');
+        let visibleCount = 0;
+        
+        rows.forEach(row => {
+            const rowStatus = row.getAttribute('data-status');
+            
+            if (status === 'all' || rowStatus === status) {
+                row.style.display = '';
+                visibleCount++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('showingCount').textContent = visibleCount;
+    }
+    
+    // Sort doctors
+    function sortDoctors(sortBy) {
+        // This would be implemented based on your specific sorting needs
+        console.log('Sorting by:', sortBy);
+        // Implementation would depend on whether you want client-side or server-side sorting
+    }
+</script>

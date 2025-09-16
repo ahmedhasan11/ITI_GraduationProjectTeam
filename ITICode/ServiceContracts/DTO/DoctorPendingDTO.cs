@@ -3,7 +3,6 @@
 
 
 	public class DoctorPendingDTO
-
 	{
 		public string UserId { get; set; } = default!;   // comes from ApplicationUser
 		public string FullName { get; set; } = default!;
@@ -11,5 +10,7 @@
 		public string Specialty { get; set; } = default!;
 		public string? Bio { get; set; }
 		public string? LicenseNumber { get; set; }
+
+		public string? ImageUrl { get; set; }
 	}
 }

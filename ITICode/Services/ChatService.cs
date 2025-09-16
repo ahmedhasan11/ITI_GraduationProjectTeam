@@ -19,6 +19,7 @@ namespace ITI_Hackathon.Services
         {
             var threads = await _context.ChatThreads
                 .Include(t => t.Patient)
+                .Include(t => t.Messages) // include messages
                 .Where(t => t.DoctorId == doctorId)
                 .ToListAsync();
 
@@ -28,7 +29,23 @@ namespace ITI_Hackathon.Services
                 DoctorId = t.DoctorId,
                 PatientId = t.PatientId,
                 PatientName = t.Patient?.FullName ?? "Unknown",
-                DoctorName = t.Doctor?.FullName ?? "Unknown"
+                DoctorName = t.Doctor?.FullName ?? "Unknown",
+
+                // last update time = last message or DateTime.MinValue if no messages
+                UpdatedAt = t.Messages.Any()
+                    ? t.Messages.Max(m => m.SentAt)
+                    : DateTime.MinValue,
+
+                // map messages to DTO
+                Messages = t.Messages.Select(m => new ChatMessageDto
+                {
+                    Id = m.Id,
+                    ThreadId = m.ThreadId,
+                    SenderId = m.SenderId,
+                    Text = m.Text,
+                    AttachmentUrl = m.AttachmentUrl,
+                    SentAt = m.SentAt
+                }).ToList()
             }).ToList();
         }
 
@@ -36,6 +53,7 @@ namespace ITI_Hackathon.Services
         {
             var threads = await _context.ChatThreads
                 .Include(t => t.Doctor)
+                .Include(t => t.Messages) // include messages
                 .Where(t => t.PatientId == patientId)
                 .ToListAsync();
 
@@ -45,9 +63,24 @@ namespace ITI_Hackathon.Services
                 DoctorId = t.DoctorId,
                 PatientId = t.PatientId,
                 PatientName = t.Patient?.FullName ?? "Unknown",
-                DoctorName = t.Doctor?.FullName ?? "Unknown"
+                DoctorName = t.Doctor?.FullName ?? "Unknown",
+
+                UpdatedAt = t.Messages.Any()
+                    ? t.Messages.Max(m => m.SentAt)
+                    : DateTime.MinValue,
+
+                Messages = t.Messages.Select(m => new ChatMessageDto
+                {
+                    Id = m.Id,
+                    ThreadId = m.ThreadId,
+                    SenderId = m.SenderId,
+                    Text = m.Text,
+                    AttachmentUrl = m.AttachmentUrl,
+                    SentAt = m.SentAt
+                }).ToList()
             }).ToList();
         }
+
 
         public async Task<List<ChatMessageDto>> GetMessagesAsync(int threadId)
         {

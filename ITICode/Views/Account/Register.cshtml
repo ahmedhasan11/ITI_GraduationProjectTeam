@@ -1,68 +1,461 @@
 ﻿@model ITI_Hackathon.Models.Account.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
+    Layout = "_Layout";
 }
 
-    <div class="auth-main">
-        <div class="auth-wrapper v3">
-            <div class="auth-form">
-                
-                <div class="card my-5">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-end mb-4">
-                            <h3 class="mb-0"><b>Sign up</b></h3>
-                            <a asp-action="Login" asp-controller="Account" class="link-primary">Already have an account?</a>
-                        </div>
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --primary-color: #667eea;
+        --primary-dark: #5a67d8;
+        --secondary-color: #764ba2;
+        --accent-color: #f5576c;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --light-bg: #f8faff;
+        --dark-text: #2d3748;
+        --light-text: #718096;
+        --border-color: #e2e8f0;
+        --glass-bg: rgba(255, 255, 255, 0.25);
+        --glass-border: rgba(255, 255, 255, 0.18);
+        --card-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+        --hover-shadow: 0 35px 60px rgba(0, 0, 0, 0.15);
+    }
 
-                        <!-- Register Form -->
-                        <form asp-action="Register" method="post">
-                            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+    /* Fix for header overlap */
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: var(--light-bg);
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
 
-                            <div class="form-group mb-3">
-                                <label asp-for="FullName" class="form-label"></label>
-                                <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
-                                <span asp-validation-for="FullName" class="text-danger"></span>
-                            </div>
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 80px;
+    }
 
-                            <div class="form-group mb-3">
-                                <label asp-for="Email" class="form-label"></label>
-                                <input asp-for="Email" class="form-control" placeholder="Enter email" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
+    .register-container {
+        width: 100%;
+        max-width: 500px;
+        z-index: 1;
+    }
 
-                            <div class="form-group mb-3">
-                                <label asp-for="Password" class="form-label"></label>
-                                <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
+    .auth-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        padding: 45px 35px;
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        transition: all 0.4s ease;
+    }
 
-                            <div class="form-group mb-3">
-                                <label asp-for="ConfirmPassword" class="form-label"></label>
-                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm password" />
-                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                            </div>
+        .auth-card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-3px);
+        }
 
-                            <div class="form-group mb-3">
-                                <label asp-for="Role" class="form-label"></label>
-                                <select asp-for="Role" class="form-select">
-                                    <option value="Patient">Patient</option>
-                                    <option value="Doctor">Doctor</option>
-                                </select>
-                                <span asp-validation-for="Role" class="text-danger"></span>
-                            </div>
+    .auth-header {
+        text-align: center;
+        margin-bottom: 35px;
+    }
 
-                            <div class="d-grid mt-3">
-                                <button type="submit" class="btn btn-primary">Create Account</button>
-                            </div>
-                        </form>
+    .auth-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0 0 15px 0;
+        letter-spacing: -1px;
+    }
 
-                        <p class="mt-4 text-sm text-muted">
-                            By Signing up, you agree to our
-                            <a href="#" class="text-primary">Terms of Service</a> and
-                            <a href="#" class="text-primary">Privacy Policy</a>
-                        </p>
-                    </div>
-                </div>
+    .auth-subtitle {
+        color: var(--light-text);
+        font-size: 1.1rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: var(--dark-text);
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 14px 45px 14px 50px;
+        border: 2px solid var(--border-color);
+        border-radius: 14px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fff;
+        color: var(--dark-text);
+        box-sizing: border-box;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--light-text);
+        font-size: 1rem;
+        pointer-events: none;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--light-text);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+    .form-select {
+        width: 100%;
+        padding: 14px 45px 14px 50px;
+        border: 2px solid var(--border-color);
+        border-radius: 14px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") right 1.5rem center/16px 16px no-repeat;
+        color: var(--dark-text);
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+
+    .btn-register {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #fff;
+        background: var(--primary-gradient);
+        cursor: pointer;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-register:hover {
+            background: var(--secondary-gradient);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(118, 75, 162, 0.25);
+        }
+
+    .login-link {
+        display: inline-block;
+        margin-top: 15px;
+        font-weight: 600;
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .login-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+    .terms-text {
+        margin-top: 25px;
+        text-align: center;
+        color: var(--light-text);
+        font-size: 0.9rem;
+    }
+
+        .terms-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .terms-text a:hover {
+                color: var(--accent-color);
+                text-decoration: underline;
+            }
+
+    .floating-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.15;
+        animation: float 20s infinite ease-in-out;
+    }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-gradient);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary-gradient);
+            bottom: 15%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background: var(--success-gradient);
+            top: 20%;
+            right: 20%;
+            animation-delay: -10s;
+        }
+
+        .shape:nth-child(4) {
+            width: 150px;
+            height: 150px;
+            background: var(--secondary-gradient);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -15s;
+        }
+
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        33% {
+            transform: translateY(-20px) rotate(120deg);
+        }
+
+        66% {
+            transform: translateY(20px) rotate(240deg);
+        }
+    }
+
+    .text-danger {
+        color: var(--accent-color) !important;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: block;
+    }
+
+    @@media (max-width: 576px) {
+        .main-content {
+            padding: 15px;
+        }
+
+        .auth-card {
+            padding: 35px 25px;
+            border-radius: 20px;
+        }
+
+        .auth-title {
+            font-size: 2rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .auth-title {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="main-content">
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="register-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Join us to get started</p>
+                <a asp-action="Login" asp-controller="Account" class="login-link">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Already have an account?
+                </a>
             </div>
+
+            <form asp-action="Register" method="post" id="registerForm" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label asp-for="FullName" class="form-label">
+                        <i class="fas fa-user" style="margin-right: 8px;"></i>
+                        Full Name
+                    </label>
+                    <div class="input-wrapper">
+                        <input asp-for="FullName" class="form-control" placeholder="Enter your full name" required />
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        Email Address
+                    </label>
+                    <div class="input-wrapper">
+                        <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email address" required />
+                        <i class="fas fa-at input-icon"></i>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">
+                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                        Password
+                    </label>
+                    <div class="input-wrapper">
+                        <input asp-for="Password" class="form-control" type="password" id="passwordField" placeholder="Create a password" required />
+                        <i class="fas fa-key input-icon"></i>
+                        <i class="fas fa-eye password-toggle" id="togglePassword" title="Show/hide password"></i>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="form-label">
+                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                        Confirm Password
+                    </label>
+                    <div class="input-wrapper">
+                        <input asp-for="ConfirmPassword" class="form-control" type="password" id="confirmPasswordField" placeholder="Confirm your password" required />
+                        <i class="fas fa-key input-icon"></i>
+                        <i class="fas fa-eye password-toggle" id="toggleConfirmPassword" title="Show/hide password"></i>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Role" class="form-label">
+                        <i class="fas fa-user-tag" style="margin-right: 8px;"></i>
+                        Role
+                    </label>
+                    <div class="input-wrapper">
+                        <select asp-for="Role" class="form-select">
+                            <option value="">Select your role</option>
+                            <option value="Patient">Patient</option>
+                            <option value="Doctor">Doctor</option>
+                        </select>
+                        <i class="fas fa-user-tag input-icon"></i>
+                    </div>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn-register" id="registerButton">
+                    <i class="fas fa-user-plus" style="margin-right: 8px;"></i>
+                    Create Account
+                </button>
+            </form>
+
+            <p class="terms-text">
+                By signing up, you agree to our
+                <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>
+            </p>
         </div>
     </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registerForm');
+            const registerButton = document.getElementById('registerButton');
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordField = document.getElementById('passwordField');
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPasswordField = document.getElementById('confirmPasswordField');
+
+            // Toggle password visibility
+            togglePassword.addEventListener('click', function() {
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            // Toggle confirm password visibility
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordField.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            // Show loading state on form submission
+            form.addEventListener('submit', function(e) {
+                registerButton.disabled = true;
+                registerButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+            });
+        });
+    </script>
+}

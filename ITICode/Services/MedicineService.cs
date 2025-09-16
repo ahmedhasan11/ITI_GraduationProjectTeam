@@ -18,14 +18,33 @@ namespace Medicine_Mvc.Services
         // Add New Medicine
         public async Task<MedicineAddResponseDto> AddMedicineAsync(MedicineAddRequestDto request)
         {
-            var medicine = new Medicine
+			string imageUrl = null;
+
+
+			if (request.ImageFile != null && request.ImageFile.Length > 0)
+			{
+				var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/medicines");
+				if (!Directory.Exists(uploadsFolder))
+					Directory.CreateDirectory(uploadsFolder);
+
+				var fileName = Guid.NewGuid() + Path.GetExtension(request.ImageFile.FileName);
+				var filePath = Path.Combine(uploadsFolder, fileName);
+
+				using (var stream = new FileStream(filePath, FileMode.Create))
+				{
+					await request.ImageFile.CopyToAsync(stream);
+				}
+
+				imageUrl = "/images/medicines/" + fileName;
+			}
+			var medicine = new Medicine
             {
                 Name = request.Name,
                 Category = request.Category,
                 Description = request.Description,
                 Price = request.Price,
                 Stock = request.Stock,
-                ImageUrl = request.ImageUrl
+                ImageUrl = imageUrl
             };
 
             _db.Medicines.Add(medicine);
@@ -96,6 +115,7 @@ namespace Medicine_Mvc.Services
         // Update Data of Medicine
         public async Task<MedicineUpdateResponseDto> UpdateMedicineAsync(MedicineUpdateRequestDto request)
         {
+
             Medicine medicine = await _db.Medicines.FindAsync(request.Id);
             if (medicine == null)
             {
@@ -112,8 +132,32 @@ namespace Medicine_Mvc.Services
             medicine.Price = request.Price;
             medicine.Stock = request.Stock;
             medicine.ImageUrl = request.ImageUrl;
+			//if (request.ImageFile != null && request.ImageFile.Length > 0)
+			//{
+			//	/
+			//	string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/medicines");
+			//	if (!Directory.Exists(uploadsFolder))
+			//	{
+			//		Directory.CreateDirectory(uploadsFolder);
+			//	}
 
-            _db.Medicines.Update(medicine);
+			//	string fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.ImageFile.FileName);
+			//	string filePath = Path.Combine(uploadsFolder, fileName);
+
+			//	using (var stream = new FileStream(filePath, FileMode.Create))
+			//	{
+			//		await request.ImageFile.CopyToAsync(stream);
+			//	}
+
+			//	medicine.ImageUrl = "/images/medicines/" + fileName;
+			//}
+			//else
+			//{
+			//	/
+			//	medicine.ImageUrl = request.ImageUrl;
+			//}
+
+			_db.Medicines.Update(medicine);
             await _db.SaveChangesAsync();
 
             return new MedicineUpdateResponseDto

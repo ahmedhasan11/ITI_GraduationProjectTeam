@@ -3,80 +3,76 @@
 @model IEnumerable<DoctorApprovedDTO>
 @inject IConsultationService ConsultationService
 @using System.Security.Claims
-@{
-
-    ViewData["Title"] = "Doctors Page";
-}
 @using ITI_Hackathon.Entities
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
+
 @{
+    ViewData["Title"] = "Doctors Page";
     var userId = UserManager.GetUserId(User);
 }
-<div class="container mt-5">
 
 
-    ViewData["Title"] = "Home Page";
-}
+<style>
+    .Empty {
+        width: 100%;
+        height: 80px;
+    }
+</style>
 
-<div class="container mt-5">
+<div class="Empty"></div>
+<div class="container mt-5 mb-5">
+    <!-- Page Header -->
+    <div class="page-header text-center mb-5">
+        <h2>OUR DOCTORS</h2>
+        <p>
+            Connect with highly qualified medical professionals for personalized consultations and expert care.
+        </p>
+    </div>
 
-    <!-- Doctors Section -->
-    <div class="row mb-5">
+    <!-- Doctors Grid -->
+    <div class="row g-4">
         @foreach (var d in Model)
         {
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card shadow-lg border-0 rounded-3 h-100 text-center position-relative p-3 doctor-card"
-                     style="transition: all 0.3s ease; cursor: pointer; overflow: hidden;"
-                     onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.25)';"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.15)';">
-
-                    <!-- Top Badge -->
-                    <span class="badge bg-warning position-absolute top-0 start-50 translate-middle-x mt-3 px-3 py-1 shadow-sm">Top Rated</span>
-
-                    <!-- Doctor Image -->
-                    <div class="d-flex justify-content-center mt-4">
-                        <img src="~/assets/images/user/avatar-1.jpg" alt="@d.FullName"
-                             class="rounded-circle shadow border border-white img-hover-scale"
-                             style="width: 130px; height: 130px; object-fit: cover; transition: all 0.3s ease;">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                <div class="doctor-card h-100">
+                    <div class="doctor-image-container">
+                        <img src="~/assets/images/user/avatar-1.jpg"
+                             alt="@d.FullName"
+                             class="doctor-image"
+                             loading="lazy">
                     </div>
 
-                    <!-- Card Body -->
-                    <div class="card-body mt-2 p-2">
-                        <h5 class="fw-bold mb-1 fs-6">
-
+                    <div class="doctor-card-body">
+                        <!-- Doctor Name -->
+                        <h5 class="doctor-name">
                             <a asp-controller="Home"
                                asp-action="DoctorDetails"
-                               asp-route-userId="@d.UserId"
-                               class="text-dark text-decoration-none">
+                               asp-route-userId="@d.UserId">
                                 @d.FullName
                             </a>
-
-                            <a href="/Doctors/Details/@d.UserId" class="text-dark text-decoration-none">@d.FullName</a>
-
                         </h5>
 
-                        <p class="small text-muted mb-1">
-                            <i class="ti ti-mail text-primary"></i> @d.Email
-                            <span> | <i class="ti ti-phone text-primary"></i> 01002211345</span>
-                        </p>
+                        <!-- Contact Info -->
+                        <div class="doctor-contact small">
+                            <div><i class="fas fa-envelope me-2"></i> @d.Email</div>
+                            <div><i class="fas fa-phone me-2"></i> 01002211345</div>
+                        </div>
 
-                        <p class="small text-muted mb-1">
-                            <i class="fa-solid fa-user-doctor text-primary me-1"></i> @d.Specialty
-                        </p>
+                        <!-- Specialty & Price -->
+                        <span class="doctor-specialty">@d.Specialty</span>
+                        <span class="consultation-price">Consultation: $10</span>
 
-                        <p class="fw-semibold text-primary mb-2">
-                            Consultation: $10
-                        </p>
-
-                        <p class="small text-secondary mb-2 px-2" style="min-height: 40px;">
+                        <!-- Bio -->
+                        <p class="doctor-bio small">
                             @(string.IsNullOrEmpty(d.Bio) ? "No bio provided." : d.Bio)
                         </p>
 
-                        <p class="mb-2">
+                        <!-- Rating -->
+                        <div class="rating">
                             @for (int i = 1; i <= 5; i++)
                             {
-                                if (i <= 3)
+                                if (i <= 4)   // example: 4 stars rating
                                 {
                                     <i class="fa-solid fa-star text-warning"></i>
                                 }
@@ -85,54 +81,34 @@
                                     <i class="fa-solid fa-star text-warning" style="opacity:0.3;"></i>
                                 }
                             }
-                        </p>
+                        </div>
 
-                        <div class="d-flex justify-content-center gap-2 px-2">
-
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
                             <a asp-controller="Home"
                                asp-action="DoctorDetails"
                                asp-route-userId="@d.UserId"
-                               class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
-
-                            <a href="/Booking/Create/@d.UserId" class="btn btn-gradient-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
-
+                               class="btn-book">
                                 <i class="fa-solid fa-calendar-check me-1"></i> Book
                             </a>
 
                             @{
-
-
-                                var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                                // If you need to check payment status, determine it on the server and pass it via the model.
-                                bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
-                                // bool hasPaid = true; <--- replace with server-side logic
-
                                 var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                 bool hasPaid = await ConsultationService.HasPaidForConsultationAsync(patientId, d.UserId);
-
                             }
 
                             @if (hasPaid)
                             {
-                                <!-- If already paid, show direct chat link -->
-
-                                <button class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm start-chat-btn"
-                                        data-doctor-id="@d.UserId"
-                                        data-patient-id="@userId">
+                                <button class="btn-chat start-chat-btn"
+                                        data-doctor-id="@d.UserId">
                                     <i class="fa-solid fa-comments me-1"></i> Chat Now
                                 </button>
-
-                                <a href="/Chat/ChatWithDoctor?doctorId=@d.UserId" class="btn btn-success btn-sm flex-grow-1 rounded-pill shadow-sm">
-                                    <i class="fa-solid fa-comments me-1"></i> Chat Now
-                                </a>
-
                             }
                             else
                             {
-                                <!-- If NOT paid, show form that goes to Stripe -->
-                                <form asp-controller="Payment" asp-action="CreateConsultationCheckout" method="post" class="d-inline">
+                                <form asp-controller="Payment" asp-action="CreateConsultationCheckout" method="post" class="d-inline flex-grow-1">
                                     <input type="hidden" name="doctorId" value="@d.UserId" />
-                                    <button type="submit" class="btn btn-outline-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
+                                    <button type="submit" class="btn-chat">
                                         <i class="fa-solid fa-comments me-1"></i> Chat ($50)
                                     </button>
                                 </form>
@@ -145,134 +121,31 @@
     </div>
 </div>
 
-
-@* Render anti-forgery token so JS can pick it up for fetch POSTs *@
-@Html.AntiForgeryToken()
-
-
-<style>
-    .btn-gradient-primary {
-        background: linear-gradient(135deg, #4a90e2, #007bff);
-        border: none;
-        color: #fff;
-        transition: all 0.3s ease;
-    }
-
-        .btn-gradient-primary:hover {
-            background: linear-gradient(135deg, #007bff, #4a90e2);
-            transform: translateY(-2px);
-            color: #fff;
-        }
-
-    .img-hover-scale:hover {
-        transform: scale(1.08);
-        transition: all 0.3s ease;
-    }
-
-    .doctor-card {
-
-        min-height: 380px;
-    }
-
-    .product-card {
-        min-height: 320px;
-
-        min-height: 380px; /* Reduced height for compact look */
-    }
-
-    .product-card {
-        min-height: 320px; /* Slightly smaller for medicines */
-
-    }
-</style>
-
 <script>
+    document.querySelectorAll('.start-chat-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
 
-    // All interactive JS now runs inside a single DOMContentLoaded handler
-    document.addEventListener("DOMContentLoaded", function () {
-        // ----- Start Chat Buttons -----
-        const chatButtons = document.querySelectorAll('.start-chat-btn');
-        chatButtons.forEach(button => {
-            button.addEventListener('click', async function () {
-                const doctorId = this.dataset.doctorId;
-                const patientId = this.dataset.patientId;
+            const doctorId = btn.dataset.doctorId;
 
-                if (!patientId) {
-                    if (confirm('Please log in to start a chat. Go to login page?')) {
-                        window.location.href = '/Account/Login';
-                    }
-                    return;
-                }
-
-                try {
-                    const res = await fetch('/api/Chat/GetOrCreateThread', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'RequestVerificationToken': antiForgeryToken
-                        },
-                        body: JSON.stringify({
-                            DoctorId: doctorId,
-                            PatientId: patientId
-                        })
-                    });
-
-                    if (!res.ok) {
-                        const text = await res.text();
-                        throw new Error('Server error: ' + text);
-                    }
-
-                    const data = await res.json();
-
-                    if (data.success && data.thread && data.thread.id) {
-                        // Redirect to Chat Page
-                        window.location.href = `/ChatPage/Index?threadId=${encodeURIComponent(data.thread.id)}`;
-                    } else {
-                        alert('Cannot start chat: ' + (data.message || 'Unknown error'));
-                    }
-                } catch (err) {
-                    console.error('Error starting chat:', err);
-                    alert('Cannot start chat. Please try again.');
-                }
+            const res = await fetch('/api/Chat/GetOrCreateThread', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    patientId: '@UserManager.GetUserId(User)',
+                    doctorId: doctorId
+                })
             });
-        });
 
-        // Initial cart count update
-        updateCartCount();
-    });
-</script>
+            const data = await res.json();
 
-
-        document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll('.add-to-cart-btn');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', async function () {
-                const medicineId = this.dataset.medicineId;
-
-                try {
-                    const response = await fetch('/Cart/add', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ medicineId: parseInt(medicineId), quantity: 1 })
-                    });
-
-                    const result = await response.json();
-
-                    if (result.success) {
-                        // Optional: show a toast or update cart count
-                        alert(`Added to cart! Total items in cart: ${result.totalItems}`);
-                    } else {
-                        alert('Failed to add to cart.');
-                    }
-                } catch (error) {
-                    console.error(error);
-                    alert('Error adding to cart.');
-                }
-            });
+            if (data.success) {
+                window.location.href = `/ChatPage/Index?threadId=${data.thread.id}`;
+            } else {
+                alert("Something went wrong while starting the chat.");
+            }
         });
     });
 </script>
 
+@Html.AntiForgeryToken()

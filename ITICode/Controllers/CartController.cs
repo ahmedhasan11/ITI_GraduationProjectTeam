@@ -2,8 +2,7 @@
 using ITI_Hackathon.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-//[Route("/api/[controller]")]
-//[ApiController]
+
 public class CartController : Controller
 {
 	private readonly ICartService _cartService;
@@ -37,8 +36,6 @@ public class CartController : Controller
 			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			return (userId, null);
 		}
-			//return (User.Identity.Name, null);
-
 		var sessionId = GetSessionId();
 		return (null, sessionId);
 	}
@@ -51,26 +48,32 @@ public class CartController : Controller
 		return Json(new { count = cartItems.Sum(item => item.Quantity) });
 	}
 	[HttpGet]
-	public async Task<IActionResult> GetCartItemsDropdown()
-	{
-		var (userId, sessionId) = GetCartOwner();
-		var cartItems = await _cartService.GetCartItemsAsync(userId, sessionId);
+    public async Task<IActionResult> GetCartItemsDropdown()
+    {
+        var (userId, sessionId) = GetCartOwner();
+        var cartItems = await _cartService.GetCartItemsAsync(userId, sessionId);
 
-		return PartialView("_CartDropdownPartial", cartItems);
-	}
+        var total = cartItems.Sum(i => i.UnitPrice * i.Quantity);
+        var count = cartItems.Sum(i => i.Quantity);
 
-	// GET: /Cart
-	[HttpGet]
+        ViewBag.Total = total;
+        ViewBag.Count = count;
+
+        return PartialView("_CartDropdownPartial", cartItems);
+    }
+
+
+    // GET: /Cart
+    [HttpGet]
 	public async Task<IActionResult> Index()
 	{
 		var (userId, sessionId) = GetCartOwner();
 		var cart = await _cartService.GetCartItemsAsync(userId, sessionId);
-		return View(cart); // View expects List<CartItemDto>
+		return View(cart); 
 	}
 
 	// POST: /Cart/Add
 	[HttpPost]
-	//[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Add([FromBody] AddToCartDto dto)
 	{
 		var (userId, sessionId) = GetCartOwner();
@@ -78,7 +81,6 @@ public class CartController : Controller
 		dto.SessionId = sessionId;
 
 		var totalItems = await _cartService.AddToCartAsync(dto);
-		//turn RedirectToAction("Index");
 		return Json(new { success = true, totalItems, message="added to cart successfully" });
 	}
 
@@ -92,15 +94,4 @@ public class CartController : Controller
 
 		return RedirectToAction("Index");
 	}
-
-	// POST: /Cart/Checkout
-	//[HttpPost]
-	//[ValidateAntiForgeryToken]
-	//public async Task<IActionResult> Checkout()
-	//{
-	//	var (userId, sessionId) = GetCartOwner();
-	//	var result = await _cartService.CheckoutAsync(userId, sessionId);
-
-	//	return RedirectToAction("Confirmation", "Order", new { id = result.OrderId });
-	//}
 }

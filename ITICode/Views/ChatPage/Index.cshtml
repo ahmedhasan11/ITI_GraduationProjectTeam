@@ -1,209 +1,459 @@
-﻿@model ITI_Hackathon.Models.ViewModels.ChatIndexViewModel
+﻿@using System.Linq
+@model ITI_Hackathon.Models.ViewModels.ChatIndexViewModel
 @inject Microsoft.AspNetCore.Identity.UserManager<ITI_Hackathon.Entities.ApplicationUser> UserManager
 @{
     var currentUserId = UserManager.GetUserId(User);
     var isDoctor = User.IsInRole("Doctor");
 }
 
-<div class="chat-wrapper d-flex" style="height: calc(100vh - 100px);">
-
-    <!-- Sidebar -->
-    <div class="chat-user_list border-end" style="width: 320px; overflow-y: auto; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-        <div class="p-3 border-bottom bg-white">
-            <h5 class="mb-3 text-primary fw-bold">
-                <i class="fas fa-comments me-2"></i>Conversations
-            </h5>
-            <div class="input-group rounded-pill shadow-sm">
-                <span class="input-group-text bg-white border-0">
-                    <i class="fas fa-search text-muted"></i>
-                </span>
-                <input type="search" class="form-control border-0 bg-white" placeholder="Search conversations..." onkeyup="filterThreads(this)">
-            </div>
-        </div>
-        <div class="list-group list-group-flush" id="threadList">
-            @foreach (var thread in Model.Threads)
-            {
-                <a href="javascript:void(0);" onclick="selectThread(@thread.Id, '@(isDoctor? thread.PatientName: thread.DoctorName)', '@(isDoctor ? "Patient" : "Doctor")')"
-                   class="list-group-item list-group-item-action p-3 border-0 border-bottom @(Model.ActiveRoom?.ThreadId == thread.Id ? "active-chat" : "chat-list-item")"
-                   id="thread-@thread.Id"
-                   data-user-name="@(isDoctor? thread.PatientName: thread.DoctorName)"
-                   data-user-role="@(isDoctor ? "Patient" : "Doctor")">
-                    <div class="d-flex align-items-center">
-                        <div class="position-relative">
-                            <img src="~/img/doctors/doctors-1.jpg"
-                                 class="rounded-circle me-3 shadow-sm border-white"
-                                 width="50" height="50" alt="@(isDoctor? thread.PatientName: thread.DoctorName)"
-                                 style="border: 2px solid #fff;" />
-                        </div>
-                        <div class="flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <strong class="text-dark">
-                                    @(isDoctor? thread.PatientName: thread.DoctorName)
-                                </strong>
-                                <small class="text-muted">
-                                    @DateTime.Now.ToString("HH:mm")
-                                </small>
-                            </div>
-                            <small class="text-muted text-truncate d-block">
-                                @(isDoctor ? "Patient" : "Dr. " + thread.DoctorName?.Split(' ').First())
-                            </small>
-                        </div>
-                    </div>
-                </a>
-            }
-        </div>
-    </div>
-
-    <!-- Chat Content -->
-    <div class="chat-content flex-grow-1 d-flex flex-column bg-white">
-        <input type="hidden" id="ActiveThreadId" value="@Model.ActiveRoom?.ThreadId" />
-
-        <!-- Header -->
-        <div class="border-bottom p-3 d-flex align-items-center bg-white shadow-sm" id="chatHeader">
+<!-- Chat Container -->
+<div class="chat-container">
+    <!-- Chat Header -->
+    <div class="chat-header" id="chatHeaderContent">
             @if (Model.ActiveRoom != null)
             {
                 var activeThread = Model.Threads.FirstOrDefault(t => t.Id == Model.ActiveRoom.ThreadId);
-                <div class="d-flex align-items-center">
-                    <div class="position-relative">
-                        <img src="~/img/doctors/doctors-1.jpg"
-                             class="rounded-circle me-3 shadow-sm border-primary"
-                             width="55" height="55" alt="@(isDoctor? activeThread?.PatientName : activeThread?.DoctorName)"
-                             style="border: 2px solid #0d6efd;" />
-                    </div>
-                    <div>
-                        <h6 class="mb-0 text-dark fw-bold" id="headerUserName">
-                            @(isDoctor? activeThread?.PatientName : "Dr. " + activeThread?.DoctorName)
-                        </h6>
-                        <small class="text-muted" id="headerUserRole">
-                            @* <span class="badge bg-success rounded-pill">Online</span> *@
-                            @* @(isDoctor ? "Patient" : activeThread?.Specialty ?? "Doctor") *@
-                        </small>
-                    </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div>
+                    <h5 id="headerUserName">
+                        @(isDoctor? activeThread?.PatientName : "Dr. " + activeThread?.DoctorName)
+                    </h5>
+                    <small id="headerUserRole">
+                        @(isDoctor ? "Patient" : "Doctor")
+                    </small>
+                </div>
+                <div class="ms-auto d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-light d-lg-none" id="toggleSidebar">
+                        <i class="fas fa-list"></i>
+                    </button>
                 </div>
             }
             else
             {
-                <div class="text-center w-100">
-                    <h6 class="mb-0 text-muted">
-                        <i class="fas fa-comments me-2"></i>Select a conversation
-                    </h6>
+                <div class="w-100 text-center text-muted">
+                    <i class="fas fa-comments me-2"></i> Select a conversation
                 </div>
             }
-        </div>
+    </div>
 
-        <!-- Messages -->
-        <div class="flex-grow-1 overflow-auto p-3" id="messagesContainer" style="max-height: 65vh; background-color: #f8f9fa;">
-            @if (Model.ActiveRoom != null)
-            {
-                foreach (var m in Model.ActiveRoom.Messages)
+    <div class="chat-layout position-relative">
+        <!-- Sidebar: Chats List -->
+        <aside class="chat-sidebar" id="chatSidebar">
+            <div class="chat-sidebar-header">
+                <input class="chat-search" placeholder="Search chats..." onkeyup="filterThreads(this)" />
+            </div>
+            <div class="chat-list" id="threadList">
+                @foreach (var thread in Model.Threads)
                 {
-                    <div class="@(m.IsMine ? "d-flex justify-content-end mb-2" : "d-flex justify-content-start mb-2")">
-                        <div class="@(m.IsMine ? "bg-primary text-white" : "bg-white border") p-2 rounded-3"
-                             style="max-width: 70%;">
-                            <div class="message-text" style="font-size: 0.9rem;">@m.Text</div>
-                            <div class="small text-end @(m.IsMine ? "text-white-50" : "text-muted") mt-1">
-                                @m.SentAt.ToLocalTime().ToString("HH:mm")
+                    var displayName = isDoctor ? thread.PatientName : thread.DoctorName;
+                    var role = isDoctor ? "Patient" : "Doctor";
+                    var initials = displayName?.Length >= 2
+                    ? displayName.Substring(0, 2).ToUpper()
+                    : "US";
+
+                    // compute last message time (fall back to UpdatedAt)
+                    var lastMessage = (thread.Messages != null && thread.Messages.Any())
+                    ? thread.Messages.OrderByDescending(m => m.SentAt).FirstOrDefault()
+                    : null;
+                    var lastTimeString = lastMessage != null
+                    ? lastMessage.SentAt.ToLocalTime().ToString("HH:mm")
+                    : (thread.UpdatedAt != DateTime.MinValue
+                    ? thread.UpdatedAt.ToLocalTime().ToString("HH:mm")
+                    : "");
+                    <div class="chat-item @(Model.ActiveRoom?.ThreadId == thread.Id ? "active" : "")"
+                         id="thread-@thread.Id"
+                         data-user-name="@displayName"
+                         data-user-role="@role"
+                         data-thread-id="@thread.Id">
+                        <div class="chat-avatar">
+                            @initials
+                        </div>
+                        <div class="w-100">
+                            <div class="chat-meta">
+                                <span class="chat-name">@(isDoctor? thread.PatientName: "Dr. " + thread.DoctorName)</span>
+                                <span class="small text-muted">@lastTimeString</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="chat-snippet">
+                                    @(isDoctor ? "Patient" : "Doctor")
+                                </span>
                             </div>
                         </div>
                     </div>
                 }
-            }
-            else
+            </div>
+        </aside>
+
+        <!-- Main: Conversation -->
+        <main class="chat-main">
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="messagesContainer">
+                @if (Model.ActiveRoom != null)
+                {
+                    foreach (var m in Model.ActiveRoom.Messages)
+                    {
+                        <div class="message @(m.IsMine ? "sent" : "received")">
+                            @m.Text
+                            <div class="message-time">@m.SentAt.ToLocalTime().ToString("HH:mm")</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-chat-state">
+                        <i class="fas fa-comments fa-3x mb-3"></i>
+                        <p class="h5">Welcome to your messages</p>
+                        <p>Select a conversation to start messaging</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Chat Input -->
+            @if (Model.ActiveRoom != null)
             {
-                <div class="text-center text-muted mt-5">
-                    <i class="fas fa-comments fa-3x mb-3 opacity-25"></i>
-                    <p class="h5 text-dark">Welcome to your messages</p>
-                    <p class="text-muted">Select a conversation to start messaging</p>
+                <div class="chat-input" style="display: flex;">
+                    <input type="text" placeholder="Type your message..." id="messageInput" onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
             }
-        </div>
-
-        <!-- Footer - Back to simple and clean design -->
-        @if (Model.ActiveRoom != null)
-        {
-            <div class="border-top p-2 d-flex bg-light">
-                <textarea id="messageInput" class="form-control me-2" rows="1" placeholder="Type a message..." onkeypress="handleKeyPress(event)" style="border-radius: 20px; resize: none;"></textarea>
-                <button class="btn btn-primary px-3" onclick="sendMessage()" style="border-radius: 20px;">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        }
+        </main>
     </div>
+</div>
+
+<input type="hidden" id="ActiveThreadId" value="@Model.ActiveRoom?.ThreadId" />
+
+<!-- Render Anti-Forgery token so client JS can pick it up -->
+<div style="display:none;">
+    @Html.AntiForgeryToken()
 </div>
 
 @section Styles {
     <style>
-        .chat-list-item {
-            background: transparent;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent !important;
+        :root {
+            --primary-color: #2a7de1;
+            --primary-dark: #1c65c1;
+            --secondary-color: #3bbab5;
+            --accent-color: #ff6b6b;
+            --light-bg: #f8faff;
+            --light-border: #e0e7ff;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --medical-gradient: linear-gradient(135deg, #2a7de1, #3bbab5, #4cd1c4);
+            --card-gradient: linear-gradient(135deg, #ffffff, #f8faff);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --footer-bg: #0f172a;
+            --footer-color: #e2e8f0;
+            --chat-bg: #f1f5f9;
+            --message-sent: #e3f2fd;
+            --message-received: #f8f9fa;
         }
 
-            .chat-list-item:hover {
-                background: rgba(13, 110, 253, 0.05) !important;
-                border-left: 3px solid #0d6efd !important;
-                transform: translateX(2px);
-            }
-
-        .active-chat {
-            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
-            color: white !important;
-            border-left: 3px solid #0a58ca !important;
+        .chat-container {
+            max-width: 92%;
+            margin: 90px auto 20px;
+            height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
         }
 
-            .active-chat .text-dark,
-            .active-chat .text-muted {
-                color: white !important;
+        .chat-layout {
+            display: flex;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .chat-sidebar {
+            width: 320px;
+            border-right: 1px solid var(--light-border);
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-sidebar-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--light-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chat-search {
+            flex: 1;
+            border: 1px solid var(--light-border);
+            border-radius: 10px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .chat-list {
+            overflow-y: auto;
+            padding: 0.5rem 0.25rem;
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0.25rem 0.5rem;
+        }
+
+            .chat-item:hover {
+                background: var(--chat-bg);
             }
 
-            .active-chat .text-muted {
+            .chat-item.active {
+                background: rgba(42, 125, 225, 0.08);
+                border: 1px solid var(--light-border);
+            }
+
+        .chat-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--medical-gradient);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .chat-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .chat-name {
+            font-weight: 600;
+        }
+
+        .chat-snippet {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .chat-header {
+            background: var(--medical-gradient);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .chat-header .user-avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+            }
+
+            .chat-header h5 {
+                margin: 0;
+                font-weight: 600;
+            }
+
+            .chat-header small {
                 opacity: 0.8;
             }
 
-        .message-text {
-            line-height: 1.4;
-            word-wrap: break-word;
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--chat-bg);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .chat-user_list {
-            scrollbar-width: thin;
-            scrollbar-color: #ced4da transparent;
+        .message {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            position: relative;
+            animation: messageSlide 0.3s ease;
         }
 
-            .chat-user_list::-webkit-scrollbar {
-                width: 6px;
+        @@keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
 
-            .chat-user_list::-webkit-scrollbar-thumb {
-                background-color: #ced4da;
-                border-radius: 10px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-
-        #messagesContainer {
-            scrollbar-width: thin;
-            scrollbar-color: #dee2e6 transparent;
         }
 
-            #messagesContainer::-webkit-scrollbar {
-                width: 6px;
-            }
-
-            #messagesContainer::-webkit-scrollbar-thumb {
-                background-color: #dee2e6;
-                border-radius: 10px;
-            }
-
-        .bg-success {
-            background-color: #198754 !important;
+        .message.sent {
+            background: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
         }
 
-        /* Simple and clean message bubbles */
-        .bg-primary {
-            background-color: #0d6efd !important;
+        .message.received {
+            background: var(--message-received);
+            color: var(--dark-text);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
         }
 
-        .border {
-            border-color: #dee2e6 !important;
+        .message-time {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+
+        .chat-input {
+            padding: 1.5rem;
+            background: white;
+            border-top: 1px solid var(--light-border);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+            .chat-input input {
+                flex: 1;
+                border: 1px solid var(--light-border);
+                border-radius: 25px;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+                outline: none;
+                transition: var(--transition);
+            }
+
+                .chat-input input:focus {
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.1);
+                }
+
+            .chat-input button {
+                background: var(--medical-gradient);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+                .chat-input button:hover {
+                    transform: scale(1.05);
+                    box-shadow: var(--shadow-md);
+                }
+
+        .empty-chat-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--light-text);
+        }
+
+            .empty-chat-state i {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                opacity: 0.5;
+            }
+
+        @@media (max-width: 991.98px) {
+            .chat-sidebar {
+                position: absolute;
+                z-index: 10;
+                height: calc(100% - 68px);
+                transform: translateX(-100%);
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 16px 16px 0;
+            }
+
+                .chat-sidebar.show {
+                    transform: translateX(0);
+                }
+
+            .chat-main {
+                flex: 1;
+            }
+
+            .chat-header {
+                padding: 1rem;
+            }
+
+            .chat-messages {
+                padding: 1rem;
+            }
+
+            .chat-input {
+                padding: 1rem;
+            }
+
+            .message {
+                max-width: 85%;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .chat-container {
+                margin: 80px 10px 10px;
+                height: calc(100vh - 100px);
+                border-radius: 16px;
+            }
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 3px;
         }
     </style>
 }
@@ -214,9 +464,9 @@
 
         function filterThreads(input) {
             var filter = input.value.toLowerCase();
-            document.querySelectorAll('#threadList a').forEach(a => {
-                var text = a.textContent.toLowerCase();
-                a.style.display = text.includes(filter) ? '' : 'none';
+            document.querySelectorAll('#threadList .chat-item').forEach(item => {
+                var text = item.textContent.toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
             });
         }
 
@@ -225,40 +475,50 @@
             document.getElementById('ActiveThreadId').value = threadId;
 
             // Update UI classes
-            document.querySelectorAll('#threadList a').forEach(a => {
-                a.classList.remove('active-chat');
-                a.classList.add('chat-list-item');
+            document.querySelectorAll('#threadList .chat-item').forEach(item => {
+                item.classList.remove('active');
             });
 
             const selectedThread = document.getElementById('thread-' + threadId);
-            selectedThread.classList.remove('chat-list-item');
-            selectedThread.classList.add('active-chat');
+            if (selectedThread) selectedThread.classList.add('active');
 
             // Update header information
             updateChatHeader(userName, userRole);
 
             // Load messages
             loadMessages(threadId);
+
+            // On mobile, hide sidebar after selection
+            if (window.innerWidth < 992) {
+                document.getElementById('chatSidebar').classList.remove('show');
+            }
         }
 
         function updateChatHeader(userName, userRole) {
-            const header = document.getElementById('chatHeader');
-            header.innerHTML = `
-                <div class="d-flex align-items-center">
-                    <div class="position-relative">
-                        <img src="/img/doctors/doctors-1.jpg"
-                             class="rounded-circle me-3 shadow-sm border-primary"
-                             width="55" height="55" alt="${userName}"
-                             style="border: 2px solid #0d6efd;" />
-                    </div>
-                    <div>
-                        <h6 class="mb-0 text-dark fw-bold">${userName}</h6>
-                        <small class="text-muted">
-                            <span class="badge bg-success rounded-pill">${userRole}</span>
-                        </small>
-                    </div>
+            const headerContent = document.getElementById('chatHeaderContent');
+            if (!headerContent) return;
+            headerContent.innerHTML = `
+                <div class="user-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div>
+                    <h5 id="headerUserName">${userName}</h5>
+                    <small id="headerUserRole">${userRole}</small>
+                </div>
+                <div class="ms-auto d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-light d-lg-none" id="toggleSidebar">
+                        <i class="fas fa-list"></i>
+                    </button>
                 </div>
             `;
+
+            // Reattach event listener to the toggle button
+            const toggleBtn = document.getElementById('toggleSidebar');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function () {
+                    document.getElementById('chatSidebar').classList.toggle('show');
+                });
+            }
         }
 
         async function loadMessages(threadId) {
@@ -272,31 +532,33 @@
                 const container = document.getElementById('messagesContainer');
                 container.innerHTML = '';
 
-                if (messages.length === 0) {
+                if (!messages || messages.length === 0) {
                     container.innerHTML = `
-                        <div class="text-center text-muted mt-5">
-                            <i class="fas fa-envelope-open-text fa-2x mb-3 opacity-25"></i>
+                        <div class="empty-chat-state">
+                            <i class="fas fa-envelope-open-text"></i>
                             <p>No messages yet</p>
                             <small>Start the conversation</small>
                         </div>`;
+                    // Hide input if no messages? keep input visible as UX choice
                     return;
                 }
 
                 messages.forEach(m => {
                     const isMine = m.senderId === currentUserId;
                     const div = document.createElement('div');
-                    div.className = isMine ? 'd-flex justify-content-end mb-2' : 'd-flex justify-content-start mb-2';
+                    div.className = `message ${isMine ? 'sent' : 'received'}`;
                     div.innerHTML = `
-                        <div class="${isMine ? 'bg-primary text-white' : 'bg-white border'} p-2 rounded-3"
-                             style="max-width: 70%;">
-                            <div class="message-text" style="font-size: 0.9rem;">${m.text}</div>
-                            <div class="small text-end ${isMine ? 'text-white-50' : 'text-muted'} mt-1">
-                                ${new Date(m.sentAt).toLocaleTimeString()}
-                            </div>
-                        </div>`;
+                        ${m.text}
+                        <div class="message-time">${new Date(m.sentAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                    `;
                     container.appendChild(div);
                 });
+                // scroll to bottom
                 container.scrollTop = container.scrollHeight;
+
+                // Show input area if hidden
+                const inputArea = document.querySelector('.chat-input');
+                if (inputArea) inputArea.style.display = 'flex';
             } catch (err) {
                 console.error('Error loading messages', err);
             }
@@ -304,18 +566,24 @@
 
         async function sendMessage() {
             var threadId = parseInt(document.getElementById('ActiveThreadId').value);
-            var textarea = document.getElementById('messageInput');
-            var text = textarea.value.trim();
+            var input = document.getElementById('messageInput');
+            var text = input ? input.value.trim() : '';
 
             if (!text || !threadId) return;
 
             try {
+                // Find antiforgery token if present
+                const tokenEl = document.querySelector('input[name="__RequestVerificationToken"]');
+                const token = tokenEl ? tokenEl.value : null;
+
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                if (token) headers['RequestVerificationToken'] = token;
+
                 const res = await fetch('/api/Chat/SendMessage', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                    },
+                    headers: headers,
                     body: JSON.stringify({
                         threadId: threadId,
                         text: text,
@@ -324,13 +592,14 @@
                 });
 
                 if (!res.ok) {
-                    const error = await res.json();
-                    console.error('Failed to send message', error);
-                    alert('Failed to send message: ' + (error.message || 'Unknown error'));
+                    let errorText = '';
+                    try { errorText = await res.json(); } catch (e) { errorText = await res.text(); }
+                    console.error('Failed to send message', errorText);
+                    alert('Failed to send message: ' + (errorText.message || JSON.stringify(errorText) || 'Unknown error'));
                     return;
                 }
 
-                textarea.value = '';
+                if (input) input.value = '';
                 await loadMessages(threadId);
             } catch (err) {
                 console.error('Error sending message', err);
@@ -348,22 +617,40 @@
         // Auto-refresh messages every 3 seconds
         setInterval(() => {
             var threadId = document.getElementById('ActiveThreadId').value;
-            if(threadId) loadMessages(parseInt(threadId));
+            if (threadId) loadMessages(parseInt(threadId));
         }, 3000);
 
-        // Initialize on load
+        // Attach click handlers and initialize on load
         window.addEventListener("DOMContentLoaded", () => {
+            // Attach click listeners to chat items (avoids inline onclick escaping issues)
+            document.querySelectorAll('#threadList .chat-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const threadId = parseInt(this.dataset.threadId || this.id.replace('thread-', ''));
+                    const userName = this.dataset.userName || '';
+                    const userRole = this.dataset.userRole || '';
+                    selectThread(threadId, userName, userRole);
+                });
+            });
+
             var activeThread = document.getElementById('ActiveThreadId').value;
-            if(activeThread) {
+            if (activeThread) {
                 const activeElement = document.getElementById('thread-' + activeThread);
                 if (activeElement) {
                     const userName = activeElement.dataset.userName;
                     const userRole = activeElement.dataset.userRole;
                     updateChatHeader(userName, userRole);
                     loadMessages(parseInt(activeThread));
-                    activeElement.classList.remove('chat-list-item');
-                    activeElement.classList.add('active-chat');
+                    activeElement.classList.add('active');
                 }
+            }
+
+            // Toggle sidebar on mobile (if toggle exists in initial markup)
+            const toggleSidebarBtn = document.getElementById('toggleSidebar');
+            const chatSidebar = document.getElementById('chatSidebar');
+            if (toggleSidebarBtn) {
+                toggleSidebarBtn.addEventListener('click', function () {
+                    chatSidebar.classList.toggle('show');
+                });
             }
 
             // Auto-focus message input

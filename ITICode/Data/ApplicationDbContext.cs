@@ -22,9 +22,6 @@ namespace ITI_Hackathon.Data
         public DbSet<Consultation> DoctorPayments => Set<Consultation>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
 
-
-        public DbSet<Consultation> DoctorPayments => Set<Consultation>();
-
         protected override void OnModelCreating(ModelBuilder b)
         {
             base.OnModelCreating(b);
@@ -124,8 +121,6 @@ namespace ITI_Hackathon.Data
             b.Entity<ChatMessage>()
                 .HasIndex(m => new { m.ThreadId, m.SentAt });
 
-
-
             b.Entity<Consultation>()
             .HasOne(c => c.Patient)
             .WithMany()
@@ -144,19 +139,5 @@ namespace ITI_Hackathon.Data
             .HasForeignKey(a => a.DoctorId)
             .OnDelete(DeleteBehavior.Restrict);
         }
-
-			b.Entity<Consultation>()
-	        .HasOne(c => c.Patient)
-	        .WithMany()
-	        .HasForeignKey(c => c.PatientId)
-	        .OnDelete(DeleteBehavior.Restrict); // Important: Don't cascade delete if user is deleted
-
-			b.Entity<Consultation>()
-				.HasOne(c => c.Doctor)
-				.WithMany()
-				.HasForeignKey(c => c.DoctorId)
-				.OnDelete(DeleteBehavior.Restrict);
-		}
-
     }
 }

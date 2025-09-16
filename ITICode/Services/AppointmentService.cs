@@ -9,7 +9,6 @@ namespace ITI_Hackathon.Services
     public class AppointmentService : IAppointmentService
     {
         private readonly ApplicationDbContext _context;
-
         public AppointmentService(ApplicationDbContext context)
         {
             _context = context;
@@ -63,8 +62,6 @@ namespace ITI_Hackathon.Services
             await _context.SaveChangesAsync();
             return true;
         }
-
-        
 
         //public async Task<bool> RateAppointmentAsync(int appointmentId, int rating, string comment, string patientId)
         //{

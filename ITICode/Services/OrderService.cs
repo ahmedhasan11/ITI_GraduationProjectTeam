@@ -57,12 +57,12 @@ namespace ITI_Hackathon.Services
 				CreatedAt = DateTime.UtcNow,
 				Status = "Pending",
 				Total = CartItems.Sum(c => c.Medicine.Price * c.Quantity),
+				
 				Items = CartItems.Select(c => new OrderItem()
 				{
 					MedicineId = c.MedicineId,
 					Quantity = c.Quantity,
-					UnitPrice = c.Medicine.Price,
-
+					UnitPrice = c.Medicine.Price
 				}).ToList()
 			};
 			//Add order to Order table

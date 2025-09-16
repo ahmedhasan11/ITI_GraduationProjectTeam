@@ -32,6 +32,5 @@ namespace ITI_Hackathon.Entities
         [Url(ErrorMessage = "Please enter a valid URL")]
         [Display(Name = "Image URL")]
         public string? ImageUrl { get; set; }
-
     }
 }

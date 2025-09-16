@@ -6,6 +6,4 @@ namespace ITI_Hackathon.Models.ViewModels
         public List<ServiceContracts.DTO.ChatThreadDto> Threads { get; set; } = new();
         public ChatRoomDto? ActiveRoom { get; set; }
     }
-
-
 }

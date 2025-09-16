@@ -7,20 +7,14 @@ namespace ITI_Hackathon.Entities
     {
         [Key]
         public int Id { get; set; }
-
-        public string? UserId { get; set; }  // can be null for guests
-
-        public string? SessionId { get; set; }  // new column for guest carts
-
+        public string? UserId { get; set; }  
+        public string? SessionId { get; set; }
         [Required]
         [ForeignKey(nameof(Medicine))]
         public int MedicineId { get; set; }
-
         [Range(1, 100)]
         public int Quantity { get; set; }
-
         public ApplicationUser? User { get; set; }
         public Medicine Medicine { get; set; } = default!;
     }
-
 }

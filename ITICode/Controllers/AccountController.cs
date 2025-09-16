@@ -164,15 +164,29 @@ namespace ITI_Hackathon.Controllers
                 }
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
-            if (result.Succeeded)
-            {
-                _logger.LogInformation("User logged in.");
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl)) return Redirect(returnUrl);
-                return RedirectToAction("Index", "Home");
-            }
+			var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
+			if (result.Succeeded)
+			{
+				_logger.LogInformation("User logged in.");
 
-            ModelState.AddModelError("", "Invalid login attempt.");
+				// Role-based redirection
+				if (await _userManager.IsInRoleAsync(user, "Admin"))
+				{
+					return RedirectToAction("PendingDoctors", "Admin");
+				}
+				else if (await _userManager.IsInRoleAsync(user, "Patient"))
+				{
+					return RedirectToAction("Index", "Home");
+				}
+				else if (await _userManager.IsInRoleAsync(user, "Doctor"))
+				{
+					return RedirectToAction("MyAppointments", "Appointment");
+				}
+
+				return RedirectToAction("Index", "Home");
+			}
+
+			ModelState.AddModelError("", "Invalid login attempt.");
             return View(model);
         }
 
@@ -183,98 +197,6 @@ namespace ITI_Hackathon.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> EditProfile()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login");
-
-            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if (user == null) return NotFound();
-
-            var roles = await _userManager.GetRolesAsync(user);
-            string role = roles.FirstOrDefault() ?? "Patient";
-
-            var vm = new EditProfileViewModel
-            {
-                UserId = user.Id,
-                FullName = user.FullName,
-                Email = user.Email!,
-                Role = role
-            };
-
-            if (role == "Doctor")
-            {
-                var doctor = await _db.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
-                if (doctor != null)
-                {
-                    vm.Specialty = doctor.Specialty;
-                    vm.Bio = doctor.Bio;
-                    vm.LicenseNumber = doctor.LicenseNumber;
-                }
-            }
-            else
-            {
-                var patient = await _db.Patients.FirstOrDefaultAsync(p => p.UserId == userId);
-                if (patient != null)
-                {
-                    vm.DateOfBirth = patient.DateOfBirth;
-                    vm.Gender = patient.Gender;
-                    vm.Address = patient.Address;
-                }
-            }
-
-            return View(vm);
-        }
-
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
-        {
-            if (!ModelState.IsValid) return View(model);
-
-            var user = await _userManager.FindByIdAsync(model.UserId);
-            if (user == null) return NotFound();
-
-            // update basic info
-            user.FullName = model.FullName;
-            user.Email = model.Email;
-            user.UserName = model.Email;
-
-            await _userManager.UpdateAsync(user);
-
-            if (model.Role == "Doctor")
-            {
-                var doctor = await _db.Doctors.FirstOrDefaultAsync(d => d.UserId == model.UserId);
-                if (doctor != null)
-                {
-                    doctor.Specialty = model.Specialty ?? doctor.Specialty;
-                    doctor.Bio = model.Bio;
-                    doctor.LicenseNumber = model.LicenseNumber;
-                    _db.Doctors.Update(doctor);
-                }
-            }
-            else
-            {
-                var patient = await _db.Patients.FirstOrDefaultAsync(p => p.UserId == model.UserId);
-                if (patient != null)
-                {
-                    patient.DateOfBirth = model.DateOfBirth;
-                    patient.Gender = model.Gender;
-                    patient.Address = model.Address;
-                    _db.Patients.Update(patient);
-                }
-            }
-
-            await _db.SaveChangesAsync();
-
-            TempData["Message"] = "Profile updated successfully!";
-            return RedirectToAction("UserProfile");
-        }
-
         public IActionResult AccessDenied()
         {
             return View();
