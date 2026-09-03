@@ -31,6 +31,11 @@ namespace Healthcare.Infrastructure.Persistence.Configurations
 
 			builder.Property(m => m.Stock)
 				.IsRequired();
+
+			builder.HasOne(m => m.Category)
+				.WithMany(c => c.Medicines)
+				.HasForeignKey(m => m.CategoryId)
+				.OnDelete(DeleteBehavior.SetNull);
 		}
 	}
 }

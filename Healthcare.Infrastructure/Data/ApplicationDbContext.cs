@@ -20,8 +20,9 @@ namespace Healthcare.Infrastructure.Data
         public DbSet<PrescriptionItem> PrescriptionItems => Set<PrescriptionItem>();
         public DbSet<Consultation> DoctorPayments => Set<Consultation>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
+        public DbSet<Category> Categories => Set<Category>();
 
-        protected override void OnModelCreating(ModelBuilder b)
+		protected override void OnModelCreating(ModelBuilder b)
         {
             base.OnModelCreating(b);
 			b.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
