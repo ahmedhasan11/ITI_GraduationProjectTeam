@@ -25,12 +25,20 @@ namespace Healthcare.Infrastructure.Persistence.Configurations
 			builder.Property(m => m.Category)
 				.HasMaxLength(50);
 
-			builder.Property(m => m.Price)
-				.HasColumnType("decimal(18,2)")
-				.IsRequired();
+			// Configure Money Value Object as an Owned Entity Type
+			builder.OwnsOne(p => p.Price, money =>
+			{
+				money.Property(m => m.Amount)
+					.HasColumnName("Price")
+					.HasPrecision(18, 2)
+					.IsRequired();
+			});
 
 			builder.Property(m => m.Stock)
 				.IsRequired();
+
+			// Soft delete global query filter
+			builder.HasQueryFilter(m => !m.IsDeleted);
 
 			builder.HasOne(m => m.Category)
 				.WithMany(c => c.Medicines)

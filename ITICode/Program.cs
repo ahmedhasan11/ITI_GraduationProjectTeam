@@ -7,6 +7,7 @@ using Healthcare.Infrastructure.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using Healthcare.Infrastructure.Data;
+using Healthcare.Presentation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,7 @@ if (stripeSettings != null)
 }
 
 var app = builder.Build();
-
+app.UseMiddleware<GlobalExceptionMiddleware>();
 await IdentityDbInitializer.SeedRolesAsync(app.Services);
 
 
