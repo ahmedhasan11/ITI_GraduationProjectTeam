@@ -1,6 +1,6 @@
-﻿using ITI_Hackathon.ServiceContracts.DTO;
+﻿using Healthcare.Application.DTOs;
 
-namespace ITI_Hackathon.Models
+namespace Healthcare.Presentation.Models
 {
     public class HomeIndexViewModel
     {

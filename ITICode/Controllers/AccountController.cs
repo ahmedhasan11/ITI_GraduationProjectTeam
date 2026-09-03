@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using ITI_Hackathon.Models;
-using ITI_Hackathon.Models.Account;
 using Microsoft.AspNetCore.Identity;
-using ITI_Hackathon.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using ITI_Hackathon.Entities;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
+using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     public class AccountController : Controller
     {
@@ -39,7 +36,7 @@ namespace ITI_Hackathon.Controllers
         }
         [Authorize]
         [HttpGet]
-        public async  Task<IActionResult> UserProfile()
+        public async Task<IActionResult> UserProfile()
         {
             var userId= User.FindFirstValue(ClaimTypes.NameIdentifier);
 			if (string.IsNullOrEmpty(userId))

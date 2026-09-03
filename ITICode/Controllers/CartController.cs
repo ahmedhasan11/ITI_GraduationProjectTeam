@@ -1,5 +1,6 @@
-﻿using ITI_Hackathon.ServiceContracts.DTO;
-using ITI_Hackathon.Services;
+﻿using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 

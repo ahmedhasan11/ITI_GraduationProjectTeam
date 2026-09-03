@@ -1,4 +1,4 @@
-namespace ITI_Hackathon.Models
+namespace Healthcare.Presentation.Models
 {
     public class ErrorViewModel
     {

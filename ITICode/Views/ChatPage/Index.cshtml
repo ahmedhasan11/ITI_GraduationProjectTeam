@@ -1,6 +1,7 @@
 ﻿@using System.Linq
+@using Halthcare.Domain.Entities
 @model ITI_Hackathon.Models.ViewModels.ChatIndexViewModel
-@inject Microsoft.AspNetCore.Identity.UserManager<ITI_Hackathon.Entities.ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
 @{
     var currentUserId = UserManager.GetUserId(User);
     var isDoctor = User.IsInRole("Doctor");

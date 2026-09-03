@@ -62,10 +62,14 @@
                         </div>
 
                         <!-- Add to Cart -->
-                        <a href="@Url.Action("AddToCart", "Cart", new { id = m.Id })"
+@*                         <a href="@Url.Action("AddToCart", "Cart", new { id = m.Id })"
                            class="btn btn-sm btn-success add-to-cart-btn mt-2">
                             <i class="fa fa-cart-plus"></i> Add to Cart
-                        </a>
+                        </a> *@
+                        <button class="btn btn-sm btn-success add-to-cart-btn"
+                                data-medicine-id="@m.Id">
+                            <i class="fa fa-cart-plus"></i> Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>

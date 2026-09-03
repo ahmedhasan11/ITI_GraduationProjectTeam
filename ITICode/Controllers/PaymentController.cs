@@ -1,16 +1,16 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
-using ITI_Hackathon.Services;
-using ITI_Hackathon.Stripe;
+using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
+using Healthcare.Infrastructure.Stripe;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Stripe;
 using Stripe.Checkout;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     public class PaymentController : Controller
     {

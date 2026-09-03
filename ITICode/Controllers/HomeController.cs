@@ -1,13 +1,12 @@
 using System.Diagnostics;
-using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
-using ITI_Hackathon.Services;
+using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     public class HomeController : Controller
     {

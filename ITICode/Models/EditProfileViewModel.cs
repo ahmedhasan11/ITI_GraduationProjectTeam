@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ITI_Hackathon.Models.Account
+namespace Healthcare.Presentation.Models
 {
     public class EditProfileViewModel
     {

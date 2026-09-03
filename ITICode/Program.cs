@@ -1,32 +1,19 @@
-using ITI_Hackathon.Data;
-using ITI_Hackathon.Entities;
-using ITI_Hackathon.Models;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.Services;
-using ITI_Hackathon.Stripe;
-
-
-using ITI_Hackathon.Stripe;
-
-using Medicine_Mvc.Services;
+using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Infrastructure.AuthServices;
+using Healthcare.Infrastructure.Stripe;
 using Microsoft.AspNetCore.Identity;
+using Healthcare.Infrastructure.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
+using Healthcare.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register DbContext with Identity support
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Add Identity (UserManager, RoleManager, SignInManager, etc.) with ApplicationUser
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
+builder.Services.InfraServices(builder.Configuration);
 
 builder.Services.AddSignalR(options =>
 {
@@ -34,66 +21,21 @@ builder.Services.AddSignalR(options =>
 });
 
 
-
 // Add Razor Pages support (needed for Identity UI scaffolding)
 builder.Services.AddRazorPages();
 
-builder.Services.AddScoped<IDoctorService, DoctorService>();
-builder.Services.AddScoped<IMedicineService, MedicineService>();
-builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IConsultationService, ConsultationService>();
-
-builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-builder.Services.AddScoped<IChatService, ChatService>();
-
-
-
 
 //use stripesettings as an optionsservice
-builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+
 var stripeSettings = builder.Configuration.GetSection("Stripe").Get<StripeSettings>();
-
-Stripe.StripeConfiguration.ApiKey = stripeSettings.SecretKey;
-
-
-
+if (stripeSettings != null)
+{
+	Stripe.StripeConfiguration.ApiKey = stripeSettings.SecretKey;
+}
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-
-    string[] roles = new[] { "Admin", "Doctor", "Patient" };
-    foreach (var r in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(r))
-            await roleManager.CreateAsync(new IdentityRole(r));
-    }
-
-    // create default admin if not exists
-    var adminEmail = "admin@mediux.com";
-    var admin = await userManager.FindByEmailAsync(adminEmail);
-    if (admin == null)
-    {
-        admin = new ApplicationUser
-        {
-            UserName = adminEmail,
-            Email = adminEmail,
-            FullName = "System Admin",
-            IsPatient = false,
-            IsDoctor = false
-        };
-        var result = await userManager.CreateAsync(admin, "Admin@123"); // password
-        if (result.Succeeded)
-        {
-            await userManager.AddToRoleAsync(admin, "Admin");
-        }
-    }
-}
+await IdentityDbInitializer.SeedRolesAsync(app.Services);
 
 
 // Configure the HTTP request pipeline.

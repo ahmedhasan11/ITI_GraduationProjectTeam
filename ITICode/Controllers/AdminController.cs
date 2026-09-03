@@ -1,12 +1,11 @@
-﻿using ITI_Hackathon.Data;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
-using ITI_Hackathon.Services;
+﻿using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller

@@ -1,23 +1,23 @@
-﻿using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
+﻿using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
-using ITI_Hackathon.Data;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     [Authorize]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentService _service;
-        private readonly UserManager<Entities.ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
 
         public AppointmentController(IAppointmentService service,
-                                  UserManager<Entities.ApplicationUser> userManager,
+                                  UserManager<ApplicationUser> userManager,
                                   ApplicationDbContext context)
         {
             _service = service;

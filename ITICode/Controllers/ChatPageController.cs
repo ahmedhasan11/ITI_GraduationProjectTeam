@@ -1,13 +1,13 @@
 ﻿using System.Security.Claims;
-using ITI_Hackathon.Entities;
 using ITI_Hackathon.Models.ViewModels;
-using ITI_Hackathon.ServiceContracts;
-using ITI_Hackathon.ServiceContracts.DTO;
+using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ITI_Hackathon.Controllers
+namespace Healthcare.Presentation.Controllers
 {
     [Authorize(Roles = "Doctor,Patient")]
     public class ChatPageController : Controller

@@ -1,4 +1,4 @@
-﻿namespace ITI_Hackathon.Models.ViewModels
+﻿namespace Healthcare.Presentation.Models.ViewModels
 {
     public class ChatMessageViewDto
     {

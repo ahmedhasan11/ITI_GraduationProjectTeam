@@ -1,6 +1,6 @@
-﻿using ITI_Hackathon.Data;
-using ITI_Hackathon.Entities;
-using ITI_Hackathon.ServiceContracts.DTO;
+﻿using Healthcare.Application.ServiceContracts;
+using Healthcare.Application.Services;
+using Healthcare.Application.DTOs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
