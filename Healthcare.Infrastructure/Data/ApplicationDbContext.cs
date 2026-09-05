@@ -11,7 +11,8 @@ namespace Healthcare.Infrastructure.Data
         public DbSet<DoctorProfile> Doctors => Set<DoctorProfile>();
         public DbSet<PatientProfile> Patients => Set<PatientProfile>();
         public DbSet<Medicine> Medicines => Set<Medicine>();
-        public DbSet<CartItem> CartItems => Set<CartItem>();
+        public DbSet<Cart> Carts => Set<Cart>();
+		public DbSet<CartItem> CartItems => Set<CartItem>();
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<OrderItem> OrderItems => Set<OrderItem>();
         public DbSet<ChatThread> ChatThreads => Set<ChatThread>();

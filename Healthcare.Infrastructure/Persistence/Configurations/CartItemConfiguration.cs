@@ -24,12 +24,6 @@ namespace Healthcare.Infrastructure.Persistence.Configurations
 				.HasForeignKey(c => c.MedicineId)
 				.OnDelete(DeleteBehavior.Cascade);
 
-			// Foreign Key Relationship with ApplicationUser (Cascade Delete)
-			builder.HasOne<ApplicationUser>()
-				.WithMany()
-				.HasForeignKey(c => c.UserId)
-				.OnDelete(DeleteBehavior.Cascade);
-
 		}
 	}
 }
