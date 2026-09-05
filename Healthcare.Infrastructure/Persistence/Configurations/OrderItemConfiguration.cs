@@ -17,6 +17,10 @@ namespace Healthcare.Infrastructure.Persistence.Configurations
 
 			builder.Property(i=>i.Quantity).IsRequired();
 
+			builder.Property(i => i.MedicineName)
+				.HasMaxLength(200)
+				.IsRequired();
+
 			builder.Property(i => i.UnitPrice)
 				.HasColumnType("decimal(18,2)")
 				.IsRequired();

@@ -20,12 +20,34 @@ namespace Healthcare.Infrastructure.Persistence.Configurations
 				.IsRequired();
 
 			builder.Property(o => o.Status)
+				.HasConversion<string>()
 				.IsRequired()
 				.HasMaxLength(20);
 
-			builder.Property(o => o.Total)
+			builder.Property(o => o.RequiresRefund)
+				.IsRequired();
+
+			builder.Property(o => o.SubTotal)
 				.HasColumnType("decimal(18,2)")
 				.IsRequired();
+
+			builder.Property(o => o.ShippingFee)
+				.HasColumnType("decimal(18,2)")
+				.IsRequired();
+
+			builder.Property(o => o.TotalAmount)
+				.HasColumnType("decimal(18,2)")
+				.IsRequired();
+
+			builder.OwnsOne(o => o.Address, sa =>
+			{
+				sa.Property(a => a.RecipientName).HasMaxLength(150).IsRequired();
+				sa.Property(a => a.PhoneNumber).HasMaxLength(30).IsRequired();
+				sa.Property(a => a.City).HasMaxLength(100).IsRequired();
+				sa.Property(a => a.Street).HasMaxLength(200).IsRequired();
+				sa.Property(a => a.BuildingNumber).HasMaxLength(50);
+				sa.Property(a => a.PostalCode).HasMaxLength(20);
+			});
 
 			builder.HasMany(o => o.Items)
 				.WithOne(i => i.Order)

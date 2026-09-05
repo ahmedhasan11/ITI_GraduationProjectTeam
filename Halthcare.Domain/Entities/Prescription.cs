@@ -5,7 +5,6 @@
         public Guid Id { get; set; }= Guid.NewGuid();
         public Guid DoctorId { get; set; }
         public Guid PatientId { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public List<PrescriptionItem> Items { get; set; } = new();
     }
 
